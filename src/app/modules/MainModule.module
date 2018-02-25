@@ -1,0 +1,17 @@
+{
+  "props": {
+    "singleton": true
+  },
+  "components": {
+    "projectChooser": {
+      "type": "script\\DirectoryChooserScript",
+      "x": 16,
+      "y": 16,
+      "props": {
+        "title": "Папка для сохранения проекта",
+        "inputNode": "dir",
+        "actionNode": "dirButton"
+      }
+    }
+  }
+}

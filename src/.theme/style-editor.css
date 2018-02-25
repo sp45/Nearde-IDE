@@ -1,0 +1,57 @@
+.syntax-text-area {
+    -fx-background-color: #1e1e1e; //фон
+    -fx-background-fill: #333333; //выделенная строка
+    -fx-cursor: text;
+}
+
+.syntax-text-area .paragraph-box:has-caret {
+    -fx-background-color: #333333; //абзац
+}
+
+.syntax-text-area .text {
+    -fx-fill: #cccccc; //обычный текст
+}
+
+.syntax-text-area .gutter .lineno {
+    -fx-text-fill: #8c8c8c;
+    -fx-fill: #8c8c8c;
+    -fx-background-fill: #8c8c8c;
+}
+
+.syntax-text-area .gutter {
+    -fx-border-color: white;
+    -fx-background-color: #1e1e1e;
+    -fx-border-width: 0 0px 0 0;
+    -fx-padding: 0 3 0 3;
+}
+
+.syntax-text-area .caret {
+    -fx-stroke: #ea8a29;
+}
+
+.syntax-text-area .text.control, .syntax-text-area .text.operator, .syntax-text-area .text.semicolon {
+    -fx-fill: #cccccc;
+}
+
+.syntax-text-area .text.comment {
+    -fx-fill: #608b3d;
+    -fx-font-style: italic;
+}
+
+.syntax-text-area .text.keyword {
+    -fx-fill: #569cd6;
+    /*-fx-font-weight: bold;*/
+}
+
+.syntax-text-area .text.string {
+    -fx-fill: #ca945d;
+}
+
+.syntax-text-area .text.number {
+    -fx-fill: #80b380;
+}
+
+.syntax-text-area .text.variable {
+    -fx-fill: #48baa3;
+    /*-fx-font-weight: bold;*/
+}

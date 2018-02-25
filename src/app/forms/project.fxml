@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?import javafx.scene.*?><?import javafx.collections.*?><?import javafx.scene.layout.*?><?import javafx.scene.control.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.scene.shape.*?><?import javafx.scene.paint.*?><?import javafx.scene.web.*?><?import javafx.geometry.*?><?import java.lang.*?><?import org.develnext.jphp.ext.javafx.classes.data.*?><?import org.develnext.jphp.ext.javafx.support.*?><?import org.develnext.jphp.ext.javafx.support.control.*?><?import org.develnext.jphp.ext.game.support.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" focusTraversable="false" id="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664" prefWidth="920" styleClass="">
+  <children>
+    <HBox AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" alignment="CENTER_LEFT" focusTraversable="false" id="hbox" layoutX="0" layoutY="0" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="48" prefWidth="920" spacing="8" styleClass="">
+      <padding>
+        <Insets bottom="0" left="12" right="0" top="0"/>
+      </padding>
+      <children>
+        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button3" layoutX="12" layoutY="8" prefHeight="32" prefWidth="32" styleClass="button " text="" textAlignment="CENTER" underline="false" wrapText="false">
+          <font>
+            <Font name="System Regular" size="12"/>
+          </font>
+        </Button>
+        <Rectangle arcHeight="0" arcWidth="0" fill="#e6e6e6" focusTraversable="false" height="40" id="rect" layoutX="52" layoutY="4" stroke="#334db3" strokeType="INSIDE" strokeWidth="0" styleClass="" width="1"/>
+        <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8.8780487804878" id="button" layoutX="61" layoutY="8" prefHeight="32" prefWidth="88" styleClass="button " text="Запуск" textAlignment="CENTER" underline="false" wrapText="false">
+          <font>
+            <Font name="System Regular" size="12"/>
+          </font>
+        </Button>
+        <Data cursor="DEFAULT" enabled="1" graphic=".data/img/run16.png" id="data-button" visible="1"/>
+        <Data cursor="DEFAULT" enabled="1" id="data-rect" visible="1"/>
+        <Data cursor="DEFAULT" enabled="1" graphic=".data/img/save16.png" id="data-button3" tooltipText="Сахранить (Ctrl + s)" visible="1"/>
+        <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="buttonAlt" layoutX="157" layoutY="8" prefHeight="32" prefWidth="32" styleClass="button " text="" textAlignment="CENTER" underline="false" wrapText="false">
+          <font>
+            <Font name="System Regular" size="12"/>
+          </font>
+        </Button>
+        <Data cursor="DEFAULT" enabled="" graphic=".data/img/square16.png" id="data-buttonAlt" visible="1"/>
+      </children>
+    </HBox>
+    <Data cursor="DEFAULT" enabled="1" id="data-hbox" visible="1"/>
+    <Panel AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="48" backgroundColor="#ffffff" borderColor="#c0c0c0" borderRadius="0" borderStyle="SOLID" borderWidth="0" focusTraversable="false" id="panel" layoutX="0" layoutY="48" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="616" prefWidth="920" styleClass="" titleColor="#333333" titleOffset="15" titlePosition="TOP_LEFT">
+      <children/>
+      <titleFont>
+        <Font name="System Regular" size="12"/>
+      </titleFont>
+    </Panel>
+    <Data cursor="DEFAULT" enabled="1" id="data-panel" visible="1"/>
+  </children>
+</AnchorPane>
