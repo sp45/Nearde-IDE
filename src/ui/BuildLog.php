@@ -19,6 +19,8 @@ class BuildLog
     
     private $split;
     
+    private $line = 0;
+    
     public function __construct($split = null) 
     {
         $this->textAria = new UXRichTextArea;
@@ -32,8 +34,9 @@ class BuildLog
     
     public function print($text, $color = "#333")
     {
+        $this->line++;
         $this->textAria->appendText($text . "\n", "-fx-fill : " . $color);
-        $this->textAria->selectLine();
+        $this->textAriaScrol->scrollY = $this->line * 25;
     }
     
     public function makeUI(){
