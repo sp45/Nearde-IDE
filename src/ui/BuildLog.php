@@ -1,10 +1,9 @@
 <?php
 namespace ui;
 
+use php\gui\layout\UXHBox;
 use php\gui\designer\UXCodeAreaScrollPane;
 use php\gui\UXRichTextArea;
-
-use gui;
 
 class BuildLog 
 {

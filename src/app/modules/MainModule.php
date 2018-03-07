@@ -1,6 +1,9 @@
 <?php
 namespace app\modules;
 
+use php\io\File;
+use php\lib\fs;
+use php\lang\Environment;
 use php\compress\ZipFile;
 use std, gui, framework, app;
 
@@ -30,51 +33,15 @@ class MainModule extends AbstractModule
             
     }
     
-    public function installTool(string $name, UXForm $form)
+    public static function makeEnv()
     {
-        $form->showPreloader("Установка утилиты " . $name);
+        $env = System::getEnv();
         
-        $to = fs::abs("./tools/" . $name);
+        $env['ANT_HOME'] = fs::abs("./tools/ant");
         
-        $zip = new ZipFile($to . ".zip");
-        $zip->unpack($to);
+        $env['Path'] .= ';' . $env['ANT_HOME'] . '\bin';
         
-        if ($this->getOS() == "windows")
-            $command = 'cmd.exe /c chcp 65001 > nul & cd ' . $to . " && " . "gradlew.bat install";
-        else 
-            $command = "gradle -P " . $to . " install";
-        
-        $process = new Process(explode(' ', $command));
-        $process = $process->start();
-        
-        $thread = new Thread(function() use ($name, $process, $form){
-            $process->getInput()->eachLine(function($line) use ($name) {
-                uiLater(function() use ($line, $name) {
-                    echo '[INSTALL]['. $name .'] ' . $line . " \n";
-                });
-            });
-
-            $process->getError()->eachLine(function($line) use ($name) {
-                uiLater(function () use ($line, $name) {
-                    echo '[INSTALL]['. $name .'][ERROR] ' . $line . " \n";
-                }); 
-            });
-            
-            $exitValue = $process->getExitValue();
-            uiLater(function () use ($exitValue, $name, $form) {
-                
-                if ($exitValue == 0)
-                {
-                    $form->hidePreloader();
-                    return true;
-                } else {
-                    pre("Не удалось установить утилиту " . $name);
-                    $form->hidePreloader();
-                    return false;
-                }
-            });
-        });
-        
-        $thread->start();
-    }
+        return $env;
+    } 
+    
 }

@@ -6,13 +6,19 @@
         <Insets bottom="0" left="12" right="0" top="0"/>
       </padding>
       <children>
-        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button3" layoutX="12" layoutY="8" prefHeight="32" prefWidth="32" styleClass="button " text="" textAlignment="CENTER" underline="false" wrapText="false">
+        <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button4" layoutX="12" layoutY="8" prefHeight="32" prefWidth="32" styleClass="button " text="" textAlignment="CENTER" underline="false" wrapText="false">
           <font>
             <Font name="System Regular" size="12"/>
           </font>
         </Button>
-        <Rectangle arcHeight="0" arcWidth="0" fill="#e6e6e6" focusTraversable="false" height="40" id="rect" layoutX="52" layoutY="4" stroke="#334db3" strokeType="INSIDE" strokeWidth="0" styleClass="" width="1"/>
-        <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8.8780487804878" id="button" layoutX="61" layoutY="8" prefHeight="32" prefWidth="88" styleClass="button " text="Запуск" textAlignment="CENTER" underline="false" wrapText="false">
+        <Rectangle arcHeight="0" arcWidth="0" fill="#e6e6e6" focusTraversable="false" height="40" id="rectAlt" layoutX="52" layoutY="4" stroke="#334db3" strokeType="INSIDE" strokeWidth="0" styleClass="" width="1"/>
+        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button3" layoutX="61" layoutY="8" prefHeight="32" prefWidth="32" styleClass="button " text="" textAlignment="CENTER" underline="false" wrapText="false">
+          <font>
+            <Font name="System Regular" size="12"/>
+          </font>
+        </Button>
+        <Rectangle arcHeight="0" arcWidth="0" fill="#e6e6e6" focusTraversable="false" height="40" id="rect" layoutX="101" layoutY="4" stroke="#334db3" strokeType="INSIDE" strokeWidth="0" styleClass="" width="1"/>
+        <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8.8780487804878" id="button" layoutX="110" layoutY="8" prefHeight="32" prefWidth="88" styleClass="button " text="Запуск" textAlignment="CENTER" underline="false" wrapText="false">
           <font>
             <Font name="System Regular" size="12"/>
           </font>
@@ -20,12 +26,20 @@
         <Data cursor="DEFAULT" enabled="1" graphic=".data/img/run16.png" id="data-button" visible="1"/>
         <Data cursor="DEFAULT" enabled="1" id="data-rect" visible="1"/>
         <Data cursor="DEFAULT" enabled="1" graphic=".data/img/save16.png" id="data-button3" tooltipText="Сахранить (Ctrl + s)" visible="1"/>
-        <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="buttonAlt" layoutX="157" layoutY="8" prefHeight="32" prefWidth="32" styleClass="button " text="" textAlignment="CENTER" underline="false" wrapText="false">
+        <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="buttonAlt" layoutX="206" layoutY="8" prefHeight="32" prefWidth="32" styleClass="button " text="" textAlignment="CENTER" underline="false" wrapText="false">
           <font>
             <Font name="System Regular" size="12"/>
           </font>
         </Button>
         <Data cursor="DEFAULT" enabled="" graphic=".data/img/square16.png" id="data-buttonAlt" visible="1"/>
+        <Data cursor="DEFAULT" enabled="1" graphic=".data/img/new16.png" id="data-button4" visible="1"/>
+        <Data cursor="DEFAULT" enabled="1" id="data-rectAlt" visible="1"/>
+        <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button5" layoutX="246" layoutY="8" prefHeight="32" prefWidth="32" styleClass="button " text="" textAlignment="CENTER" underline="false" wrapText="false">
+          <font>
+            <Font name="System Regular" size="12"/>
+          </font>
+        </Button>
+        <Data cursor="DEFAULT" enabled="1" graphic=".data/img/boxGo16.png" id="data-button5" visible="1"/>
       </children>
     </HBox>
     <Data cursor="DEFAULT" enabled="1" id="data-hbox" visible="1"/>

@@ -3,12 +3,24 @@
     "singleton": true
   },
   "components": {
+    "nrdChooser": {
+      "type": "script\\FileChooserScript",
+      "x": 64,
+      "y": 16,
+      "props": {
+        "filterName": "Проект Nearde",
+        "filterExtensions": "*.nrd",
+        "filterAny": "0",
+        "inputNode": "",
+        "actionNode": ""
+      }
+    },
     "projectChooser": {
       "type": "script\\DirectoryChooserScript",
       "x": 16,
       "y": 16,
       "props": {
-        "title": "Папка для сохранения проекта",
+        "title": "",
         "inputNode": "dir",
         "actionNode": "dirButton"
       }

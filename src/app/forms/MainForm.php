@@ -4,6 +4,7 @@ namespace app\forms;
 use facade\Json;
 use utils\Project;
 use std, gui, framework, app;
+use php\gui\event\UXEvent; 
 
 
 class MainForm extends AbstractForm
@@ -79,8 +80,23 @@ class MainForm extends AbstractForm
      */
     function doButtonAction(UXEvent $e = null)
     {    
-        app()->showForm("newProject");
+        app()->getForm("newProject")->show();
     }
 
+    /**
+     * @event buttonAlt.action 
+     */
+    function doButtonAltAction(UXEvent $e = null)
+    {    
+        $this->nrdChooser->execute();
+        $path = $this->nrdChooser->file;
+        $project = new \utils\Project();
+        if (!$project->Open(fs::parent($path), fs::nameNoExt($path)))
+        {
+            alert("Невозможно открыть проект.");
+        } else {
+            $this->hide();
+        }
+    }
 
 }

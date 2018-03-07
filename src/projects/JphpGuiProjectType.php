@@ -1,6 +1,11 @@
 <?php
 namespace projects;
 
+use php\io\Stream;
+use php\io\File;
+use php\lib\fs;
+use build\BuildUI;
+use app\modules\MainModule;
 use bundle\zip\ZipFileScriptStopException;
 use std;
 use app;
@@ -53,7 +58,7 @@ class JphpGuiProjectType extends ProjectType
         $log->print("> In directory :" , "green");
         $log->print("  --> " . $project->getDir(), "gray");
             
-        $procces = $this->buildProcess($args, $project->getDir()); 
+        $procces = $this->buildProcess($args, $project->getDir(), MainModule::makeEnv()); 
         
         $p = $procces->start();
         
@@ -104,5 +109,95 @@ class JphpGuiProjectType extends ProjectType
                  $this->del($project->getDir());
             }
         }
+    }
+    
+    public function build(\utils\Project $project)
+    {
+        $this->makePhb($project);
+        
+        $ui = app()->getForm("BuildUI");
+        
+        $ui->show();
+        
+        $libs = File::of("./lib/");
+        fs::makeDir($project->getDir() . "/build/dist/lib/");
+        fs::makeDir($project->getDir() . "/build/dist/gen/");
+        fs::makeFile($project->getDir() . "/build.xml");
+        
+        fs::makeFile($project->getDir() . "/build/dist/gen/META-INF/services/php.runtime.ext.support.Extension");
+        Stream::putContents($project->getDir() . "/build/dist/gen/META-INF/services/php.runtime.ext.support.Extension", "org.develnext.jphp.json.JsonExtension\n\norg.develnext.jphp.ext.xml.XmlExtension\n\norg.develnext.jphp.ext.javafx.JavaFXExtension\n\norg.develnext.jphp.ext.gui.desktop.GuiDesktopExtension\n\norg.develnext.jphp.zend.ext.ZendExtension\n\norg.develnext.jphp.parser.ParserExtension\n\norg.develnext.jphp.ext.sql.SqlExtension\n\norg.develnext.jphp.ext.systemtray.SystemTrayExtension\n\norg.develnext.jphp.ext.zip.ZipExtension");
+        
+        $build = Stream::getContents("res://build/build.xml");
+        $build = str_replace("%NAME%", $project->getName(), $build);
+        
+        foreach ($libs->findFiles() as $file)
+        {
+            $f = new File($project->getDir() . "/build/dist/lib/" . fs::name($file));
+            $zips .= '<zipfileset src=\'${dist}/lib/'.fs::name($file)."' /> \n";
+            $ui->print(":aplay-jar " . fs::name($file), "gray");
+            fs::makeFile($project->getDir() . "/build/dist/lib/" . fs::name($file));
+            fs::copy($file, $f);
+        }
+        
+        $build = str_replace("%ZIPFILESET%", $zips, $build);
+        
+        Stream::putContents($project->getDir() . "/build.xml", $build);
+        
+        $env = MainModule::makeEnv();
+        
+        if (MainModule::getOS() == "windows")
+        {
+          $args = [
+              'cmd.exe',
+              '/c',
+              $env['ANT_HOME'] . '/bin/ant.bat',
+              'onejar'
+          ];  
+        } else {
+            $args = [
+              'ant',
+              'onejar'
+          ];  
+        }
+        
+        $procces = $this->buildProcess($args, $project->getDir()); 
+        $p = $procces->start();
+        
+        $t = new Thread(function () use ($p, $ui, $call, $project) {
+            $p->getInput()->eachLine( function($line) use ($ui) {
+                uiLater(function () use ($line, $ui) {
+                    $ui->print($line);
+                });
+            });
+            
+            $p->getError()->eachLine( function($line)  use ($ui) {
+                uiLater(function () use ($line, $ui) {
+                    $ui->print($line, "red");
+                });
+            });
+            
+            $exitValue = $p->getExitValue();
+            uiLater(function () use ($ui, $exitValue, $call, $project) {
+                if ($exitValue == 0)
+                {
+                    $form = app()->getForm("BuildEnd");
+                    $form->open(fs::abs($project->getDir() . "/build/dist/"), function () use ($project) {
+                        open(fs::abs($project->getDir() . "/build/dist/" . $project->getName() . ".jar"));
+                    });
+                    $ui->hide();
+                    $form->show();
+                } else $ui->print("> exit code: " . $exitValue);
+                
+                if ($call)
+                    $call();
+            });
+        });
+        $t->start();
+        
+    }
+    
+    public function makePhb(\utils\Project $project)
+    {
+        
     }
 }

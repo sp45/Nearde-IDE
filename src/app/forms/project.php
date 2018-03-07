@@ -1,6 +1,8 @@
 <?php
 namespace app\forms;
 
+use editors\FormEditor;
+use php\lib\fs;
 use php\gui\designer\UXDirectoryTreeView;
 use php\gui\designer\UXDesignPane;
 use php\gui\designer\UXSyntaxTextArea;
@@ -12,6 +14,7 @@ use php\gui\designer\UXTextCodeArea;
 use php\gui\designer\UXPhpCodeArea;
 use facade\Json;
 use std, gui, framework, app;
+use php\gui\event\UXEvent; 
 
 
 class project extends AbstractForm
@@ -80,6 +83,11 @@ class project extends AbstractForm
             if (fs::isDir($path)) return;
             
             $editor = new CodeEditor(new File($path));
+            
+            if (fs::ext($path) == "fxml")
+            {
+                $editor = new FormEditor(new File($path));
+            }
             
             if ($editor->makeUI() == null) 
             {
@@ -161,6 +169,23 @@ class project extends AbstractForm
             $this->buildLog->hide();
             $this->button->enabled = ! $this->buttonAlt->enabled = 0;
         });
+    }
+
+    /**
+     * @event button4.action 
+     */
+    function doButton4Action(UXEvent $e = null)
+    {    
+        app()->getForm("newProject")->show();
+        $this->hide();
+    }
+
+    /**
+     * @event button5.action 
+     */
+    function doButton5Action(UXEvent $e = null)
+    {    
+        $this->type->build($this->project);
     }
 
     function OpenProject(\utils\Project $project)

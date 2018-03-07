@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project author="Пользователь" authorOS="Windows 7" createdAt="1518256866146" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="app" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1519501204919">
+<project author="Пользователь" authorOS="Windows 7" createdAt="1518256866146" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="app" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1520428027523">
   <tree>
     <expanded>
     <path src=""/>
       <path src="/src"/>
+      <path src="/src/build"/>
+      <path src="/src/editors"/>
+      <path src="/src/utils"/>
     </expanded>
   </tree>
   <openedFiles>
@@ -15,9 +18,12 @@
     <file src="src/projects/JphpGuiProjectType.php"/>
     <file src="src/utils/Project.php"/>
     <file src="src/projects/ProjectType.php"/>
-    <file selected="1" src="src/editors/CodeEditor.php"/>
-    <file src="src/ui/BuildLog.php"/>
+    <file src="src/editors/CodeEditor.php"/>
     <file src="src/app/forms/MainForm.php"/>
+    <file src="src/utils/IdeProjects.php"/>
+    <file src="src/editors/FormEditor.php"/>
+    <file src="src/app/forms/BuildEnd.php"/>
+    <file selected="1" src="src/app/forms/BuildUI.php"/>
   </openedFiles>
   <files/>
   <behaviours>

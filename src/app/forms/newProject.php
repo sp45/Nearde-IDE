@@ -1,10 +1,12 @@
 <?php
 namespace app\forms;
 
+use app\modules\MainModule;
 use php\compress\ZipFile;
 use bundle\zip\ZipFileScript;
 use facade\Json;
 use std, gui, framework, app;
+use php\gui\event\UXWindowEvent; 
 
 
 class newProject extends AbstractForm
@@ -69,7 +71,7 @@ class newProject extends AbstractForm
             {
                 if ($this->dir->text != null)
                 {
-                    $directory = new File($this->dir->text);
+                    $directory = new File($this->dir->text . "/" . $this->name->text);
                     $list = $directory->findFiles();
                     if ($list == [])
                     {
@@ -80,8 +82,8 @@ class newProject extends AbstractForm
                         if (fs::exists($projectSDK))
                         {
                             $zip = new ZipFile($projectSDK);
-                            $zip->unpack($this->dir->text);
-                            Json::toFile($this->dir->text . "/" . $this->name->text .".nrd", [
+                            $zip->unpack($directory);
+                            Json::toFile($this->dir->text . "/" . $this->name->text . "/" . $this->name->text .".nrd", [
                                 "name" => $this->name->text,
                                 "type" => $typeID
                             ]);
@@ -89,10 +91,10 @@ class newProject extends AbstractForm
                             $json[] = [
                                 "name" => $this->name->text,
                                 "type" => $typeID,
-                                "src"  => $this->dir->text 
+                                "src"  => (string) $directory
                             ];
                             Json::toFile("./projects.json", $json);
-                            new \utils\Project()->open($this->dir->text, $this->name->text);
+                            new \utils\Project()->open($directory, $this->name->text);
                             app()->hideForm("MainForm");
                             $this->hide();
                         } else {
@@ -112,6 +114,25 @@ class newProject extends AbstractForm
     {    
         $this->projectChooser->execute();
         $this->dir->text = $this->projectChooser->file;
+    }
+
+    /**
+     * @event show 
+     */
+    function doShow(UXWindowEvent $e = null)
+    {    
+        if (fs::exists("./config.json"))
+        {
+            $json = Json::fromFile("./config.json");
+            $this->dir->text = $json['projects_path'];
+        } else {
+            if (MainModule::getOS() == "windows")
+            {
+                $this->dir->text = "C:\\Users\\" . System::getProperty('user.name') . "\\NeardeProjects";
+            } else {
+                $this->dir->text = "/home/" . System::getProperty('user.name') . "/NeardeProjects";
+            }
+        }
     }
     
 }
