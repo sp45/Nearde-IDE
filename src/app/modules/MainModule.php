@@ -1,6 +1,10 @@
 <?php
 namespace app\modules;
 
+use php\framework\FrameworkPackageLoader;
+use php\gui\framework\AbstractForm;
+use php\gui\framework\GUI;
+use php\lang\Module;
 use php\io\File;
 use php\lib\fs;
 use php\lang\Environment;
@@ -43,5 +47,30 @@ class MainModule extends AbstractModule
         
         return $env;
     } 
+    
+    public static function toByteCode(File $dir)
+    {
+        return execute('java -jar ./tools/byte/byte.jar "'. (string) $dir . '/src' .'"');
+    }
+    
+    public static function clean(File $dir)
+    {
+        /* @var File $file */
+        foreach ($dir->findFiles() as $file)
+        {
+            if ($file->isDirectory())
+            {
+                self::clean($file);
+            }
+            
+            if ($file->isFile())
+            {
+                if (fs::ext($file) == "phb")
+                {
+                    fs::delete($file);
+                } else continue;
+            }
+        }
+    }
     
 }

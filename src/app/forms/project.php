@@ -185,7 +185,7 @@ class project extends AbstractForm
      */
     function doButton5Action(UXEvent $e = null)
     {    
-        $this->type->build($this->project);
+        $this->project->build();
     }
 
     function OpenProject(\utils\Project $project)

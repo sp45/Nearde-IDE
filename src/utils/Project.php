@@ -48,4 +48,16 @@ class Project
     {
         return $this->jsonConfig;
     }
+    
+    public function build()
+    {
+        $form = app()->getForm("BuildType");
+        
+        foreach ($this->type->getAllBuildTypes() as $type)
+        {
+            $form->addItem($type, $this);
+        }
+        
+        $form->showAndWait();
+    }
 }

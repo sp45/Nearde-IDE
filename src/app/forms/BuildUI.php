@@ -21,6 +21,8 @@ class BuildUI extends AbstractForm
     {    
         $this->log = new BuildLog();
         
+        $this->progressBar->progress = -100;
+        
         $ui = $this->log->makeUI();
         
         $this->panel->add($ui);
@@ -29,6 +31,15 @@ class BuildUI extends AbstractForm
     public function print($text, $color = "#333")
     {
         $this->log->print($text, $color);
+    }
+    
+    public function hide()
+    {
+        $this->progressBar->progress = 100;
+        if ($this->checkbox->selected)
+        {
+            parent::hide();
+        }
     }
 
 }

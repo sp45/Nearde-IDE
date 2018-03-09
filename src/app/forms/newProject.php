@@ -47,6 +47,8 @@ class newProject extends AbstractForm
             $description = $project->getDescription();
             $this->projectsType->items->add([ $name, $description, new UXImageView(new UXImage($project->getIcon())), $project->getId() ]);    
         }
+        
+        $this->hidePreloader();
     }
 
 

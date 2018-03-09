@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?import javafx.scene.*?><?import javafx.collections.*?><?import javafx.scene.layout.*?><?import javafx.scene.control.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.scene.shape.*?><?import javafx.scene.paint.*?><?import javafx.scene.web.*?><?import javafx.geometry.*?><?import java.lang.*?><?import org.develnext.jphp.ext.javafx.classes.data.*?><?import org.develnext.jphp.ext.javafx.support.*?><?import org.develnext.jphp.ext.javafx.support.control.*?><?import org.develnext.jphp.ext.game.support.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" focusTraversable="false" id="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504" prefWidth="536" styleClass="">
+  <children>
+    <ImageViewEx autoSize="false" centered="true" focusTraversable="false" height="48" id="image" layoutX="16" layoutY="16" mosaic="false" mosaicGap="0" proportional="false" stretch="false" styleClass="" textFill="#000000" width="48">
+      <font>
+        <Font name="System Regular" size="12"/>
+      </font>
+    </ImageViewEx>
+    <Data cursor="DEFAULT" enabled="1" id="data-image" image=".data/img/bundleMake32.png" visible="1"/>
+    <LabelEx alignment="CENTER_LEFT" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="label" layoutX="72" layoutY="32" prefHeight="17" prefWidth="200" styleClass="label " text="Собрать прокет." textAlignment="LEFT" underline="false" wrapText="false">
+      <font>
+        <Font name="System Bold" size="12"/>
+      </font>
+    </LabelEx>
+    <Data cursor="DEFAULT" enabled="1" id="data-label" visible="1"/>
+    <Separator focusTraversable="false" id="separator" layoutX="24" layoutY="64" orientation="HORIZONTAL" prefHeight="8" prefWidth="488" styleClass="separator "/>
+    <Data cursor="DEFAULT" enabled="1" id="data-separator" visible="1"/>
+    <ListViewEx editable="false" fixedCellSize="-1" focusTraversable="true" id="listView" layoutX="24" layoutY="104" prefHeight="328" prefWidth="488" styleClass="list-view ">
+      <items xmlns:fx="http://javafx.com/fxml">
+        <FXCollections fx:factory="observableArrayList"/>
+      </items>
+    </ListViewEx>
+    <Data cursor="DEFAULT" enabled="1" id="data-listView" visible="1"/>
+    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button" layoutX="304" layoutY="448" prefHeight="32" prefWidth="120" styleClass="button " text="Собрать" textAlignment="CENTER" underline="false" wrapText="false">
+      <font>
+        <Font name="System Bold" size="12"/>
+      </font>
+    </Button>
+    <Data cursor="DEFAULT" enabled="1" graphic=".data/img/run16.png" id="data-button" visible="1"/>
+    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="buttonAlt" layoutX="432" layoutY="448" prefHeight="32" prefWidth="80" styleClass="button " text="Отмена" textAlignment="CENTER" underline="false" wrapText="false">
+      <font>
+        <Font name="System Regular" size="12"/>
+      </font>
+    </Button>
+    <Data cursor="DEFAULT" enabled="1" id="data-buttonAlt" visible="1"/>
+    <LabelEx alignment="CENTER_LEFT" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="labelAlt" layoutX="24" layoutY="80" prefHeight="17" prefWidth="240" styleClass="label " text="Вариант сборки:" textAlignment="LEFT" underline="false" wrapText="false">
+      <font>
+        <Font name="System Regular" size="12"/>
+      </font>
+    </LabelEx>
+    <Data cursor="DEFAULT" enabled="1" id="data-labelAlt" visible="1"/>
+    <CheckBox alignment="CENTER_LEFT" contentDisplay="RIGHT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="checkbox" layoutX="24" layoutY="448" prefHeight="32" prefWidth="216" styleClass="check-box " text="Компилировать в Byte-code" textAlignment="RIGHT" underline="false" wrapText="false">
+      <font>
+        <Font name="System Regular" size="12"/>
+      </font>
+    </CheckBox>
+    <Data cursor="DEFAULT" enabled="" id="data-checkbox" visible="1"/>
+  </children>
+</AnchorPane>

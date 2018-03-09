@@ -1,27 +1,29 @@
 <?php
 namespace projects;
 
+use php\gui\framework\behaviour\custom\AbstractBehaviour;
+use build\BuildType;
 use std;
 use app;
 use framework;
 use \php\lang\Process;
 
-class ProjectType 
+abstract class ProjectType 
 {
     /**
      * @var Process
      */
     private $process;
     
-    function __construct()
+    private $buildTypes;
+    
+    public function __construct()
     {
-        Logger::info("Load new project type");
+        $this->onRegister();
     }
     
     public function buildProcess(array $command, $path) : Process
     {
-        $os = MainModule::getOS();
-        
         $this->process = new Process($command, $path);
         
         return $this->process;
@@ -34,7 +36,8 @@ class ProjectType
     
     public function getJars()
     {
-        $lib = fs::abs("./lib");
+        
+        $lib = fs::abs("./lib/");
         $dir = new File($lib);
         foreach ($dir->findFiles() as $one)
         {
@@ -46,4 +49,25 @@ class ProjectType
         
         return $libs;
     }
+    
+    public function registerBuildType(BuildType $type)
+    {
+        if ($this->buildTypes[$type->getId()]) return;
+        
+        $this->buildTypes[$type->getId()] = $type;
+    }
+    
+    public function getBuildType($id)
+    {
+        if (!$this->buildTypes[$id]) return;
+        
+        return $this->buildTypes[$id];
+    }
+    
+    public function getAllBuildTypes()
+    {
+        return $this->buildTypes;
+    }
+    
+    abstract function onRegister();
 }
