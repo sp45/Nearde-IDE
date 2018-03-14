@@ -1,0 +1,13 @@
+{
+  "uid": "cool",
+  "name": "cool",
+  "version": "",
+  "description": "",
+  "author": "Пользователь",
+  "authorSite": "",
+  "file": "",
+  "scopes": [
+    "gui",
+    "ide\\project\\behaviours\\GuiFrameworkProjectBehaviour"
+  ]
+}

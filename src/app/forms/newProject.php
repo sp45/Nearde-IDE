@@ -37,15 +37,17 @@ class newProject extends AbstractForm
             }
         }); 
         
-        $types = $this->getProjects()->getAllTypes();
+        $platforms = $this->getProjects()->getAllPlatforms();
         
         $this->projectsType->items->clear();
         
-        foreach ($types as $project)
+        foreach ($platforms as $platform)
         {
+            $project = $platform->getProjectType();
+            
             $name = $project->getName();
             $description = $project->getDescription();
-            $this->projectsType->items->add([ $name, $description, new UXImageView(new UXImage($project->getIcon())), $project->getId() ]);    
+            $this->projectsType->items->add([ $name, $description, new UXImageView(new UXImage($project->getIcon())), $platform->getId() ]);    
         }
         
         $this->hidePreloader();
@@ -79,7 +81,8 @@ class newProject extends AbstractForm
                     {
                         $this->showPreloader("Создание проекта.");
                         $typeID = $this->projectsType->selectedItem[3];
-                        $type = $this->getProjects()->getType($typeID);
+                        $platform = $this->getProjects()->getPlatform($typeID);
+                        $type = $platform->getProjectType($typeID);
                         $projectSDK = fs::abs("./sdk/" . $type->getSdk());
                         if (fs::exists($projectSDK))
                         {
@@ -87,12 +90,12 @@ class newProject extends AbstractForm
                             $zip->unpack($directory);
                             Json::toFile($this->dir->text . "/" . $this->name->text . "/" . $this->name->text .".nrd", [
                                 "name" => $this->name->text,
-                                "type" => $typeID
+                                "platform" => $typeID
                             ]);
                             $json = Json::fromFile("./projects.json");
                             $json[] = [
                                 "name" => $this->name->text,
-                                "type" => $typeID,
+                                "platform" => $typeID,
                                 "src"  => (string) $directory
                             ];
                             Json::toFile("./projects.json", $json);

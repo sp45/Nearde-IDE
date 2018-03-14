@@ -28,7 +28,7 @@ class BuildUI extends AbstractForm
         $this->panel->add($ui);
     }
     
-    public function print($text, $color = "#333")
+    public function print($text, $color = "#fff")
     {
         $this->log->print($text, $color);
     }

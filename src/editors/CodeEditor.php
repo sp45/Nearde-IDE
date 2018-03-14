@@ -40,9 +40,9 @@ class CodeEditor
             
             case ("txt"):
             case ("ini"):
-            case ("gradle"):
             case ("conf"):
             case ("pid"):
+            case ("xml"):
                 $editor = new UXTextCodeArea();
             break;
             

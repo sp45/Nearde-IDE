@@ -1,6 +1,7 @@
 <?php
 namespace app\forms;
 
+use Types\BuildType;
 use app\forms\project;
 use utils\Project;
 use php\gui\UXImage;
@@ -24,6 +25,7 @@ class BuildType extends AbstractForm
      */
     function doShow(UXWindowEvent $e = null)
     {    
+        $this->listView->items->clear();
         $this->listView->setCellFactory(function(UXListCell $cell, $item) {
             if ($item) {              
                 $titleName = new UXLabel($item[0]);

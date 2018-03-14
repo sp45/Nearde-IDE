@@ -1,6 +1,10 @@
 <?php
 namespace app\forms;
 
+use php\gui\UXMenuBar;
+use php\gui\UXTreeView;
+use php\gui\designer\UXDirectoryTreeValue;
+use php\gui\UXTreeItem;
 use editors\FormEditor;
 use php\lib\fs;
 use php\gui\designer\UXDirectoryTreeView;
@@ -25,6 +29,7 @@ class project extends AbstractForm
     private $path;
     private $project;
     private $process;
+    private $platform;
     /**
      * @var Process
      */
@@ -55,6 +60,10 @@ class project extends AbstractForm
     private $MainSplit;
     
     private $buildLog;
+    /**
+     * @var UXMenuBar
+     */
+    private $mainMenu;
     
     /**
      * @event showing 
@@ -64,7 +73,6 @@ class project extends AbstractForm
         $this->title = $this->name . " - [" . $this->path . "] - Nearde IDE";
         
         $this->projectTree = new UXTreeView;
-        $this->projectTree->width = $this->width / 4;
         $this->projectTree->rootVisible = false;
         $this->projectTree->on('click', function (UXMouseEvent $e) {
         
@@ -84,10 +92,10 @@ class project extends AbstractForm
             
             $editor = new CodeEditor(new File($path));
             
-            if (fs::ext($path) == "fxml")
-            {
-                $editor = new FormEditor(new File($path));
-            }
+            //if (fs::ext($path) == "fxml") 
+            //{
+                //$editor = new FormEditor(new File($path)); // include form editor.
+            //}
             
             if ($editor->makeUI() == null) 
             {
@@ -114,6 +122,7 @@ class project extends AbstractForm
         $this->MainSplit->orientation = "VERTICAL";
         
         $split = new UXSplitPane();
+        $split->dividerPositions = [0.2,1];
         
         $split->anchors = ["top" => 1, "bottom" => 1, "left" => 1, "right"=> 1];
         $split->items->addAll([
@@ -154,7 +163,7 @@ class project extends AbstractForm
         $log = new BuildLog($this->MainSplit);
         $this->buildLog = $log;
         $this->MainSplit->items->add($log->makeUI());
-        $this->type->run($log, $this->project, function () {
+        $this->platform->getRunType()->onRun($log, $this->project, function () {
             $this->button->enabled = ! $this->buttonAlt->enabled = 0;
         });
         $this->button->enabled = ! $this->buttonAlt->enabled = 1;
@@ -165,7 +174,7 @@ class project extends AbstractForm
      */
     function doButtonAltAction(UXEvent $e = null)
     {    
-        $this->type->stop($this->project, function () {
+        $this->platform->getRunType()->onStop($this->project, function () {
             $this->buildLog->hide();
             $this->button->enabled = ! $this->buttonAlt->enabled = 0;
         });
@@ -194,6 +203,7 @@ class project extends AbstractForm
         $this->name = $this->project->getName();
         $this->path = $this->project->getDir();
         $this->type = $this->project->getType();
+        $this->platform = $this->project->getPlatform();
         $this->show();
     }
     

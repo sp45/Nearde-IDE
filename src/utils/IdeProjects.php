@@ -1,28 +1,31 @@
 <?php
 namespace utils;
 
+use php\framework\Logger;
+use utils\AbstractPlatform;
 use app;
 
 class IdeProjects 
 {
-    private $types;
+    private $platforms;
     
-    public function registerType(ProjectType $type)
+    public function registerPlatform(AbstractPlatform $platform)
     {
-        if ($this->types[$type->getId()]) return;
+        if ($this->platforms[$platform->getId()]) return;
         
-        $this->types[$type->getId()] = $type;
+        $this->platforms[$platform->getId()] = $platform;
     }
     
-    public function getType($id)
+    public function getPlatform($id)
     {
-        if (!$this->types[$id]) return;
+        foreach ($this->platforms as $debug => $val) Logger::info($debug);
+        if (!$this->platforms[$id]) return;
         
-        return $this->types[$id];
+        return $this->platforms[$id];
     }
     
-    public function getAllTypes()
+    public function getAllPlatforms()
     {
-        return $this->types;
+        return $this->platforms;
     }
 }

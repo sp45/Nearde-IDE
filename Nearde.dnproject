@@ -1,34 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project author="Пользователь" authorOS="Windows 7" createdAt="1518256866146" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="app" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1520591191568">
+<project author="Пользователь" authorOS="Windows 7" createdAt="1518256866146" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="app" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1521045762315">
   <tree>
     <expanded>
     <path src=""/>
+      <path src="/sdk"/>
       <path src="/src"/>
-      <path src="/src/build"/>
-      <path src="/src/editors"/>
-      <path src="/src/ui"/>
-      <path src="/src/utils"/>
+      <path src="/src/platforms"/>
+      <path src="/src/platforms/JphpGuiPlatform"/>
+      <path src="/src/platforms/JphpGuiPlatform/project"/>
+      <path src="/tools"/>
     </expanded>
   </tree>
   <openedFiles>
-  <file src="Nearde.dnproject"/>
+  <file selected="1" src="Nearde.dnproject"/>
     <file src="src/app/forms/newProject.php"/>
     <file src="src/app/modules/AppModule.php"/>
     <file src="src/app/modules/MainModule.php"/>
-    <file selected="1" src="src/app/forms/project.php"/>
-    <file src="src/projects/JphpGuiProjectType.php"/>
+    <file src="src/app/forms/project.php"/>
     <file src="src/utils/Project.php"/>
-    <file src="src/projects/ProjectType.php"/>
     <file src="src/app/forms/BuildType.php"/>
     <file src="src/editors/CodeEditor.php"/>
-    <file src="src/build/JphpGuiBuildType.php"/>
     <file src="src/app/forms/MainForm.php"/>
     <file src="src/utils/IdeProjects.php"/>
     <file src="src/editors/FormEditor.php"/>
     <file src="src/app/forms/BuildEnd.php"/>
     <file src="src/app/forms/BuildUI.php"/>
     <file src="src/ui/BuildLog.php"/>
-    <file src="src/build/BuildType.php"/>
+    <file src="src/utils/AbstractPlatform.php"/>
+    <file src="src/platforms/JphpGuiPlatform/JphpGuiPlatform.php"/>
+    <file src="src/platforms/JphpGuiPlatform/project/JphpGuiProjectType.php"/>
+    <file src="src/Types/BuildType.php"/>
+    <file src="src/platforms/JphpGuiPlatform/run/JphpGuiRunType.php"/>
+    <file src="src/platforms/JphpGuiPlatform/build/JphpGuiBuildOneJarType.php"/>
   </openedFiles>
   <files/>
   <behaviours>

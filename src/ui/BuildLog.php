@@ -31,7 +31,7 @@ class BuildLog
             $this->split = $split;
     }
     
-    public function print($text, $color = "#333")
+    public function print($text, $color = "#fff")
     {
         $this->line++;
         $this->textAria->appendText($text . "\n", "-fx-fill : " . $color);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?import javafx.scene.*?><?import javafx.collections.*?><?import javafx.scene.layout.*?><?import javafx.scene.control.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.scene.shape.*?><?import javafx.scene.paint.*?><?import javafx.scene.web.*?><?import javafx.geometry.*?><?import java.lang.*?><?import org.develnext.jphp.ext.javafx.classes.data.*?><?import org.develnext.jphp.ext.javafx.support.*?><?import org.develnext.jphp.ext.javafx.support.control.*?><?import org.develnext.jphp.ext.game.support.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" focusTraversable="false" id="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="384" prefWidth="544" styleClass="">
+<?import javafx.scene.*?><?import javafx.collections.*?><?import javafx.scene.layout.*?><?import javafx.scene.control.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.scene.shape.*?><?import javafx.scene.paint.*?><?import javafx.scene.web.*?><?import javafx.geometry.*?><?import java.lang.*?><?import org.develnext.jphp.ext.javafx.classes.data.*?><?import org.develnext.jphp.ext.javafx.support.*?><?import org.develnext.jphp.ext.javafx.support.control.*?><?import org.develnext.jphp.ext.game.support.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" focusTraversable="false" id="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="416" prefWidth="640" styleClass="">
   <children>
     <ListViewEx AnchorPane.bottomAnchor="0" AnchorPane.topAnchor="0" editable="false" fixedCellSize="-1" focusTraversable="true" id="Projectslist" layoutX="0" layoutY="0" prefHeight="384" prefWidth="288" styleClass="list-view ">
       <items xmlns:fx="http://javafx.com/fxml">
@@ -7,33 +7,38 @@
       </items>
     </ListViewEx>
     <Data cursor="DEFAULT" enabled="1" id="data-Projectslist" visible="1"/>
-    <LabelEx alignment="CENTER_RIGHT" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="labelAlt" layoutX="440" layoutY="360" prefHeight="16" prefWidth="94" styleClass="label " text="beta 5" textAlignment="LEFT" underline="false" wrapText="false">
+    <LabelEx AnchorPane.bottomAnchor="8" AnchorPane.rightAnchor="10" alignment="CENTER_RIGHT" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="labelAlt" layoutX="536" layoutY="392" prefHeight="16" prefWidth="94" styleClass="label " text="pre-RC 1" textAlignment="LEFT" textFill="#ffffff" underline="false" wrapText="false">
       <font>
-        <Font name="System Regular" size="12"/>
+        <Font name="Source Sans Pro Regular" size="12"/>
       </font>
     </LabelEx>
     <Data cursor="DEFAULT" enabled="1" id="data-labelAlt" visible="1"/>
-    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button" layoutX="304" layoutY="72" prefHeight="32" prefWidth="224" styleClass="button " text="Новый проект" textAlignment="CENTER" underline="false" wrapText="false">
+    <Button AnchorPane.leftAnchor="304" AnchorPane.rightAnchor="16" alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button" layoutX="304" layoutY="88" prefHeight="32" prefWidth="224" styleClass="button " text="Новый проект" textAlignment="CENTER" textFill="#ffffff" underline="false" wrapText="false">
       <font>
-        <Font name="System Regular" size="12"/>
+        <Font name="Source Sans Pro Regular" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" graphic=".data/img/new16.png" id="data-button" visible="1"/>
-    <LabelEx alignment="CENTER" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="label" layoutX="304" layoutY="16" prefHeight="48" prefWidth="224" styleClass="label " text="Nearde IDE" textAlignment="CENTER" underline="false" wrapText="false">
+    <LabelEx AnchorPane.leftAnchor="304" AnchorPane.rightAnchor="16" alignment="CENTER" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="label" layoutX="304" layoutY="16" prefHeight="56" prefWidth="224" text="Nearde IDE" textAlignment="CENTER" textFill="#ffffff" underline="false" wrapText="false">
       <font>
-        <Font name="System Regular" size="17"/>
+        <Font name="Source Sans Pro Regular" size="18"/>
       </font>
+      <styleClass xmlns:fx="http://javafx.com/fxml">
+        <String fx:value="label"/>
+        <String fx:value="font-bold"/>
+        <String fx:value="font-for-logo"/>
+      </styleClass>
     </LabelEx>
     <Data cursor="DEFAULT" enabled="1" id="data-label" visible="1"/>
-    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="buttonAlt" layoutX="304" layoutY="112" prefHeight="32" prefWidth="224" styleClass="button " text="Открыть проект" textAlignment="CENTER" underline="false" wrapText="false">
+    <Button AnchorPane.leftAnchor="304" AnchorPane.rightAnchor="16" alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="buttonAlt" layoutX="304" layoutY="128" prefHeight="32" prefWidth="224" styleClass="button " text="Открыть проект" textAlignment="CENTER" textFill="#ffffff" underline="false" wrapText="false">
       <font>
-        <Font name="System Regular" size="12"/>
+        <Font name="Source Sans Pro Regular" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" graphic=".data/img/open16.png" id="data-buttonAlt" visible="1"/>
-    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button3" layoutX="304" layoutY="152" prefHeight="32" prefWidth="224" styleClass="button " text="Импорт из DN" textAlignment="CENTER" underline="false" wrapText="false">
+    <Button AnchorPane.leftAnchor="304" AnchorPane.rightAnchor="16" alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button3" layoutX="304" layoutY="168" prefHeight="32" prefWidth="224" styleClass="button " text="Импорт из DevelNext" textAlignment="CENTER" textFill="#ffffff" underline="false" wrapText="false">
       <font>
-        <Font name="System Regular" size="12"/>
+        <Font name="Source Sans Pro Regular" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="" graphic=".data/img/DN16.png" id="data-button3" visible="1"/>

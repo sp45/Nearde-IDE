@@ -46,7 +46,22 @@ class MainForm extends AbstractForm
         $json = Json::fromFile("./projects.json");
         foreach ($json as $project)
         {
-            $type = $this->getProjects()->getType($project['type']);
+            $platform = $this->getProjects()->getPlatform($project['platform']);
+            if ($platform == null)
+            {
+                $this->Projectslist->items->add([
+                    $project['name'],
+                    "Несовместимый проект.",
+                    new UXImageView(new UXImage("res://.data/img/question32.png")),
+                    function (){
+                        alert("Несовместимый проект.");
+                    }
+                ]);
+                
+                continue;
+            }
+            
+            $type = $platform->getProjectType();
     
             if ($type != null) {
             

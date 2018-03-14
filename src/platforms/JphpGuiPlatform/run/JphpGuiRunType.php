@@ -1,51 +1,21 @@
 <?php
-namespace projects;
+namespace platforms\JphpGuiPlatform\run;
 
-use build\JphpGuiBuildType;
-use php\lang\Thread;
-use php\io\Stream;
-use php\io\File;
+use php\lang\Process;
 use php\lib\fs;
-use build\BuildUI;
+use php\io\Stream;
+use php\lang\Thread;
 use app\modules\MainModule;
-use bundle\zip\ZipFileScriptStopException;
-use std;
-use app;
-use \php\lang\Process;
+use php\io\File;
+use php\lib\str;
+use php\lib\arr;
+use app\forms\project;
+use ui\BuildLog;
+use Types\RunType;
 
-class JphpGuiProjectType extends ProjectType
+class JphpGuiRunType extends RunType
 {
-    
-    public function onRegister()
-    {
-        $this->registerBuildType(new JphpGuiBuildType());
-    }
-    
-    public function getName()
-    {
-        return "JPHP GUI прилолжение";
-    }
-    
-    public function getId()
-    {
-        return __CLASS__;
-    }
-    
-    public function getIcon()
-    {
-        return "res://.data/img/jphp-icon.png";
-    }
-    
-    public function getSdk()
-    {
-        return "JphpGuiProjectType.zip";
-    }
-    
-    public function getDescription(){
-        return "Программа на JPHP с JavaFX GUI";
-    }
-    
-    public function run(BuildLog $log, \utils\Project $project, $call = null)
+    public function onRun(BuildLog $log, \utils\Project $project, $call = null)
     {
         $classPaths = arr::toList([ 'src', 'src_generated' ], $this->getJars());
         $args = [
@@ -58,14 +28,31 @@ class JphpGuiProjectType extends ProjectType
         $log->print("> java -cp ... org.develnext.jphp.ext.javafx.FXLauncher" , "green");
         $log->print("  --> " . $project->getDir(), "gray");
             
-        $procces = $this->buildProcess($args, $project->getDir(), MainModule::makeEnv()); 
+        $procces = new Process($args, $project->getDir(), MainModule::makeEnv()); 
         
         $p = $procces->start();
         
         $t = new Thread(function () use ($p, $log, $call, $project) {
             $p->getInput()->eachLine( function($line) use ($log) {
                 uiLater(function () use ($line, $log) {
-                    $log->print($line);
+                    $color = "#fff";
+                
+                    if (strpos(" ". $line, '[ERROR]')){
+                        $color = "red";
+                    }
+                    if (strpos(" ". $line, '[DEBUG]')){
+                        $color = "gray";
+                    }
+                    if (strpos(" ". $line, '[INFO]'))
+                    {
+                        $color = "#4d66cc";
+                    }
+                    if (strpos(" ". $line, '[WARN]')){
+                        $color = "#999900";
+                    }
+                    
+                    
+                    $log->print($line, $color);
                 });
             });
             
@@ -89,7 +76,7 @@ class JphpGuiProjectType extends ProjectType
         $t->start();
     }
     
-    public function stop(\utils\Project $project, $call)
+    public function onStop(\utils\Project $project, $call)
     {
         $pid = Stream::getContents($project->getDir() . "/application.pid");
         if ($pid)
@@ -108,8 +95,18 @@ class JphpGuiProjectType extends ProjectType
         }
     }
     
-    public function build(\utils\Project $project)
+    public function getJars()
     {
+        $lib = fs::abs("./lib/");
+        $dir = new File($lib);
+        foreach ($dir->findFiles() as $one)
+        {
+            if ($one->isFile())
+            {
+                $libs[] = fs::pathNoExt($one) . ".jar";
+            }
+        }
         
+        return $libs;
     }
 }

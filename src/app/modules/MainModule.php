@@ -1,6 +1,10 @@
 <?php
 namespace app\modules;
 
+use utils\IdeProjects;
+use platforms\JphpGuiPlatform\JphpGuiPlatform;
+use php\gui\UXImage;
+use php\gui\UXImageView;
 use php\framework\FrameworkPackageLoader;
 use php\gui\framework\AbstractForm;
 use php\gui\framework\GUI;
@@ -10,16 +14,25 @@ use php\lib\fs;
 use php\lang\Environment;
 use php\compress\ZipFile;
 use std, gui, framework, app;
+use php\gui\framework\ScriptEvent; 
 
 
 class MainModule extends AbstractModule
 {
     
-    public function getProjects() : IdeProjects
+    public static function getProjects()
     {
-        $ideProjectsClass = new IdeProjects;
-        $ideProjectsClass->registerType(new JphpGuiProjectType);
+        $ideProjectsClass = new IdeProjects();
+        
+        // regiser platforms 
+        $ideProjectsClass->registerPlatform(new JphpGuiPlatform); // jphp
+        
         return $ideProjectsClass;
+    }
+    
+    public function getPlatforms()
+    {
+        return $this->ideProjectsClass;
     }
     
     public static function getOS()
@@ -71,6 +84,11 @@ class MainModule extends AbstractModule
                 } else continue;
             }
         }
+    }
+    
+    function ico($name, $r = 'png')
+    {
+        return new UXImageView(new UXImage("res://.data/img/" . $name . "." . $r));
     }
     
 }

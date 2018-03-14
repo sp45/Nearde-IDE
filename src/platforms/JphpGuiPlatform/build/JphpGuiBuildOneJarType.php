@@ -1,8 +1,8 @@
 <?php
-namespace build;
+namespace platforms\JphpGuiPlatform\build;
 
 use php\lang\Process;
-use build\BuildType;
+use Types\BuildType;
 use php\lang\Thread;
 use php\io\Stream;
 use php\lib\fs;
@@ -10,7 +10,7 @@ use php\io\File;
 use app\modules\MainModule;
 use utils\Project;
 
-class JphpGuiBuildType extends BuildType
+class JphpGuiBuildOneJarType extends BuildType
 {
     public function getName()
     {
@@ -49,7 +49,7 @@ class JphpGuiBuildType extends BuildType
         
         $env = MainModule::makeEnv();
         
-        $build = Stream::getContents("res://build/build.xml");
+        $build = Stream::getContents("res://platforms/JphpGuiPlatform/build/build.xml");
         
         $build = str_replace("%NAME%", $project->getName(), $build);
         $build = str_replace("%JRE%", $env['JAVA_HOME'], $build);

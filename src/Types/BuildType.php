@@ -1,5 +1,5 @@
 <?php
-namespace build;
+namespace Types;
 
 class BuildType 
 {
