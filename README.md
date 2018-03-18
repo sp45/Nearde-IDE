@@ -14,6 +14,11 @@ Nearde это IDE с открытым исходным кодом написан
 * Пакет ZIP - Уже встроен в [DevelNext](http://develnext.org/)
 * Пакет [IdeTools](https://api.nearde.pro/cdn/idetools.dnbundle) - Классы для работы Nearde IDE
 
+### Ресурсы :
+* Официальный сайт : [Nearde IDE](https://nearde.pro/)
+* Разработчик : [MWStudio](https://vk.com/mwstudios)
+* Документация по JPHP / DevelNext / Nearde : [Документация](https://hub.develnext.org/wiki)
+
 ## Лицензия
 
 Under MPL 2.0 (https://www.mozilla.org/MPL/2.0/)
