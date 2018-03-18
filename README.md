@@ -7,7 +7,7 @@
 </p>
 
 ## Nearde IDE
-Nearde это IDE с открытым исходным кодом написаная на языке [JPHP](https://github.com/jphp-compiler/jphp).
+Nearde это IDE с открытым исходным кодом написаная на языке [JPHP](http://j-php.net/).
 
 ### Для сборки IDE вам нужно :
 * [DevelNext](http://develnext.org/) - IDE для JPHP 
