@@ -1,6 +1,8 @@
 <?php
 namespace editors;
-
+use ide\autocomplete\AutoComplete;
+use ide\autocomplete\ui\AutoCompletePane;
+use editors\autocomplete\CompletePane;
 use develnext\lexer\inspector\PHPInspector;
 use php\gui\designer\UXTextCodeArea;
 use php\gui\designer\UXCodeAreaScrollPane;
@@ -10,7 +12,6 @@ use php\gui\designer\UXPhpCodeArea;
 use gui;
 use std;
 use app;
-
 class CodeEditor
 {
     private $editor;

@@ -1,6 +1,7 @@
 <?php
 namespace app\modules;
 
+use platforms\JphpConsolePlatform\JphpConsolePlatform;
 use utils\IdeProjects;
 use platforms\JphpGuiPlatform\JphpGuiPlatform;
 use php\gui\UXImage;
@@ -25,7 +26,8 @@ class MainModule extends AbstractModule
         $ideProjectsClass = new IdeProjects();
         
         // regiser platforms 
-        $ideProjectsClass->registerPlatform(new JphpGuiPlatform); // jphp
+        $ideProjectsClass->registerPlatform(new JphpGuiPlatform()); // jphp GUI
+        $ideProjectsClass->registerPlatform(new JphpConsolePlatform()); // jphp console
         
         return $ideProjectsClass;
     }
@@ -86,7 +88,7 @@ class MainModule extends AbstractModule
         }
     }
     
-    function ico($name, $r = 'png')
+    public static function ico($name, $r = 'png')
     {
         return new UXImageView(new UXImage("res://.data/img/" . $name . "." . $r));
     }

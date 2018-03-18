@@ -5,6 +5,7 @@ use facade\Json;
 use utils\Project;
 use std, gui, framework, app;
 use php\gui\event\UXEvent; 
+use php\gui\event\UXWindowEvent; 
 
 
 class MainForm extends AbstractForm
@@ -90,6 +91,8 @@ class MainForm extends AbstractForm
         }
     }
 
+
+
     /**
      * @event button.action 
      */
@@ -105,7 +108,10 @@ class MainForm extends AbstractForm
     {    
         $this->nrdChooser->execute();
         $path = $this->nrdChooser->file;
+        if (!$path) return;
+        
         $project = new \utils\Project();
+        
         if (!$project->Open(fs::parent($path), fs::nameNoExt($path)))
         {
             alert("Невозможно открыть проект.");
@@ -113,5 +119,14 @@ class MainForm extends AbstractForm
             $this->hide();
         }
     }
+
+    /**
+     * @event close 
+     */
+    function doClose(UXWindowEvent $e = null)
+    {    
+        die();
+    }
+
 
 }

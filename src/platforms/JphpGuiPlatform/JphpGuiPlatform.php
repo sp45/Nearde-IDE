@@ -14,7 +14,9 @@ class JphpGuiPlatform extends AbstractPlatform
     {
         $this->registerProjectType(new JphpGuiProjectType()); // project type
         $this->registerRunType(new JphpGuiRunType()); // runing jphp
-        $this->registerBuildType(new JphpGuiBuildOneJarType()); // onejar build type
+        
+        // builds 
+        $this->registerBuildType(new JphpGuiBuildOneJarType()); // onejar
     }
     
     public function getId()

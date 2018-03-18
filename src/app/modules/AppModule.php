@@ -1,6 +1,8 @@
 <?php
 namespace app\modules;
 
+use php\desktop\Runtime;
+use php\io\File;
 use utils\Project;
 use app\modules\MainModule;
 use facade\Json;
@@ -15,6 +17,12 @@ class AppModule extends AbstractModule
      */
     function doAction(ScriptEvent $e = null)
     {    
+        $dir = File::of("./lib/nearde_libs");
+        foreach ($dir->findFiles() as $plugin)
+        {
+            Runtime::addJar((string) $plugin);
+        }
+        
         if (fs::ext($GLOBALS['argv'][1]) == "nrd")
         {
             $project = new \utils\Project;

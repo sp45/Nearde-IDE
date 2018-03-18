@@ -53,9 +53,6 @@ class newProject extends AbstractForm
         $this->hidePreloader();
     }
 
-
-
-
     /**
      * @event button.action 
      */
@@ -117,8 +114,11 @@ class newProject extends AbstractForm
      */
     function doDirButtonAction(UXEvent $e = null)
     {    
+        $json = Json::fromFile("./config.json");
         $this->projectChooser->execute();
         $this->dir->text = $this->projectChooser->file;
+        $json['projects_path'] = $this->dir->text;
+        Json::toFile("./config.json", $json);
     }
 
     /**

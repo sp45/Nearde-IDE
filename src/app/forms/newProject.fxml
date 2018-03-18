@@ -31,7 +31,7 @@
       </font>
     </FlatButton>
     <Data cursor="DEFAULT" enabled="1" id="data-createButton" visible="1"/>
-    <FlatButton alignment="CENTER" color="#6680e600" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" hoverColor="#00000033" id="dirButton" layoutX="576" layoutY="400" prefHeight="32" prefWidth="32" styleClass="x-flat-button " text="..." textAlignment="CENTER" textFill="#333333" underline="false" wrapText="false">
+    <FlatButton alignment="CENTER" color="#6680e600" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" hoverColor="#00000033" id="dirButton" layoutX="576" layoutY="400" prefHeight="32" prefWidth="32" styleClass="x-flat-button " text="..." textAlignment="CENTER" textFill="#ffffff" underline="false" wrapText="false">
       <font>
         <Font name="Source Sans Pro Regular" size="12"/>
       </font>

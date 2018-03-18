@@ -1,6 +1,8 @@
 <?php
 namespace app\forms;
 
+use documentation\documentationView;
+use editors\CodeEditor;
 use php\gui\UXMenuBar;
 use php\gui\UXTreeView;
 use php\gui\designer\UXDirectoryTreeValue;
@@ -91,11 +93,6 @@ class project extends AbstractForm
             if (fs::isDir($path)) return;
             
             $editor = new CodeEditor(new File($path));
-            
-            //if (fs::ext($path) == "fxml") 
-            //{
-                //$editor = new FormEditor(new File($path)); // include form editor.
-            //}
             
             if ($editor->makeUI() == null) 
             {
