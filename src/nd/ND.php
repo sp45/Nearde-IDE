@@ -21,18 +21,17 @@ class ND
 
     public function init()
     {
-        Logger::info("Nearde starting init. \n");
+        Logger::info("Nearde starting init.");
         $this->formManger = new formManger();
         $this->fileFormat = new fileFormat();
         $this->fileFormat->init();
         
         $this->formManger->registerForm("Main", MainForm::class);
         $this->formManger->registerForm("Splash", SplashForm::class);
-        $this->formManger->registerForm("Test", TestForm::class); // nearde testing form
         
         $this->formManger->getForm("Splash")->show();
         
-        Logger::info("init - done. \n");
+        Logger::info("init - done.");
     }
     
     public function getFormManger()
