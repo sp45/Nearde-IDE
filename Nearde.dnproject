@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1524252288859">
+  <tree>
+    <expanded>
+    <path src=""/>
+      <path src="/src"/>
+      <path src="/src/.data"/>
+      <path src="/src/.data/img"/>
+      <path src="/src/.theme"/>
+      <path src="/src/nd"/>
+      <path src="/src/nd/formats"/>
+      <path src="/src/nd/formats/files"/>
+      <path src="/src/nd/forms"/>
+      <path src="/src/nd/modules"/>
+      <path src="/src/nd/ui"/>
+      <path src="/src/nd/utils"/>
+    </expanded>
+  </tree>
+  <openedFiles>
+  <file selected="1" src="Nearde.dnproject"/>
+    <file src="src/nd/forms/MainForm.php"/>
+    <file src="src/nd/modules/AppModule.php"/>
+    <file src="src/nd/utils/formManger.php"/>
+    <file src="src/nd/ND.php"/>
+    <file src="src/nd/ui/NDTree.php"/>
+    <file src="src/nd/forms/TestForm.php"/>
+    <file src="src/nd/modules/IDE.php"/>
+    <file src="src/nd/ui/NDTreeItem.php"/>
+    <file src="src/nd/formats/files/fileFormat.php"/>
+  </openedFiles>
+  <files/>
+  <behaviours>
+  <behaviour class="ide\project\behaviours\BundleProjectBehaviour"/>
+    <behaviour class="ide\project\behaviours\PhpProjectBehaviour"/>
+    <behaviour class="ide\project\behaviours\JavaPlatformBehaviour"/>
+    <behaviour class="ide\project\behaviours\GuiFrameworkProjectBehaviour"/>
+    <behaviour class="ide\project\behaviours\RunBuildProjectBehaviour"/>
+    <behaviour class="ide\project\behaviours\ShareProjectBehaviour"/>
+    <behaviour class="ide\project\behaviours\BackupProjectBehaviour"/>
+    <behaviour class="ide\project\behaviours\GradleProjectBehaviour"/>
+  </behaviours>
+</project>

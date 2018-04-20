@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&subset=cyrillic');
+
+* {
+    -fx-font-family: 'Montserrat', sans-serif;
+    -color: #262b35;
+    -tab: #2e3440;
+    -border: #454c5b;
+}
+
+.root {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.tab-pane {
+    -fx-tab-min-width: 196;
+    -fx-tab-min-height: 32;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+.tab-header-area {
+    -fx-padding: 16 24;
+}
+
+.tab-header-background, .tab-content-area, .menu-item {
+    -fx-background-color: -color;
+}
+
+.tab-down-button {
+    -fx-background-color: -tab;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-padding: 8;
+}
+
+.tab {
+    -fx-background-color: -tab;
+    -fx-border-color: -tab;
+    -fx-border-width: 2;
+    -fx-background-insets: 0 4;
+    -fx-border-insets: 0 4;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+.tab:selected {
+    -fx-border-color: -border;
+}
+
+.tab-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-alignment: TOP-LEFT;
+    -fx-pref-width: 196;
+    -fx-padding: 0 0 0 8;
+}
+
+.tab-close-button, .arrow {
+    -fx-background-color: #ffffff;
+}
+
+.context-menu {
+    -fx-background-color: -color;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+.menu-item .label {
+    -fx-text-fill: #ffffff;
+}
+
+.menu-item:hover {
+    -fx-background-color: -tab;
+    -fx-cursor: hand;
+}
+
+.tree-view, .tree-cell {
+    -fx-background-color: -color;
+    -fx-text-fill: #fff;
+}
+.tree-view {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+.tree-cell {
+    -fx-padding: 8;
+}
+.tree-cell:hover {
+    -fx-background-color: -tab;
+    -fx-cursor: hand;
+}
+.tree-cell:selected {
+    -fx-border-color: -border;
+}
