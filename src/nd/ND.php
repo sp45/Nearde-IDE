@@ -7,6 +7,7 @@ use nd;
 class ND 
 {
     private $version = "2.0 alpha";
+    private $name = "Nearde IDE";
     private $dev = true;
     
     /**
@@ -27,9 +28,10 @@ class ND
         $this->fileFormat->init();
         
         $this->formManger->registerForm("Main", MainForm::class);
-        $this->formManger->registerForm("Splash", SplashForm::class);
+        $this->formManger->registerForm("Project", ProjectForm::class);
+        $this->formManger->registerForm("SandBox", SandBoxForm::class);
         
-        $this->formManger->getForm("Splash")->show();
+        $this->formManger->getForm("Main")->show();
         
         Logger::info("init - done.");
     }
@@ -42,6 +44,10 @@ class ND
     public function getVersion()
     {
         return $this->version;
+    }
+    public function getName()
+    {
+        return $this->name;
     }
     
     public function isDev()

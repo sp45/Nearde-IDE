@@ -10,4 +10,9 @@ class IDE extends AbstractModule
     {
         return new UXImageView(new UXImage("res://.data/img/" . $name));
     }
+    
+    public static function get()
+    {
+        return $GLOBALS['ND'];
+    }
 }
