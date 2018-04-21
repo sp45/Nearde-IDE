@@ -14,6 +14,9 @@ class MainForm extends AbstractForm
     {    
         $this->ver->text = IDE::get()->getVersion();
         $this->label->text = IDE::get()->getName();
+        
+        if (!IDE::get()->isDev())
+            $this->sandbox_button->hide();
     }
 
     /**
@@ -23,6 +26,14 @@ class MainForm extends AbstractForm
     {    
         IDE::get()->getFormManger()->getForm("SandBox")->show();
         $this->hide();
+    }
+
+    /**
+     * @event button3.action 
+     */
+    function doButton3Action(UXEvent $e = null)
+    {    
+        IDE::get()->getFormManger()->getForm("Plugins")->show();
     }
 
 }

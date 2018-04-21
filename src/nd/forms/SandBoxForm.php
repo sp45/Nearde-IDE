@@ -20,6 +20,8 @@ class SandBoxForm extends AbstractForm
         $this->tree = new NDTree();
         $this->tree->anchors = $this->panel->anchors;
         $this->panel->add($this->tree);
+        
+        IDE::upgradeListView($this->listView);
     }
 
     /**
@@ -34,6 +36,21 @@ class SandBoxForm extends AbstractForm
         } 
         
         $this->tree->refreshTree(File::of($this->edit->text));
+    }
+
+    /**
+     * @event buttonAlt.action 
+     */
+    function doButtonAltAction(UXEvent $e = null)
+    {    
+        $this->listView->items->add([
+            'Android',
+            'Возможность писать приложения под android',
+            IDE::ico("android.png"),
+            function () {
+                alert("Но кто сказал что android будет ?");
+            }
+        ]);
     }
 
 }
