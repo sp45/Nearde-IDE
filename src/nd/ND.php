@@ -1,6 +1,9 @@
 <?php
 namespace nd;
 
+use facade\Json;
+use php\desktop\Runtime;
+use std;
 use Error;
 use framework;
 use nd;
@@ -39,7 +42,18 @@ class ND
         $this->formManger->registerForm("SandBox", SandBoxForm::class);
         $this->formManger->registerForm("Plugins", PluginsForm::class);
         
-        $this->pluginsManger->registerPlugin("jphp", new jphpPlugin());
+        $dir = File::of("./plugins/");
+        /** @var File $file */
+        foreach ($dir->findFiles() as $file)
+        {
+            if (fs::isDir($file))
+            {
+                $name = fs::nameNoExt($file);
+                $data = Json::fromFile($file->getAbsolutePath() . "/" . $name . ".json");
+                Runtime::addJar($file->getAbsolutePath() . "/" . $name . ".jar");
+                $this->pluginsManger->registerPlugin($name, $data['mainClass']);
+            }
+        }
         
         $this->formManger->getForm("Main")->show();
         
@@ -47,10 +61,11 @@ class ND
         
         Logger::info("Starting plugins.");
         
-        foreach ($this->pluginsManger->getAll() as $name => $plugin)
+        foreach ($this->pluginsManger->getAll() as $name => $pluginClass)
         {
-            Logger::info("Starting: " . $name);
             try {
+                Logger::info("Starting: " . $name);
+                $plugin = new $pluginClass();
                 $plugin->onIDEStarting();
             } catch (Error $e) {
                 Logger::warn("Error starting {$name} plugin.");
