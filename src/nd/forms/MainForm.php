@@ -36,4 +36,12 @@ class MainForm extends AbstractForm
         IDE::get()->getFormManger()->getForm("Plugins")->show();
     }
 
+    /**
+     * @event buttonAlt.action 
+     */
+    function doButtonAltAction(UXEvent $e = null)
+    {    
+        IDE::get()->getFormManger()->getForm("openProject")->show();
+    }
+
 }

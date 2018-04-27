@@ -37,10 +37,11 @@ class ND
         $this->fileFormat    = new fileFormat();
         $this->fileFormat->init();
         
-        $this->formManger->registerForm("Main", MainForm::class);
-        $this->formManger->registerForm("Project", ProjectForm::class);
-        $this->formManger->registerForm("SandBox", SandBoxForm::class);
-        $this->formManger->registerForm("Plugins", PluginsForm::class);
+        $this->formManger->registerForm("Main",        MainForm::class);
+        $this->formManger->registerForm("openProject", openProjectForm::class);
+        $this->formManger->registerForm("Project",     ProjectForm::class);
+        $this->formManger->registerForm("SandBox",     SandBoxForm::class);
+        $this->formManger->registerForm("Plugins",     PluginsForm::class);
         
         $dir = File::of("./plugins/");
         /** @var File $file */

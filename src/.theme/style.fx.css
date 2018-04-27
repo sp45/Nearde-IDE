@@ -1,6 +1,6 @@
 /*******************************************************************************
  *                                                                             *
- * Scroll Bar			                                                       *
+ * Scroll Bar                                                                   *
  *                                                                             *
  ******************************************************************************/
 
@@ -55,7 +55,7 @@
 
 /*******************************************************************************
  *                                                                             *
- * Scroll Pane			                                                       *
+ * Scroll Pane                                                                   *
  *                                                                             *
  ******************************************************************************/
 
@@ -71,3 +71,51 @@
 .scroll-pane .corner {
     -fx-background-insets: 0;
 }
+
+
+/*******************************************************************************
+ *                                                                             *
+ * Arrows                                                                        *
+ *                                                                             *
+ ******************************************************************************/
+ 
+.arrow_but {
+    -fx-shape: "M0 428l0 -428l214 214l-214 214z";
+    -fx-min-height:0;
+    -fx-min-width:0;
+    -fx-background-color:black;
+    -fx-border-color:transparent;
+    -fx-background-insets: 0;
+} 
+
+.arrow_but:hover {
+    -fx-shape: "M0 428l0 -428l214 214l-214 214z";
+    -fx-min-height:0;
+    -fx-min-width:0;
+    -fx-background-color:gray;
+    -fx-border-color:transparent;
+    -fx-background-insets: 0;
+}
+
+.arrow_but:pressed {
+    -fx-shape: "M0 428l0 -428l214 214l-214 214z";
+    -fx-min-height:0;
+    -fx-min-width:0;
+    -fx-background-color:#333333;
+    -fx-border-color:transparent;
+    -fx-background-insets: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

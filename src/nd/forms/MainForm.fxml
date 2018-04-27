@@ -30,13 +30,13 @@
         <Font name="System Regular" size="12"/>
       </font>
     </Button>
-    <Data cursor="DEFAULT" enabled="" graphic=".data/img/if_page_white_edit_36279.png" id="data-button" visible="1"/>
+    <Data cursor="DEFAULT" enabled="1" graphic=".data/img/if_page_white_edit_36279.png" id="data-button" visible="1"/>
     <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="buttonAlt" layoutX="168" layoutY="216" prefHeight="32" prefWidth="152" styleClass="button " text="Открыть проект." textAlignment="CENTER" underline="false" wrapText="false">
       <font>
         <Font name="System Regular" size="12"/>
       </font>
     </Button>
-    <Data cursor="DEFAULT" enabled="" graphic=".data/img/if_folder_36059.png" id="data-buttonAlt" visible="1"/>
+    <Data cursor="DEFAULT" enabled="1" graphic=".data/img/if_folder_36059.png" id="data-buttonAlt" visible="1"/>
     <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button3" layoutX="8" layoutY="384" prefHeight="32" prefWidth="112" styleClass="button " text="Дополнения" textAlignment="CENTER" underline="false" wrapText="false">
       <font>
         <Font name="System Regular" size="12"/>
