@@ -5,36 +5,16 @@
       <tabs>
         <Tab text="Дерево">
           <content>
-            <AnchorPane focusTraversable="false" id="" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="458" prefWidth="640" styleClass="">
-              <children>
-                <TextField AnchorPane.leftAnchor="8" AnchorPane.rightAnchor="48" alignment="CENTER_LEFT" editable="true" focusTraversable="true" id="edit" layoutX="8" layoutY="8" prefColumnCount="12" prefHeight="32" prefWidth="584" promptText="" styleClass="text-input text-field " text="">
-                  <font>
-                    <Font name="System Regular" size="12"/>
-                  </font>
-                </TextField>
-                <Data cursor="DEFAULT" enabled="1" id="data-edit" visible="1"/>
-                <Panel AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="8" AnchorPane.rightAnchor="8" AnchorPane.topAnchor="48" backgroundColor="#ffffff" borderColor="#c0c0c0" borderRadius="0" borderStyle="SOLID" borderWidth="1" focusTraversable="false" id="panel" layoutX="8" layoutY="48" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="400" prefWidth="624" styleClass="" titleColor="#333333" titleOffset="15" titlePosition="TOP_LEFT">
-                  <children/>
-                  <titleFont>
-                    <Font name="System Regular" size="12"/>
-                  </titleFont>
-                </Panel>
-                <Data cursor="DEFAULT" enabled="1" id="data-panel" visible="1"/>
-                <Button AnchorPane.rightAnchor="8" alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="0" id="button" layoutX="600" layoutY="8" prefHeight="32" prefWidth="32" styleClass="button " text="" textAlignment="CENTER" underline="false" wrapText="false">
-                  <font>
-                    <Font name="System Regular" size="12"/>
-                  </font>
-                </Button>
-                <Data cursor="DEFAULT" enabled="1" graphic=".data/img/folder.png" id="data-button" visible="1"/>
-              </children>
+            <AnchorPane focusTraversable="false" id="" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="453" prefWidth="640" styleClass="">
+              <children/>
             </AnchorPane>
           </content>
         </Tab>
         <Tab text="Список">
           <content>
-            <AnchorPane focusTraversable="false" id="" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="458" prefWidth="640" styleClass="">
+            <AnchorPane focusTraversable="false" id="" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="453" prefWidth="640" styleClass="">
               <children>
-                <ListViewEx editable="false" fixedCellSize="-1" focusTraversable="true" id="listView" layoutX="8" layoutY="8" prefHeight="432" prefWidth="416" styleClass="list-view ">
+                <ListViewEx editable="false" fixedCellSize="-1" focusTraversable="true" id="listView" layoutX="8" layoutY="8" prefHeight="432" prefWidth="528" styleClass="list-view ">
                   <items xmlns:fx="http://javafx.com/fxml">
                     <FXCollections fx:factory="observableArrayList"/>
                   </items>

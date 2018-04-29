@@ -7,21 +7,22 @@ use gui;
 
 class NDTree extends UXTreeView
 {
-    function refreshTree(File $file)
+    function refreshTree($file)
     {
-        $this->root = new NDTreeItem(fs::name($file), $file->getAbsolutePath());
+        $this->root = new NDTreeItem(fs::name($file), fs::abs($file));
+        $this->rootVisible = false;
         $this->refreshTreeItem($file, $this->root);
     }
     
-    protected function refreshTreeItem(File $file, UXTreeItem $item) 
+    protected function refreshTreeItem($file, UXTreeItem $item) 
     {
-        $files = $file->findFiles();
+        $files = File::of($file)->findFiles();
         
         foreach ($files as $file) {
-            $subItem = new NDTreeItem($file->getName(), $file->getAbsolutePath());
+            $subItem = new NDTreeItem(fs::name($file), fs::abs($file));
             
-            if ($file->isDirectory()) {
-                $subItem->graphic = IDE::ico("folder.png");
+            if (fs::isDir($file)) {
+                $subItem->graphic = IDE::ico("folder16.png");
                 $this->refreshTreeItem($file, $subItem);
             } else {
                 $subItem->graphic = $GLOBALS['ND']->getFileFormat()->getIcon(fs::ext($file));

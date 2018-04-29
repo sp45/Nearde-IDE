@@ -13,7 +13,12 @@ class IDE extends AbstractModule
     
     public static function image($path)
     {
-        return new UXImageView(new UXImage($path));
+        if (is_string($path))
+            return new UXImageView(new UXImage($path));
+        elseif ($path instanceof UXImageView)
+            return $path;
+        elseif ($path instanceof UXImage)
+            return UXImageView($path);
     }
     
     public static function get()

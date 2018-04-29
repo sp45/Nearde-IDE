@@ -18,25 +18,17 @@ class SandBoxForm extends AbstractForm
     function doShow(UXWindowEvent $e = null)
     {    
         $this->tree = new NDTree();
-        $this->tree->anchors = $this->panel->anchors;
-        $this->panel->add($this->tree);
+        $this->tree->x = 8; 
+        $this->tree->y = 48;
+        $this->tree->anchors = [
+            "top" => 1, "bottom" => 1, "left" => 1, "right" => 1
+        ];
+        $this->tree->refreshTree(fs::abs("./"));
+        $this->tabPane->tabs->toArray()[0]->content->add($this->tree);
         
-        IDE::upgradeListView($this->listView);
+        IDE::upgradeListView($this->listView); 
     }
 
-    /**
-     * @event button.action 
-     */
-    function doButtonAction(UXEvent $e = null)
-    {    
-        if (!fs::exists($this->edit->text))
-        {
-            alert("Not found");
-            return;
-        } 
-        
-        $this->tree->refreshTree(File::of($this->edit->text));
-    }
 
     /**
      * @event buttonAlt.action 

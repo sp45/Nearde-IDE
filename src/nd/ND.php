@@ -37,23 +37,15 @@ class ND
         $this->fileFormat    = new fileFormat();
         $this->fileFormat->init();
         
-        $this->formManger->registerForm("Main",        MainForm::class);
-        $this->formManger->registerForm("openProject", openProjectForm::class);
-        $this->formManger->registerForm("Project",     ProjectForm::class);
-        $this->formManger->registerForm("SandBox",     SandBoxForm::class);
-        $this->formManger->registerForm("Plugins",     PluginsForm::class);
+        $this->formManger->registerForm("Main", MainForm::class);
+        $this->formManger->registerForm("Project", ProjectForm::class);
+        $this->formManger->registerForm("SandBox", SandBoxForm::class);
+        $this->formManger->registerForm("Plugins", PluginsForm::class);
         
-        $dir = File::of("./plugins/");
-        /** @var File $file */
-        foreach ($dir->findFiles() as $file)
+        $plugins = Json::fromFile("./plugins/plugins.json");
+        foreach ($plugins as $plugin)
         {
-            if (fs::isDir($file))
-            {
-                $name = fs::nameNoExt($file);
-                $data = Json::fromFile($file->getAbsolutePath() . "/" . $name . ".json");
-                Runtime::addJar($file->getAbsolutePath() . "/" . $name . ".jar");
-                $this->pluginsManger->registerPlugin($name, $data['mainClass']);
-            }
+            include fs::abs("./plugins/" . $plugin['dir'] . "/" . $plugin['file']);
         }
         
         $this->formManger->getForm("Main")->show();
@@ -62,15 +54,10 @@ class ND
         
         Logger::info("Starting plugins.");
         
-        foreach ($this->pluginsManger->getAll() as $name => $pluginClass)
+        foreach ($this->pluginsManger->getAll() as $name => $plugin)
         {
-            try {
-                Logger::info("Starting: " . $name);
-                $plugin = new $pluginClass();
-                $plugin->onIDEStarting();
-            } catch (Error $e) {
-                Logger::warn("Error starting {$name} plugin.");
-            }
+            Logger::info("Starting: " . $name);
+            $plugin->onIDEStarting();
         }
         
         Logger::info("Plugins is started.");
