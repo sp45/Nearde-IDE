@@ -17,7 +17,7 @@
     <Data cursor="DEFAULT" enabled="1" id="data-separator" visible="1"/>
     <TextField alignment="CENTER_LEFT" editable="true" focusTraversable="true" id="edit" layoutX="24" layoutY="80" prefColumnCount="12" prefHeight="32" prefWidth="504" promptText="Название проекта." styleClass="text-input text-field " text="">
       <font>
-        <Font name="System Regular" size="12"/>
+        <Font name="Source Sans Pro Regular" size="12"/>
       </font>
     </TextField>
     <Data cursor="DEFAULT" enabled="1" id="data-edit" visible="1"/>

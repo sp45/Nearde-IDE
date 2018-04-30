@@ -34,7 +34,7 @@ class IDE extends AbstractModule
                 $titleName->style = '-fx-font-weight: bold;'; 
              
                 $titleDescription = new UXLabel($item[1]);
-                $titleDescription->style = '-fx-text-fill: gray;';
+                $titleDescription->opacity = 0.7;
              
                 $title  = new UXVBox([$titleName, $titleDescription]);
                 $title->spacing = 0;

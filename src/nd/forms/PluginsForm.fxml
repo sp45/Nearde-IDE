@@ -6,32 +6,32 @@
         <Font name="System Regular" size="12"/>
       </font>
     </ImageViewEx>
-    <ListViewEx AnchorPane.bottomAnchor="0" AnchorPane.topAnchor="0" editable="false" fixedCellSize="-1" focusTraversable="true" id="listView" layoutX="0" layoutY="0" prefHeight="480" prefWidth="280" styleClass="list-view ">
-      <items xmlns:fx="http://javafx.com/fxml">
-        <FXCollections fx:factory="observableArrayList"/>
-      </items>
-    </ListViewEx>
-    <Data cursor="DEFAULT" enabled="1" id="data-listView" visible="1"/>
-    <Panel AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="288" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" backgroundColor="#ffffff" borderColor="#c0c0c0" borderRadius="0" borderStyle="SOLID" borderWidth="1" focusTraversable="false" id="panel" layoutX="288" layoutY="0" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="480" prefWidth="248" styleClass="" titleColor="#333333" titleOffset="15" titlePosition="TOP_LEFT">
+    <Panel AnchorPane.bottomAnchor="8" AnchorPane.leftAnchor="280" AnchorPane.rightAnchor="8" AnchorPane.topAnchor="8" backgroundColor="#ffffff" borderColor="#c0c0c0" borderRadius="0" borderStyle="SOLID" borderWidth="1" focusTraversable="false" id="panel" layoutX="280" layoutY="8" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="464" prefWidth="248" styleClass="" titleColor="#333333" titleOffset="15" titlePosition="TOP_LEFT">
       <children>
         <LabelEx AnchorPane.leftAnchor="15" AnchorPane.rightAnchor="15" alignment="CENTER_LEFT" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="name" layoutX="16" layoutY="16" prefHeight="17" prefWidth="256" styleClass="label " text="Текст" textAlignment="LEFT" underline="false" wrapText="true">
           <font>
-            <Font name="System Regular" size="12"/>
+            <Font name="Source Sans Pro Regular" size="12"/>
           </font>
         </LabelEx>
         <Data cursor="DEFAULT" enabled="1" id="data-name" visible="1"/>
         <LabelEx AnchorPane.bottomAnchor="16" AnchorPane.leftAnchor="15" AnchorPane.rightAnchor="15" AnchorPane.topAnchor="39" alignment="TOP_LEFT" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="desc" layoutX="16" layoutY="40" prefHeight="400" prefWidth="256" styleClass="label " text="Текст" textAlignment="LEFT" underline="false" wrapText="true">
           <font>
-            <Font name="System Regular" size="12"/>
+            <Font name="Source Sans Pro Regular" size="12"/>
           </font>
         </LabelEx>
         <Data cursor="DEFAULT" enabled="1" id="data-desc" visible="1"/>
       </children>
       <titleFont>
-        <Font name="System Regular" size="12"/>
+        <Font name="Source Sans Pro Regular" size="12"/>
       </titleFont>
     </Panel>
     <Data cursor="DEFAULT" enabled="1" id="data-panel" visible=""/>
     <Data cursor="DEFAULT" enabled="1" id="data-image" image=".data/img/plugin32.png" visible="1"/>
+    <ListViewEx AnchorPane.bottomAnchor="8" AnchorPane.topAnchor="8" editable="false" fixedCellSize="-1" focusTraversable="true" id="listView" layoutX="8" layoutY="8" prefHeight="464" prefWidth="264" styleClass="list-view ">
+      <items xmlns:fx="http://javafx.com/fxml">
+        <FXCollections fx:factory="observableArrayList"/>
+      </items>
+    </ListViewEx>
+    <Data cursor="DEFAULT" enabled="1" id="data-listView" visible="1"/>
   </children>
 </AnchorPane>

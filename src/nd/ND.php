@@ -43,6 +43,7 @@ class ND
         $this->formManger->registerForm("Settings", SettingsForm::class);
         
         // froms for settings form :D
+        $this->formManger->registerSettingForm("Основные", NeardeSettingsForm::class);
         $this->formManger->registerSettingForm("Дополнейния", PluginsForm::class);
         
         $plugins = Json::fromFile("./plugins/plugins.json");

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1525089190164">
+<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1525103202872">
   <tree>
     <expanded>
     <path src=""/>
@@ -20,7 +20,7 @@
     </expanded>
   </tree>
   <openedFiles>
-  <file src="Nearde.dnproject"/>
+  <file selected="1" src="Nearde.dnproject"/>
     <file src="src/nd/forms/MainForm.php"/>
     <file src="src/nd/modules/AppModule.php"/>
     <file src="src/nd/ND.php"/>
@@ -36,7 +36,8 @@
     <file src="plugins/jphp/jphpPlugin.php"/>
     <file src="src/nd/utils/pluginsManger.php"/>
     <file src="src/nd/modules/IDE.php"/>
-    <file selected="1" src="src/nd/forms/SettingsForm.php"/>
+    <file src="src/nd/forms/SettingsForm.php"/>
+    <file src="src/nd/forms/NeardeSettingsForm.php"/>
   </openedFiles>
   <files/>
   <behaviours>

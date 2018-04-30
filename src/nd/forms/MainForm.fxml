@@ -9,37 +9,37 @@
     <Data cursor="DEFAULT" enabled="1" id="data-image" image=".data/img/Bezymyanny-2.png" visible="1"/>
     <LabelEx AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" alignment="CENTER" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="label" layoutX="0" layoutY="120" prefHeight="24" prefWidth="528" styleClass="label " text="\%IDENAME%" textAlignment="LEFT" underline="false" wrapText="false">
       <font>
-        <Font name="System Regular" size="12"/>
+        <Font name="Source Sans Pro Regular" size="12"/>
       </font>
     </LabelEx>
     <Data cursor="DEFAULT" enabled="1" id="data-label" visible="1"/>
     <LabelEx AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" alignment="CENTER" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="ver" layoutX="0" layoutY="144" prefHeight="16" prefWidth="528" styleClass="label " text="\%VERSION%" textAlignment="LEFT" textFill="#b3b3b3" underline="false" wrapText="false">
       <font>
-        <Font name="System Regular" size="12"/>
+        <Font name="Source Sans Pro Regular" size="12"/>
       </font>
     </LabelEx>
     <Data cursor="DEFAULT" enabled="1" id="data-ver" visible="1"/>
-    <Button AnchorPane.rightAnchor="8" alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="sandbox_button" layoutX="384" layoutY="384" prefHeight="32" prefWidth="88" styleClass="button " text="Sandbox" textAlignment="CENTER" underline="false" wrapText="false">
+    <Button AnchorPane.rightAnchor="8" alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="sandbox_button" layoutX="384" layoutY="384" prefHeight="32" prefWidth="88" styleClass="button green-btn " text="Sandbox" textAlignment="CENTER" underline="false" wrapText="false">
       <font>
-        <Font name="System Regular" size="12"/>
+        <Font name="Source Sans Pro SemiBold" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" graphic=".data/img/bug.png" id="data-sandbox_button" tooltipText="sandbox" visible="1"/>
     <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8" id="button" layoutX="168" layoutY="176" prefHeight="32" prefWidth="152" styleClass="button " text="Создать проект." textAlignment="CENTER" underline="false" wrapText="false">
       <font>
-        <Font name="System Regular" size="12"/>
+        <Font name="Source Sans Pro Regular" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" graphic=".data/img/if_page_white_edit_36279.png" id="data-button" visible="1"/>
     <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8" id="buttonAlt" layoutX="168" layoutY="216" prefHeight="32" prefWidth="152" styleClass="button " text="Открыть проект." textAlignment="CENTER" underline="false" wrapText="false">
       <font>
-        <Font name="System Regular" size="12"/>
+        <Font name="Source Sans Pro Regular" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" graphic=".data/img/folder.png" id="data-buttonAlt" visible="1"/>
-    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8" id="button3" layoutX="8" layoutY="384" prefHeight="32" prefWidth="112" styleClass="button " text="Настройки" textAlignment="CENTER" underline="false" wrapText="false">
+    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8" id="button3" layoutX="8" layoutY="384" prefHeight="32" prefWidth="112" styleClass="button accent-btn " text="Настройки" textAlignment="CENTER" underline="false" wrapText="false">
       <font>
-        <Font name="System Regular" size="12"/>
+        <Font name="Source Sans Pro SemiBold" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" graphic=".data/img/settings.png" id="data-button3" visible="1"/>

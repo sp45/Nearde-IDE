@@ -13,7 +13,7 @@
     </ListViewEx>
     <Data cursor="DEFAULT" enabled="1" id="data-listView" visible="1"/>
     <FragmentPane AnchorPane.bottomAnchor="8" AnchorPane.leftAnchor="256" AnchorPane.rightAnchor="8" AnchorPane.topAnchor="8" alignment="CENTER" focusTraversable="false" id="fragment" layoutX="256" layoutY="8" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="440" prefWidth="552" spacing="0" styleClass="fragment-pane "/>
-    <Data content="" cursor="DEFAULT" enabled="1" id="data-fragment" visible="1"/>
+    <Data content="NeardeSettingsForm" cursor="DEFAULT" enabled="1" id="data-fragment" visible=""/>
     <Data cursor="DEFAULT" enabled="1" id="data-image" image=".data/img/settings_page32.png" visible="1"/>
   </children>
 </AnchorPane>

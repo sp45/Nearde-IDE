@@ -21,15 +21,26 @@ class SettingsForm extends AbstractForm
                 $name,
                 $form->title,
                 IDE::image($form->icons->toArray()[0]),
-                function () use ($this, $form) {
-                    try {
-                        $form->showInFragment($this->fragment);
-                    } catch (IllegalStateException $e) {
-                        ;
-                    }
+                function () use ($this, $formClass) {
+                    $this->showForm($formClass);
                 }
             ]);
         }
+    }
+    
+    private function showForm($formClass)
+    {
+        $f_pos = $this->fragment->position;
+        $f_size = $this->fragment->size;
+        $this->fragment->free();
+        
+        $fragment = new UXFragmentPane;
+        $fragment->id = "fragment";
+        $fragment->position = $f_pos;
+        $fragment->size = $f_size;
+        new $formClass()->showInFragment($fragment);
+        $this->add($fragment);
+        Logger::info("Load $formClass to settings form.");
     }
 
 }
