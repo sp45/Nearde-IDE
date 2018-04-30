@@ -40,7 +40,10 @@ class ND
         $this->formManger->registerForm("Main", MainForm::class);
         $this->formManger->registerForm("Project", ProjectForm::class);
         $this->formManger->registerForm("SandBox", SandBoxForm::class);
-        $this->formManger->registerForm("Plugins", PluginsForm::class);
+        $this->formManger->registerForm("Settings", SettingsForm::class);
+        
+        // froms for settings form :D
+        $this->formManger->registerSettingForm("Дополнейния", PluginsForm::class);
         
         $plugins = Json::fromFile("./plugins/plugins.json");
         foreach ($plugins as $plugin)

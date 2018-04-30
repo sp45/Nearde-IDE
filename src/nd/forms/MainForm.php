@@ -24,7 +24,7 @@ class MainForm extends AbstractForm
      */
     function doSandbox_buttonAction(UXEvent $e = null)
     {    
-        IDE::get()->getFormManger()->getForm("SandBox")->show();
+        IDE::getFormManger()->getForm("SandBox")->show();
         $this->hide();
     }
 
@@ -33,7 +33,7 @@ class MainForm extends AbstractForm
      */
     function doButton3Action(UXEvent $e = null)
     {    
-        IDE::get()->getFormManger()->getForm("Plugins")->show();
+        IDE::getFormManger()->getForm("Settings")->show();
     }
 
 }

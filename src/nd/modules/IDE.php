@@ -18,7 +18,7 @@ class IDE extends AbstractModule
         elseif ($path instanceof UXImageView)
             return $path;
         elseif ($path instanceof UXImage)
-            return UXImageView($path);
+            return new UXImageView($path); // fix 
     }
     
     public static function get()
@@ -52,5 +52,10 @@ class IDE extends AbstractModule
                 $cell->graphic = $line;
             }
         });
+    }
+    
+    public static function getFormManger()
+    {
+        return self::get()->getFormManger();
     }
 }

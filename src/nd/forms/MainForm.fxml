@@ -25,19 +25,19 @@
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" graphic=".data/img/bug.png" id="data-sandbox_button" tooltipText="sandbox" visible="1"/>
-    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button" layoutX="168" layoutY="176" prefHeight="32" prefWidth="152" styleClass="button " text="Создать проект." textAlignment="CENTER" underline="false" wrapText="false">
+    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8" id="button" layoutX="168" layoutY="176" prefHeight="32" prefWidth="152" styleClass="button " text="Создать проект." textAlignment="CENTER" underline="false" wrapText="false">
       <font>
         <Font name="System Regular" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" graphic=".data/img/if_page_white_edit_36279.png" id="data-button" visible="1"/>
-    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="buttonAlt" layoutX="168" layoutY="216" prefHeight="32" prefWidth="152" styleClass="button " text="Открыть проект." textAlignment="CENTER" underline="false" wrapText="false">
+    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8" id="buttonAlt" layoutX="168" layoutY="216" prefHeight="32" prefWidth="152" styleClass="button " text="Открыть проект." textAlignment="CENTER" underline="false" wrapText="false">
       <font>
         <Font name="System Regular" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" graphic=".data/img/folder.png" id="data-buttonAlt" visible="1"/>
-    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button3" layoutX="8" layoutY="384" prefHeight="32" prefWidth="112" styleClass="button " text="Дополнения" textAlignment="CENTER" underline="false" wrapText="false">
+    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8" id="button3" layoutX="8" layoutY="384" prefHeight="32" prefWidth="112" styleClass="button " text="Настройки" textAlignment="CENTER" underline="false" wrapText="false">
       <font>
         <Font name="System Regular" size="12"/>
       </font>
