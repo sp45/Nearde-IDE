@@ -1,8 +1,6 @@
 [
 	{
-		"name": "jphp",
 		"dir" : "jphp",
-		"file": "jphpPlugin.php",
-		"namespace": "\\plugins\\jphp\\jphpPlugin"
+		"file": "jphpPlugin.php"
 	}
 ]

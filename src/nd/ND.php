@@ -1,6 +1,7 @@
 <?php
 namespace nd;
 
+use gui;
 use facade\Json;
 use php\desktop\Runtime;
 use std;
@@ -45,6 +46,10 @@ class ND
         // froms for settings form :D
         $this->formManger->registerSettingForm("Основные", NeardeSettingsForm::class);
         $this->formManger->registerSettingForm("Дополнейния", PluginsForm::class);
+        
+        $this->fileFormat->registerFileTemplate(NDTreeContextMenu::createItem("Пустой файл.", IDE::ico("file.png"), function ($item) {
+            FileUtils::createFile($item->userData, UXDialog::input("Ввидите название нового файла."));
+        }));
         
         $plugins = Json::fromFile("./plugins/plugins.json");
         foreach ($plugins as $plugin)

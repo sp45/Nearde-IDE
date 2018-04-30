@@ -7,25 +7,36 @@ use gui;
 
 class NDTree extends UXTreeView
 {
-    function refreshTree($file)
+    public function refreshTree($file)
     {
-        $this->root = new NDTreeItem(fs::name($file), fs::abs($file));
+        $root = new UXTreeItem(new NDTreeValue(fs::name($file), fs::abs($file)));
+        $this->root = $root;
         $this->rootVisible = false;
-        $this->refreshTreeItem($file, $this->root);
+        $this->refreshTreeItem($file, $root);
+        $this->on('click', function (UXMouseEvent $e) use ($this) {
+            if ($e->button != "SECONDARY") return;
+            
+            $item = $this->selectedItems[0];
+            $path = $item->value->path;
+            new NDTreeContextMenu($path, function () use ($this, $path, $item) {
+                $this->refreshTreeItem($path, $item);
+            })->showByNode($this, $e->x, $e->y);
+        });
     }
     
     protected function refreshTreeItem($file, UXTreeItem $item) 
     {
+        $item->children->clear();
         $files = File::of($file)->findFiles();
         
         foreach ($files as $file) {
-            $subItem = new NDTreeItem(fs::name($file), fs::abs($file));
+            $subItem = new UXTreeItem(new NDTreeValue(fs::name($file), fs::abs($file)));
             
             if (fs::isDir($file)) {
                 $subItem->graphic = IDE::ico("folder16.png");
                 $this->refreshTreeItem($file, $subItem);
             } else {
-                $subItem->graphic = $GLOBALS['ND']->getFileFormat()->getIcon(fs::ext($file));
+                $subItem->graphic = IDE::get()->getFileFormat()->getIcon(fs::ext($file));
             }
             
             $item->children->add($subItem);

@@ -8,6 +8,7 @@ class fileFormat
 {
 
     private $formats;
+    private $templats;
     
     public function init()
     {
@@ -37,6 +38,20 @@ class fileFormat
         if ($this->formats[$ext]) return;
         
         $this->formats[$ext] = $ico;
+    }
+    
+    public function registerFileTemplate(UXMenuItem $item)
+    {
+        $this->templats[] = $item;
+    }
+    
+    public function getFileTemplats($path)
+    {
+        $list = $this->templats;
+        foreach ($list as $item)
+            $item->userData = $path;
+            
+        return $list;
     }
     
 }

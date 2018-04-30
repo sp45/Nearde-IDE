@@ -1,6 +1,7 @@
 <?php
 
 namespace plugins\jphp;
+use gui;
 use std;
 use nd;
 
@@ -27,6 +28,10 @@ class jphpPlugin extends Plugin
         /** @var fileFormat $format */
         $format = IDE::get()->getFileFormat();
         $format->registerIcon("php", "./plugins/jphp/data/images/phpIcon.png");
+        
+        $format->registerFileTemplate(NDTreeContextMenu::createItem("PHP файл.", $format->getIcon("php"), function ($item) {
+            FileUtils::createFile($item->userData, UXDialog::input("Ввидите название нового php файла.") . ".php", "<?php \n");
+        }));
     }
 }
 
