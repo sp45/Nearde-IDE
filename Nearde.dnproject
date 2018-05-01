@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1525116053672">
+<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1525182569761">
   <tree>
     <expanded>
     <path src=""/>
       <path src="/plugins"/>
       <path src="/plugins/jphp"/>
+      <path src="/plugins/jphp/classes"/>
       <path src="/plugins/jphp/data"/>
+      <path src="/plugins/jphp/data/images"/>
       <path src="/src"/>
-      <path src="/src/.data"/>
-      <path src="/src/.data/img"/>
       <path src="/src/.theme"/>
       <path src="/src/nd"/>
       <path src="/src/nd/formats"/>
       <path src="/src/nd/formats/files"/>
-      <path src="/src/nd/forms"/>
-      <path src="/src/nd/modules"/>
       <path src="/src/nd/ui"/>
       <path src="/src/nd/utils"/>
     </expanded>
@@ -32,13 +30,17 @@
     <file src="src/nd/Plugin.php"/>
     <file src="src/nd/utils/formManger.php"/>
     <file src="src/nd/forms/ProjectForm.php"/>
-    <file selected="1" src="plugins/jphp/jphpPlugin.php"/>
+    <file src="plugins/jphp/jphpPlugin.php"/>
     <file src="src/nd/utils/pluginsManger.php"/>
     <file src="src/nd/modules/IDE.php"/>
     <file src="src/nd/forms/SettingsForm.php"/>
     <file src="src/nd/forms/NeardeSettingsForm.php"/>
     <file src="src/nd/ui/NDTreeContextMenu.php"/>
     <file src="src/nd/utils/FileUtils.php"/>
+    <file src="src/nd/projectTemplate.php"/>
+    <file src="src/nd/utils/project.php"/>
+    <file src="plugins/jphp/classes/JPHPConsoleProjectTemplate.php"/>
+    <file selected="1" src="src/nd/utils/projectManger.php"/>
   </openedFiles>
   <files/>
   <behaviours>

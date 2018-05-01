@@ -30,11 +30,17 @@ class ND
      */
     private $pluginsManger;
     
+    /**
+     * @var projectManger
+     */
+    private $projectManger;
+    
     public function init()
     {
         Logger::info("Nearde starting init.");
         $this->formManger    = new formManger();
         $this->pluginsManger = new pluginsManger();
+        $this->projectManger = new projectManger();
         $this->fileFormat    = new fileFormat();
         $this->fileFormat->init();
         
@@ -42,6 +48,7 @@ class ND
         $this->formManger->registerForm("Project", ProjectForm::class);
         $this->formManger->registerForm("SandBox", SandBoxForm::class);
         $this->formManger->registerForm("Settings", SettingsForm::class);
+        $this->formManger->registerForm("NewProject", NewProjectForm::class);
         
         // froms for settings form :D
         $this->formManger->registerSettingForm("Основные", NeardeSettingsForm::class);
@@ -99,5 +106,10 @@ class ND
     public function getFileFormat()
     {
         return $this->fileFormat;
+    }
+    
+    public function getProjectManger()
+    {
+        return $this->projectManger;
     }
 }

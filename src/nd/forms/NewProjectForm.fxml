@@ -21,5 +21,23 @@
       </font>
     </TextField>
     <Data cursor="DEFAULT" enabled="1" id="data-edit" visible="1"/>
+    <ListViewEx editable="false" fixedCellSize="-1" focusTraversable="true" id="listView" layoutX="24" layoutY="128" prefHeight="272" prefWidth="504" styleClass="list-view ">
+      <items xmlns:fx="http://javafx.com/fxml">
+        <FXCollections fx:factory="observableArrayList"/>
+      </items>
+    </ListViewEx>
+    <Data cursor="DEFAULT" enabled="1" id="data-listView" visible="1"/>
+    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button" layoutX="432" layoutY="416" prefHeight="32" prefWidth="96" styleClass="button accent-btn " text="Создать" textAlignment="CENTER" underline="false" wrapText="false">
+      <font>
+        <Font name="Source Sans Pro SemiBold" size="12"/>
+      </font>
+    </Button>
+    <Data cursor="DEFAULT" enabled="" graphic=".data/img/newFile.png" id="data-button" visible="1"/>
+    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="buttonAlt" layoutX="336" layoutY="416" prefHeight="32" prefWidth="80" styleClass="button warning-btn " text="Отмена" textAlignment="CENTER" underline="false" wrapText="false">
+      <font>
+        <Font name="Source Sans Pro SemiBold" size="12"/>
+      </font>
+    </Button>
+    <Data cursor="DEFAULT" enabled="1" id="data-buttonAlt" visible="1"/>
   </children>
 </AnchorPane>

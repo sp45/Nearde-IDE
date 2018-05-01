@@ -5,7 +5,6 @@ use gui;
 use std;
 use nd;
 
-
 class jphpPlugin extends Plugin
 {
     public function getName()
@@ -32,6 +31,18 @@ class jphpPlugin extends Plugin
         $format->registerFileTemplate(NDTreeContextMenu::createItem("PHP файл.", $format->getIcon("php"), function ($item) {
             FileUtils::createFile($item->userData, UXDialog::input("Ввидите название нового php файла.") . ".php", "<?php \n");
         }));
+        
+        $format->registerFileTemplate(NDTreeContextMenu::createItem("PHP класс.", $format->getIcon("php"), function ($item) {
+            $name = UXDialog::input("Ввидите название нового php класса.");
+            FileUtils::createFile($item->userData, $name . ".php", 
+            "<?php \n\nclass $name { \n\n}"
+            );
+        }));
+        
+        // include external classes
+        include fs::abs("./plugins/jphp/classes/JPHPConsoleProjectTemplate.php");
+        
+        IDE::get()->getProjectManger()->registerTemplate("JPHP temp 1", new \plugins\jphp\classes\JPHPConsoleProjectTemplate());
     }
 }
 

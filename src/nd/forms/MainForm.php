@@ -36,4 +36,13 @@ class MainForm extends AbstractForm
         IDE::getFormManger()->getForm("Settings")->show();
     }
 
+    /**
+     * @event button.action 
+     */
+    function doButtonAction(UXEvent $e = null)
+    {    
+        IDE::getFormManger()->getForm("NewProject")->show();
+        $this->hide();
+    }
+
 }

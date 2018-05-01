@@ -1,6 +1,7 @@
 <?php
 namespace nd\utils;
 
+use php\io\IOException;
 use gui;
 use framework;
 use std;
@@ -48,13 +49,23 @@ class FileUtils
         return fs::move($fromDir, $toDir);
     }
     
-    public static function createFile($path, $name, $content = null)
+    public static function createFile($path, $name, $content = null) : string 
     { 
+        if ($name == null || !fs::valid($name)) 
+        {
+            alert("Не верное имя файла.");
+            return;
+        }
+        
         if (fs::isDir($path))
             $path .= "/" . $name;
         else 
             $path = fs::parent($path) . "/" . $name;
-                
-        Stream::putContents($path, $content);
+        try        
+            Stream::putContents($path, $content);
+        catch (IOException $e) 
+            alert("Не удалось создать файл.");
+            
+        return $path;
     }
 }
