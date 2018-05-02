@@ -14,6 +14,7 @@ class ND
     private $version = "2.0 alpha";
     private $name = "Nearde IDE";
     private $dev = true;
+    private $configPath = "./config.json";
     
     /**
      * @var formManger
@@ -35,6 +36,8 @@ class ND
      */
     private $projectManger;
     
+    private $config;
+    
     public function init()
     {
         Logger::info("Nearde starting init.");
@@ -43,6 +46,8 @@ class ND
         $this->projectManger = new projectManger();
         $this->fileFormat    = new fileFormat();
         $this->fileFormat->init();
+        
+        $this->loadConfig();
         
         $this->formManger->registerForm("Main", MainForm::class);
         $this->formManger->registerForm("Project", ProjectForm::class);
@@ -112,4 +117,43 @@ class ND
     {
         return $this->projectManger;
     }
-}
+    
+    private function loadConfig()
+    {
+        if (!fs::exists($this->configPath))
+        {
+            $this->loadDefaultConfig();
+            return;
+        }
+        
+        $this->config = Json::fromFile($this->configPath);
+    }
+    
+    private function loadDefaultConfig()
+    {
+        $this->config = [
+            "settings" => [
+                "projectPath" => fs::abs("./projects/")
+            ]
+        ];
+    }
+    
+    public function saveConfig()
+    {
+        Json::toFile($this->configPath, $this->config);
+    }
+    
+    public function getConfig()
+    {
+        return $this->config;
+    }
+    
+    public function toConfig($newConfig)
+    {
+        if (UXDialog::confirm("Сохранить настройки ?"))
+        {
+            $this->config = $newConfig;
+            $this->saveConfig();
+        }
+    }
+}  

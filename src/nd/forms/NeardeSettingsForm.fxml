@@ -7,11 +7,23 @@
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" id="data-button" visible="1"/>
-    <CheckBox alignment="CENTER_LEFT" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="checkbox" layoutX="16" layoutY="16" prefHeight="24" prefWidth="256" styleClass="check-box " text="Использовать тёмную тему" textAlignment="LEFT" underline="false" wrapText="false">
+    <TextField alignment="CENTER_LEFT" editable="true" focusTraversable="true" id="edit" layoutX="16" layoutY="32" prefColumnCount="12" prefHeight="32" prefWidth="280" promptText="" styleClass="text-input text-field " text="">
       <font>
         <Font name="Source Sans Pro Regular" size="12"/>
       </font>
-    </CheckBox>
-    <Data cursor="DEFAULT" enabled="1" id="data-checkbox" visible="1"/>
+    </TextField>
+    <Data cursor="DEFAULT" enabled="1" id="data-edit" visible="1"/>
+    <LabelEx alignment="CENTER_LEFT" autoSize="true" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="label" layoutX="8" layoutY="8" prefHeight="15.083999633789" prefWidth="147.21598815918" styleClass="label " text="Путь сохранения проектов :" textAlignment="LEFT" underline="false" wrapText="false">
+      <font>
+        <Font name="Source Sans Pro Regular" size="12"/>
+      </font>
+    </LabelEx>
+    <Data cursor="DEFAULT" enabled="1" id="data-label" visible="1"/>
+    <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="buttonAlt" layoutX="304" layoutY="32" prefHeight="32" prefWidth="40" styleClass="button green-btn " text="Пасхалка :3" textAlignment="CENTER" underline="false" wrapText="false">
+      <font>
+        <Font name="Source Sans Pro SemiBold" size="12"/>
+      </font>
+    </Button>
+    <Data cursor="DEFAULT" enabled="1" graphic=".data/img/folder16.png" id="data-buttonAlt" visible="1"/>
   </children>
 </AnchorPane>

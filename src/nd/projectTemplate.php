@@ -13,9 +13,9 @@ abstract class ProjectTemplate
     
     public function makeProject($project)
     {
-        $path = FileUtils::createFile($project->getPath(), $project->getName() . "ndproject", Json::encode([
+        $path = FileUtils::createFile($project->getPath(), $project->getName() . ".ndproject", Json::encode([
             "name" => $project->getName(),
-            "template" => get_called_class()
+            "template" => $project->getTemplate()
         ]));
         $project->loadConfig($path);
     }

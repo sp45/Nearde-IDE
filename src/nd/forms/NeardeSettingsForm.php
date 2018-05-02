@@ -12,7 +12,27 @@ class NeardeSettingsForm extends AbstractForm
      */
     function doButtonAction(UXEvent $e = null)
     {    
-        alert("TODO: Сделать сохронение и чтение настроек.");
+        $config = IDE::get()->getConfig();
+        $config['settings']['projectPath'] = $this->edit->text;
+        IDE::get()->toConfig($config);
+    }
+
+    /**
+     * @event show 
+     */
+    function doShow(UXWindowEvent $e = null)
+    {    
+        $config = IDE::get()->getConfig();
+        $this->edit->text = $config['settings']['projectPath'];
+    }
+
+    /**
+     * @event buttonAlt.action 
+     */
+    function doButtonAltAction(UXEvent $e = null)
+    {    
+        $this->dirChooser->execute();
+        $this->edit->text = $this->dirChooser->file->getAbsolutePath();
     }
 
 }

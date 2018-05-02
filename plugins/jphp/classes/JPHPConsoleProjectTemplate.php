@@ -25,8 +25,8 @@ class JPHPConsoleProjectTemplate extends ProjectTemplate
     public function makeProject($project)
     {
         parent::makeProject($project);
-        $name = $project->getName();
-        FileUtils::createFile($name, "package.php.yml", 
+        $path = $project->getPath();
+        FileUtils::createFile($path, "package.php.yml", 
         "name: $name\nversion: 1.0.0\ndeps:
   jphp-core: '*'
 
@@ -45,6 +45,8 @@ config:
   vendor-dir: ./vendor
   archive-dir: ./../
   archive-format: zip"
-        ); // треш :3, но это конфиг для jppm
+        ); // треш, но это конфиг для jppm
+        fs::makeDir($path . "/src");
+        FileUtils::createFile($path . "/src", "index.php", "<?php \n\necho'Hello, World';");
     }
 }
