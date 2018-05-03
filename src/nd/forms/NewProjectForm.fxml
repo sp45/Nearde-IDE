@@ -32,7 +32,7 @@
         <Font name="Source Sans Pro SemiBold" size="12"/>
       </font>
     </Button>
-    <Data cursor="DEFAULT" enabled="1" graphic=".data/img/newFile.png" id="data-button" visible="1"/>
+    <Data cursor="DEFAULT" enabled="" graphic=".data/img/newFile.png" id="data-button" visible="1"/>
     <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="buttonAlt" layoutX="336" layoutY="416" prefHeight="32" prefWidth="80" styleClass="button warning-btn " text="Отмена" textAlignment="CENTER" underline="false" wrapText="false">
       <font>
         <Font name="Source Sans Pro SemiBold" size="12"/>

@@ -21,6 +21,9 @@ class IDE extends AbstractModule
             return new UXImageView($path); // fix 
     }
     
+    /**
+     * @return ND
+     */
     public static function get()
     {
         return $GLOBALS['ND'];
@@ -54,6 +57,9 @@ class IDE extends AbstractModule
         });
     }
     
+    /**
+     * @return formManger
+     */
     public static function getFormManger()
     {
         return self::get()->getFormManger();

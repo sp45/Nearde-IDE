@@ -13,10 +13,13 @@ abstract class ProjectTemplate
     
     public function makeProject($project)
     {
-        $path = FileUtils::createFile($project->getPath(), $project->getName() . ".ndproject", Json::encode([
+        $file = fs::abs($project->getPath() . "/" .  $project->getName() . ".ndproject");
+        fs::makeFile($file);
+        fs::makeDir($project->getPath() . "/.nd");
+        Json::toFile($file, [
             "name" => $project->getName(),
             "template" => $project->getTemplate()
-        ]));
-        $project->loadConfig($path);
+        ]);
+        $project->loadConfig($file);
     }
 }

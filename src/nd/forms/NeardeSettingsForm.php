@@ -1,6 +1,7 @@
 <?php
 namespace nd\forms;
 
+use Error;
 use std, gui, framework, nd;
 
 
@@ -32,7 +33,11 @@ class NeardeSettingsForm extends AbstractForm
     function doButtonAltAction(UXEvent $e = null)
     {    
         $this->dirChooser->execute();
-        $this->edit->text = $this->dirChooser->file->getAbsolutePath();
+        try {
+            $this->edit->text = $this->dirChooser->file->getAbsolutePath();
+        } catch (Error $e) {
+            ;
+        }
     }
 
 }

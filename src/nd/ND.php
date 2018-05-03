@@ -84,11 +84,17 @@ class ND
         Logger::info("Plugins is started.");
     }
     
+    /**
+     * @return formManger
+     */
     public function getFormManger()
     {
         return $this->formManger;
     }
     
+    /**
+     * @return pluginsManger
+     */
     public function getPluginsManger()
     {
         return $this->pluginsManger;
@@ -108,11 +114,17 @@ class ND
         return $this->dev;
     }
     
+    /**
+     * @return fileFormat
+     */
     public function getFileFormat()
     {
         return $this->fileFormat;
     }
     
+    /**
+     * @return projectManger
+     */
     public function getProjectManger()
     {
         return $this->projectManger;

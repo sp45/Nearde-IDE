@@ -42,7 +42,7 @@ class NewProjectForm extends AbstractForm
     function doButtonAction(UXEvent $e = null)
     {    
         $template = $this->listView->selectedItem[4];
-        $name     = $this->edit->text;
+        $name     = str_replace(" ", "_", trim($this->edit->text));
         $path     = IDE::get()->getConfig()['settings']['projectPath'];
         
         if (!$name) 
@@ -57,8 +57,16 @@ class NewProjectForm extends AbstractForm
             return;
         }
         
-        $template->makeProject(new project($path . "/" . $name, $name));
-        open($path . "/" . $name);
+        $template->makeProject(new project($path . "/" . $name, $name, $template));
+        // TODO: сделать открытие проекта
+    }
+
+    /**
+     * @event listView.action 
+     */
+    function doListViewAction(UXEvent $e = null)
+    {    
+        $this->button->enabled = true;
     }
 
 }

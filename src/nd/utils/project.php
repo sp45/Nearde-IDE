@@ -35,6 +35,6 @@ class project
     
     public function getTemplate()
     {
-        return $this->template;
+        return get_class($this->template);
     }
 }
