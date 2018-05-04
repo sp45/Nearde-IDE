@@ -38,6 +38,12 @@ class IDE extends AbstractModule
              
                 $titleDescription = new UXLabel($item[1]);
                 $titleDescription->opacity = 0.7;
+                
+                $cell->observer("width")->addListener(function ($old, $new) use ($titleDescription) {
+                    if ($old == $new) return;
+                    
+                    $titleDescription->maxWidth = $new - 63;
+                });
              
                 $title  = new UXVBox([$titleName, $titleDescription]);
                 $title->spacing = 0;

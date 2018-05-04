@@ -2,5 +2,9 @@
 	{
 		"dir" : "jphp",
 		"file": "jphpPlugin.php"
+	},
+	{
+		"dir" : "jppm",
+		"file": "jppmPlugin.php"
 	}
 ]

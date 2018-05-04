@@ -1,0 +1,4 @@
+{
+  "name": "test",
+  "template": "plugins\\jppm\\classes\\JPHPConsoleProjectTemplate"
+}

@@ -9,6 +9,7 @@ class pluginsManger
     
     public function registerPlugin(String $name, $class)
     {
+        $name = strtoupper($name);
         if ($this->plugins[$name]) return;
         Logger::info("Register plugin: " . $name);
         $this->plugins[$name] = $class;
@@ -16,8 +17,11 @@ class pluginsManger
     
     public function getPlugin($name)
     {
+        $name = strtoupper($name);
         Logger::info("Getting plugin: " . $name);
-        return new $this->plugins[$name];
+        if ($this->plugins[$name])
+            return $this->plugins[$name];
+        else return null;
     }
     
     public function getAll()

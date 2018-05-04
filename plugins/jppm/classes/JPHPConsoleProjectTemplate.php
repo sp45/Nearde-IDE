@@ -1,5 +1,5 @@
 <?php
-namespace plugins\jphp\classes;
+namespace plugins\jppm\classes;
 
 use std;
 use facade\Json;

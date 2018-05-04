@@ -57,7 +57,7 @@ class ND
         
         // froms for settings form :D
         $this->formManger->registerSettingForm("Основные", NeardeSettingsForm::class);
-        $this->formManger->registerSettingForm("Дополнейния", PluginsForm::class);
+        $this->formManger->registerSettingForm("Дополнения", PluginsForm::class);
         
         $this->fileFormat->registerFileTemplate(NDTreeContextMenu::createItem("Пустой файл.", IDE::ico("file.png"), function ($item) {
             FileUtils::createFile($item->userData, UXDialog::input("Ввидите название нового файла."));
@@ -68,8 +68,6 @@ class ND
         {
             include fs::abs("./plugins/" . $plugin['dir'] . "/" . $plugin['file']);
         }
-        
-        $this->formManger->getForm("Main")->show();
         
         Logger::info("init - done.");
         
@@ -82,6 +80,8 @@ class ND
         }
         
         Logger::info("Plugins is started.");
+        
+        $this->formManger->getForm("Main")->show();
     }
     
     /**

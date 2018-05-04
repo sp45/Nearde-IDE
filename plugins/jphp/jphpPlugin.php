@@ -9,7 +9,7 @@ class jphpPlugin extends Plugin
 {
     public function getName()
     {
-        return "JPHP";
+        return "PHP";
     }
     
     public function getIcon()
@@ -19,7 +19,7 @@ class jphpPlugin extends Plugin
     
     public function getDscription()
     {
-        return "Написание приложений на jphp.";
+        return "Работа с файлами php.";
     }
     
     public function onIDEStarting()
@@ -38,13 +38,8 @@ class jphpPlugin extends Plugin
             "<?php \n\nclass $name { \n\n}"
             );
         }));
-        
-        // include external classes
-        include fs::abs("./plugins/jphp/classes/JPHPConsoleProjectTemplate.php");
-        
-        IDE::get()->getProjectManger()->registerTemplate("JPHP temp 1", new \plugins\jphp\classes\JPHPConsoleProjectTemplate());
     }
 }
 
 // делаем так чтобы nearde могла увидеть плагин
-IDE::get()->getPluginsManger()->registerPlugin("jphp", new jphpPlugin());
+IDE::get()->getPluginsManger()->registerPlugin("php", new jphpPlugin());
