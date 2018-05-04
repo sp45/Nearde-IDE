@@ -19,3 +19,5 @@
 *.pid
 *.tmp
 *.sourcemap
+
+/projects/
