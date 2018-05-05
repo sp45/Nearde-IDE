@@ -5,14 +5,14 @@
       <tabs>
         <Tab text="Дерево">
           <content>
-            <AnchorPane focusTraversable="false" id="" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="450" prefWidth="640" styleClass="">
+            <AnchorPane focusTraversable="false" id="" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="448" prefWidth="640" styleClass="">
               <children/>
             </AnchorPane>
           </content>
         </Tab>
         <Tab text="Список">
           <content>
-            <AnchorPane focusTraversable="false" id="" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="450" prefWidth="640" styleClass="">
+            <AnchorPane focusTraversable="false" id="" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="448" prefWidth="640" styleClass="">
               <children>
                 <ListViewEx editable="false" fixedCellSize="-1" focusTraversable="true" id="listView" layoutX="8" layoutY="8" prefHeight="432" prefWidth="528" styleClass="list-view ">
                   <items xmlns:fx="http://javafx.com/fxml">
@@ -27,6 +27,13 @@
                 </Button>
                 <Data cursor="DEFAULT" enabled="1" id="data-buttonAlt" visible="1"/>
               </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="Редактор кода">
+          <content>
+            <AnchorPane focusTraversable="false" id="" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="448" prefWidth="640" styleClass="">
+              <children/>
             </AnchorPane>
           </content>
         </Tab>

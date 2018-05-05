@@ -41,6 +41,14 @@ class ND
     public function init()
     {
         Logger::info("Nearde starting init.");
+        
+        $libs = File::of("./libs");
+        foreach ($libs->findFiles() as $lib)
+        {
+            if (fs::ext($lib) == "jar")
+                Runtime::addJar($lib);
+        }
+        
         $this->formManger    = new formManger();
         $this->pluginsManger = new pluginsManger();
         $this->projectManger = new projectManger();
@@ -145,7 +153,8 @@ class ND
     {
         $this->config = [
             "settings" => [
-                "projectPath" => fs::abs("./projects/")
+                "projectPath" => fs::abs("./projects/"),
+                "editorStyle" => "chrome"
             ]
         ];
     }

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1525425525175">
+<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1525548544803">
   <tree>
     <expanded>
     <path src=""/>
       <path src="/plugins"/>
       <path src="/plugins/jphp"/>
-      <path src="/plugins/jphp/classes"/>
       <path src="/plugins/jphp/data"/>
       <path src="/plugins/jphp/data/images"/>
+      <path src="/plugins/jppm"/>
+      <path src="/plugins/jppm/classes"/>
+      <path src="/plugins/jppm/data"/>
+      <path src="/plugins/jppm/data/images"/>
       <path src="/src"/>
       <path src="/src/.theme"/>
       <path src="/src/nd"/>
@@ -35,13 +38,15 @@
     <file src="src/nd/utils/pluginsManger.php"/>
     <file src="src/nd/modules/IDE.php"/>
     <file src="src/nd/forms/SettingsForm.php"/>
-    <file src="src/nd/forms/NeardeSettingsForm.php"/>
+    <file selected="1" src="src/nd/forms/NeardeSettingsForm.php"/>
     <file src="src/nd/ui/NDTreeContextMenu.php"/>
     <file src="src/nd/utils/FileUtils.php"/>
     <file src="src/nd/utils/project.php"/>
     <file src="src/nd/utils/projectManger.php"/>
-    <file src="plugins/jphp/classes/JPHPConsoleProjectTemplate.php"/>
-    <file selected="1" src="src/nd/projectTemplate.php"/>
+    <file src="src/nd/projectTemplate.php"/>
+    <file src="plugins/jppm/jppmPlugin.php"/>
+    <file src="plugins/jppm/classes/JPHPConsoleProjectTemplate.php"/>
+    <file src="src/nd/ui/NDCode.php"/>
   </openedFiles>
   <files/>
   <behaviours>
