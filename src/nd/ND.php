@@ -66,6 +66,7 @@ class ND
         // froms for settings form :D
         $this->formManger->registerSettingForm("Основные", NeardeSettingsForm::class);
         $this->formManger->registerSettingForm("Дополнения", PluginsForm::class);
+        $this->formManger->registerSettingForm("Редактор", CodeEditorSettingsForm::class);
         
         $this->fileFormat->registerFileTemplate(NDTreeContextMenu::createItem("Пустой файл.", IDE::ico("file.png"), function ($item) {
             FileUtils::createFile($item->userData, UXDialog::input("Ввидите название нового файла."));

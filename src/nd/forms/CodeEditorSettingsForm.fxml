@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?import javafx.scene.*?><?import javafx.collections.*?><?import javafx.scene.layout.*?><?import javafx.scene.control.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.scene.shape.*?><?import javafx.scene.paint.*?><?import javafx.scene.web.*?><?import javafx.geometry.*?><?import java.lang.*?><?import org.develnext.jphp.ext.javafx.classes.data.*?><?import org.develnext.jphp.ext.javafx.support.*?><?import org.develnext.jphp.ext.javafx.support.control.*?><?import org.develnext.jphp.ext.game.support.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" focusTraversable="false" id="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424" prefWidth="512" styleClass="">
+  <children>
+    <LabelEx alignment="CENTER_LEFT" autoSize="true" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="labelAlt" layoutX="8" layoutY="128" prefHeight="15.083999633789" prefWidth="173.76000976563" styleClass="label " text="Цветовая схема редактора кода :" textAlignment="LEFT" underline="false" wrapText="false">
+      <font>
+        <Font name="Source Sans Pro Regular" size="12"/>
+      </font>
+    </LabelEx>
+    <Data cursor="DEFAULT" enabled="1" id="data-labelAlt" visible="1"/>
+    <ComboBox editable="false" focusTraversable="true" id="combobox" layoutX="16" layoutY="152" prefHeight="32" prefWidth="328" promptText="" styleClass="combo-box-base combo-box " value="" visibleRowCount="10">
+      <items xmlns:fx="http://javafx.com/fxml">
+        <FXCollections fx:factory="observableArrayList"/>
+      </items>
+    </ComboBox>
+    <Data cursor="DEFAULT" enabled="1" id="data-combobox" visible="1"/>
+    <Button AnchorPane.bottomAnchor="8" AnchorPane.rightAnchor="8" alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button" layoutX="392" layoutY="384" prefHeight="32" prefWidth="112" styleClass="button accent-btn " text="Сохранить" textAlignment="CENTER" underline="false" wrapText="false">
+      <font>
+        <Font name="Source Sans Pro SemiBold" size="12"/>
+      </font>
+    </Button>
+    <Data cursor="DEFAULT" enabled="1" id="data-button" visible="1"/>
+    <Panel AnchorPane.leftAnchor="8" AnchorPane.rightAnchor="8" backgroundColor="#ffffff00" borderColor="#c0c0c0" borderRadius="0" borderStyle="SOLID" borderWidth="0" focusTraversable="false" id="panel" layoutX="8" layoutY="8" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="112" prefWidth="496" styleClass="" titleColor="#333333" titleOffset="15" titlePosition="TOP_LEFT">
+      <children/>
+      <titleFont>
+        <Font name="Source Sans Pro Regular" size="12"/>
+      </titleFont>
+    </Panel>
+    <Data cursor="DEFAULT" enabled="1" id="data-panel" visible="1"/>
+  </children>
+</AnchorPane>

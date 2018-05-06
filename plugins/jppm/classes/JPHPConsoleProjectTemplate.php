@@ -26,8 +26,9 @@ class JPHPConsoleProjectTemplate extends ProjectTemplate
     {
         parent::makeProject($project);
         $path = $project->getPath();
+        $name = $project->getName();
         fs::makeFile(fs::abs($path . "/package.php.yml"));
-        Stream::putContents(fs::abs($path . "/package.php.yml"), "name: $name\nversion: 1.0.0\ndeps:
+        Stream::putContents(fs::abs($path . "/package.php.yml"), "name: ". $name ."\nversion: 1.0.0\ndeps:
   jphp-core: '*'
 
 plugins:

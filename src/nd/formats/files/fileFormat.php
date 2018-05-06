@@ -9,6 +9,7 @@ class fileFormat
 
     private $formats;
     private $templats;
+    private $ext4lang;
     
     public function init()
     {
@@ -19,12 +20,27 @@ class fileFormat
             'css' => 'res://.data/img/css16.png',
             'jar' => 'res://.data/img/jar16.png',
             'zip' => 'res://.data/img/zip16.png',
-            '7z' => 'res://.data/img/7z16.png',
+            '7z'  => 'res://.data/img/7z16.png',
             'bat' => 'res://.data/img/bat16.png',
             'exe' => 'res://.data/img/exe16.png',
         ];
         
         // more icons https://www.iconfinder.com/iconsets/fatcow
+        
+        $this->ext4lang = [
+            'php'  => 'php',
+            'json' => 'json',
+            'ndproject' => 'json',
+            'yml'  => 'yaml',
+            'java' => 'java',
+            'groovy' => 'groovy',
+            'gradle' => 'groovy',
+            'xml' => 'xml',
+            'dnproject' => 'xml',
+            'ini' => 'ini',
+            'cfg' => 'ini',
+            'conf' => 'ini',
+        ];
     }
     
     public function getIcon(string $ext)
@@ -54,4 +70,11 @@ class fileFormat
         return $list;
     }
     
+    public function getLang4ext($ext)
+    {
+        if ($this->ext4lang[$ext] != null)
+        {
+            return $this->ext4lang[$ext];
+        } else return 'text';
+    }
 }

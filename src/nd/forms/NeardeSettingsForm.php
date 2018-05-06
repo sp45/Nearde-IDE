@@ -7,41 +7,6 @@ use std, gui, framework, nd;
 
 class NeardeSettingsForm extends AbstractForm
 {
-    private $thems = [
-        "chrome",
-        "clouds",
-        "crimson_editor",
-        "dawn",
-        "dreamweaver",
-        "eclipse",
-        "github",
-        "solarized_light",
-        "textmate",
-        "tomorrow",
-        "xcode",
-        "kuroir",
-        "katzenmilch",
-        "ambiance",
-        "chaos",
-        "clouds_midnight",
-        "cobalt",
-        "idle_fingers",
-        "kr_theme",
-        "merbivore",
-        "merbivore_soft",
-        "mono_industrial",
-        "monokai",
-        "pastel_on_dark",
-        "solarized_dark",
-        "terminal",
-        "tomorrow_night",
-        "tomorrow_night_blue",
-        "tomorrow_night_bright",
-        "tomorrow_night_eighties",
-        "twilight",
-        "vibrant_ink"
-    ];
-    
     /**
      * @event button.action 
      */
@@ -49,7 +14,6 @@ class NeardeSettingsForm extends AbstractForm
     {    
         $config = IDE::get()->getConfig();
         $config['settings']['projectPath'] = $this->edit->text;
-        $config['settings']['editorStyle'] = $this->combobox->value;
         IDE::get()->toConfig($config);
     }
 
@@ -60,8 +24,6 @@ class NeardeSettingsForm extends AbstractForm
     {    
         $config = IDE::get()->getConfig();
         $this->edit->text = $config['settings']['projectPath'];
-        $this->combobox->value = $config['settings']['editorStyle'];
-        $this->combobox->items->addAll($this->thems);
     }
 
     /**

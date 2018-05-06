@@ -1,11 +1,8 @@
-// Загружаем шрифт Source Sans Pro c fonts.google.com
-// ---------------------------------------------------------------------------------------
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,300&subset=cyrillic');
-
-
 // Главные стили JavaFX 8
 // ---------------------------------------------------------------------------------------
 .root, .FormEditor {
+    -fx-font-smoothing-type: gray; 
+    -fx-smoothing-type: gray; 
     -fx-base: #f0f0f0;
     -fx-background: #f0f0f0;
         -fx-accent: #088acc;
@@ -320,17 +317,3 @@ combo-box-base:editable:focused > .text-field,
     -fx-border-color:transparent;
     -fx-background-insets: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

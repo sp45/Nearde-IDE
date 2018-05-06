@@ -11,14 +11,21 @@ class IDE extends AbstractModule
         return self::image("res://.data/img/" . $name);
     }
     
+    /**
+     * return UXImageView
+     */
     public static function image($path)
     {
-        if (is_string($path))
-            return new UXImageView(new UXImage($path));
-        elseif ($path instanceof UXImageView)
+        if ($path instanceof UXImageView)
             return $path;
-        elseif ($path instanceof UXImage)
-            return new UXImageView($path); // fix 
+        if ($path instanceof UXImage)
+            $image = new UXImageView($path);
+        if (is_string($path))
+            $image = new UXImageView(new UXImage($path));
+        
+        $image->smooth = true;
+        
+        return $image;
     }
     
     /**
