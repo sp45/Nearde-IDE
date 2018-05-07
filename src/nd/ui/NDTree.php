@@ -15,11 +15,12 @@ class NDTree extends UXTreeView
         $this->onAction = $onAction;
     }
     
-    public function refreshTree($file)
+    public function refreshTree($file, bool $rootV = false)
     {
         $root = new UXTreeItem(new NDTreeValue(fs::name($file), fs::abs($file)));
+        $root->graphic = IDE::ico("./nd16.png");
         $this->root = $root;
-        $this->rootVisible = false;
+        $this->rootVisible = $rootV;
         $this->refreshTreeItem($file, $root);
         $this->on('click', function (UXMouseEvent $e) use ($this) {
             if ($e->button != "SECONDARY") {

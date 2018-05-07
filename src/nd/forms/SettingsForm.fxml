@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?import javafx.scene.*?><?import javafx.collections.*?><?import javafx.scene.layout.*?><?import javafx.scene.control.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.scene.shape.*?><?import javafx.scene.paint.*?><?import javafx.scene.web.*?><?import javafx.geometry.*?><?import java.lang.*?><?import org.develnext.jphp.ext.javafx.classes.data.*?><?import org.develnext.jphp.ext.javafx.support.*?><?import org.develnext.jphp.ext.javafx.support.control.*?><?import org.develnext.jphp.ext.game.support.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" focusTraversable="false" id="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456" prefWidth="816" styleClass="">
+<?import javafx.scene.*?><?import javafx.collections.*?><?import javafx.scene.layout.*?><?import javafx.scene.control.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.scene.shape.*?><?import javafx.scene.paint.*?><?import javafx.scene.web.*?><?import javafx.geometry.*?><?import java.lang.*?><?import org.develnext.jphp.ext.javafx.classes.data.*?><?import org.develnext.jphp.ext.javafx.support.*?><?import org.develnext.jphp.ext.javafx.support.control.*?><?import org.develnext.jphp.ext.game.support.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" focusTraversable="false" id="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496" prefWidth="872" styleClass="">
   <children>
-    <ImageViewEx AnchorPane.bottomAnchor="8" AnchorPane.leftAnchor="256" AnchorPane.rightAnchor="8" AnchorPane.topAnchor="8" autoSize="false" centered="true" focusTraversable="false" height="440" id="image" layoutX="256" layoutY="8" mosaic="false" mosaicGap="0" proportional="false" stretch="false" styleClass="" textFill="#000000" width="552">
+    <ImageViewEx AnchorPane.bottomAnchor="8" AnchorPane.leftAnchor="256" AnchorPane.rightAnchor="8" AnchorPane.topAnchor="8" autoSize="false" centered="true" focusTraversable="false" height="480" id="image" layoutX="256" layoutY="8" mosaic="false" mosaicGap="0" proportional="false" stretch="false" styleClass="" textFill="#000000" width="608">
       <font>
         <Font name="System Regular" size="12"/>
       </font>
@@ -12,7 +12,7 @@
       </items>
     </ListViewEx>
     <Data cursor="DEFAULT" enabled="1" id="data-listView" visible="1"/>
-    <FragmentPane AnchorPane.bottomAnchor="8" AnchorPane.leftAnchor="256" AnchorPane.rightAnchor="8" AnchorPane.topAnchor="8" alignment="CENTER" focusTraversable="false" id="fragment" layoutX="256" layoutY="8" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="440" prefWidth="552" spacing="0" styleClass="fragment-pane "/>
+    <FragmentPane AnchorPane.bottomAnchor="8" AnchorPane.leftAnchor="256" AnchorPane.rightAnchor="8" AnchorPane.topAnchor="8" alignment="CENTER" focusTraversable="false" id="fragment" layoutX="256" layoutY="8" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="480" prefWidth="608" spacing="0" styleClass="fragment-pane "/>
     <Data content="NeardeSettingsForm" cursor="DEFAULT" enabled="1" id="data-fragment" visible=""/>
     <Data cursor="DEFAULT" enabled="1" id="data-image" image=".data/img/settings_page32.png" visible="1"/>
   </children>

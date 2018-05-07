@@ -57,12 +57,13 @@ class ProjectForm extends AbstractForm
         $this->projectTree = new NDTree(function ($path) {
             // onAction
             $tab = new UXTab(fs::name($path));
-            $tab->graphic = IDE::get()->getFileFormat()->getIcon(fs::ext($path));
-            $tab->content = new NDCode(Stream::getContents($path), IDE::get()->getFileFormat()->getLang4ext(fs::ext($path)));
+            $tab->graphic  = IDE::get()->getFileFormat()->getIcon(fs::ext($path));
+            $tab->content  = new NDCode(File::of($path), IDE::get()->getFileFormat()->getLang4ext(fs::ext($path)));
+            $tab->userData = $path;
             $this->projectTabPane->tabs->add($tab);
             $this->projectTabPane->selectTab($tab);
         });
-        $this->projectTree->refreshTree($this->project->getPath());
+        $this->projectTree->refreshTree($this->project->getPath(), true);
         $this->projectSplit->items->add($this->projectTree);
         
         $this->projectTabPane = new UXTabPane;

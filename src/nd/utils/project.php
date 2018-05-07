@@ -33,8 +33,13 @@ class project
         $this->config = Json::fromFile($path);
     }
     
+    public function getConfig()
+    {
+        return $this->config;
+    }
+    
     public function getTemplate()
     {
-        return get_class($this->template);
+        return $this->template;
     }
 }

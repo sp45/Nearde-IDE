@@ -41,7 +41,7 @@ class IDE extends AbstractModule
         $listView->setCellFactory(function(UXListCell $cell, $item) {
             if ($item) {              
                 $titleName = new UXLabel($item[0]);
-                $titleName->style = '-fx-font-weight: bold;'; 
+                $titleName->style = '-fx-font-weight: bold;';
              
                 $titleDescription = new UXLabel($item[1]);
                 $titleDescription->opacity = 0.7;

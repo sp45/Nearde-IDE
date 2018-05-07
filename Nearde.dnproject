@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1525615249256">
+<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1525710285551">
   <tree>
     <expanded>
     <path src=""/>
+      <path src="/libs"/>
       <path src="/plugins"/>
       <path src="/plugins/jphp"/>
       <path src="/plugins/jphp/data"/>
@@ -16,8 +17,8 @@
       <path src="/src/nd"/>
       <path src="/src/nd/formats"/>
       <path src="/src/nd/formats/files"/>
-      <path src="/src/nd/formats/files/fileFormat.php"/>
       <path src="/src/nd/forms"/>
+      <path src="/src/nd/modules"/>
       <path src="/src/nd/ui"/>
       <path src="/src/nd/utils"/>
     </expanded>
@@ -26,7 +27,7 @@
   <file src="Nearde.dnproject"/>
     <file src="src/nd/forms/MainForm.php"/>
     <file src="src/nd/modules/AppModule.php"/>
-    <file src="src/nd/ND.php"/>
+    <file selected="1" src="src/nd/ND.php"/>
     <file src="src/nd/forms/PluginsForm.php"/>
     <file src="src/nd/formats/files/fileFormat.php"/>
     <file src="src/nd/ui/NDTree.php"/>
@@ -45,10 +46,10 @@
     <file src="src/nd/utils/project.php"/>
     <file src="src/nd/utils/projectManger.php"/>
     <file src="src/nd/projectTemplate.php"/>
-    <file src="plugins/jppm/jppmPlugin.php"/>
     <file src="plugins/jppm/classes/JPHPConsoleProjectTemplate.php"/>
-    <file selected="1" src="src/nd/ui/NDCode.php"/>
+    <file src="src/nd/ui/NDCode.php"/>
     <file src="src/nd/forms/CodeEditorSettingsForm.php"/>
+    <file src="src/nd/forms/OpenProjectForm.php"/>
   </openedFiles>
   <files/>
   <behaviours>

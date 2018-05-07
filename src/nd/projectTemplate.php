@@ -18,7 +18,7 @@ abstract class ProjectTemplate
         fs::makeDir($project->getPath() . "/.nd");
         Json::toFile($file, [
             "name" => $project->getName(),
-            "template" => $project->getTemplate()
+            "template" => get_class($project->getTemplate())
         ]);
         $project->loadConfig($file);
     }

@@ -23,6 +23,8 @@ class fileFormat
             '7z'  => 'res://.data/img/7z16.png',
             'bat' => 'res://.data/img/bat16.png',
             'exe' => 'res://.data/img/exe16.png',
+            'java' => 'res://.data/img/jar16.png',
+            'ndproject' => 'res://.data/img/nd16.png',
         ];
         
         // more icons https://www.iconfinder.com/iconsets/fatcow

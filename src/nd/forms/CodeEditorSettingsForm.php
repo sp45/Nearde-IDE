@@ -42,7 +42,7 @@ class CodeEditorSettingsForm extends AbstractForm
     ];
     
     /**
-     * @vae NDCode
+     * @var NDCode
      */
     private $editor;
     
@@ -53,6 +53,8 @@ class CodeEditorSettingsForm extends AbstractForm
     {
         $config = IDE::get()->getConfig();
         $config['settings']['editorStyle'] = $this->combobox->value;
+        $config['settings']['invisibles']  = $this->checkbox->selected;
+        $config['settings']['font_size']   = $this->slider->value;
         IDE::get()->toConfig($config);
     }
 
@@ -64,7 +66,9 @@ class CodeEditorSettingsForm extends AbstractForm
         $config = IDE::get()->getConfig();
         $this->combobox->value = $config['settings']['editorStyle'];
         $this->combobox->items->addAll($this->thems);
-        $this->editor = new NDCode("<?php\necho 'Hello, World!';", "php", true);
+        $this->checkbox->selected = $config['settings']['invisibles'];
+        $this->slider->value = $config['settings']['font_size'];
+        $this->editor = new NDCode("<?php\necho 'Hello, world';", "php", true);
         $this->editor->anchors = [
             "top" => 1, "bottom" => 1, "left" => 1, "right" => 1,
         ];
@@ -78,6 +82,22 @@ class CodeEditorSettingsForm extends AbstractForm
     function doComboboxAction(UXEvent $e = null)
     {    
         $this->editor->setTheme($this->combobox->value);
+    }
+
+    /**
+     * @event checkbox.click 
+     */
+    function doCheckboxClick(UXMouseEvent $e = null)
+    {    
+        $this->editor->setShowInvisibles($this->checkbox->selected);
+    }
+
+    /**
+     * @event slider.mouseUp 
+     */
+    function doSliderMouseUp(UXMouseEvent $e = null)
+    {    
+        $this->editor->setFontSize($this->slider->value);
     }
 
 }

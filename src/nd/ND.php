@@ -62,11 +62,12 @@ class ND
         $this->formManger->registerForm("SandBox", SandBoxForm::class);
         $this->formManger->registerForm("Settings", SettingsForm::class);
         $this->formManger->registerForm("NewProject", NewProjectForm::class);
+        $this->formManger->registerForm("OpenProject", OpenProjectForm::class);
         
         // froms for settings form :D
         $this->formManger->registerSettingForm("Основные", NeardeSettingsForm::class);
-        $this->formManger->registerSettingForm("Дополнения", PluginsForm::class);
         $this->formManger->registerSettingForm("Редактор", CodeEditorSettingsForm::class);
+        $this->formManger->registerSettingForm("Дополнения", PluginsForm::class);
         
         $this->fileFormat->registerFileTemplate(NDTreeContextMenu::createItem("Пустой файл.", IDE::ico("file.png"), function ($item) {
             FileUtils::createFile($item->userData, UXDialog::input("Ввидите название нового файла."));
@@ -155,7 +156,9 @@ class ND
         $this->config = [
             "settings" => [
                 "projectPath" => fs::abs("./projects/"),
-                "editorStyle" => "chrome"
+                "editorStyle" => "chrome",
+                "invisibles"  => false,
+                "font_size"   => 14,
             ]
         ];
     }
