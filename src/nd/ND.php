@@ -11,7 +11,7 @@ use nd;
 
 class ND 
 {
-    private $version = "2.0 alpha";
+    private $version = "2.0 alpha build 20"; // build is number commits on github
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath = "./config.json";
@@ -40,7 +40,7 @@ class ND
     
     public function init()
     {
-        Logger::info("Nearde starting init.");
+        Logger::info("ND CORE starting init.");
         
         $libs = File::of("./libs");
         foreach ($libs->findFiles() as $lib)
@@ -79,8 +79,6 @@ class ND
             include fs::abs("./plugins/" . $plugin['dir'] . "/" . $plugin['file']);
         }
         
-        Logger::info("init - done.");
-        
         Logger::info("Starting plugins.");
         
         foreach ($this->pluginsManger->getAll() as $name => $plugin)
@@ -92,6 +90,8 @@ class ND
         Logger::info("Plugins is started.");
         
         $this->formManger->getForm("Main")->show();
+        
+        Logger::info("ND CORE init - done.");
     }
     
     /**

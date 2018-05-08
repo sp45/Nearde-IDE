@@ -15,9 +15,9 @@ class NDCode extends UXCode
             // on editor init
             if (is_string($file))
                 $this->text = $file;
-            if ($file instanceof File)
+            if (fs::exists($file))
             {
-                if (fs::isDir($file))
+                if (!fs::isDir($file)) // fix
                     $this->text = Stream::getContents($file);   
             }
             $this->setTheme(IDE::get()->getConfig()['settings']['editorStyle']);
@@ -54,7 +54,10 @@ class NDCode extends UXCode
     public function save($path)
     {
         if (fs::exists($path))
+        {
+            echo "seve to " . $path;
             Stream::putContents($path, $this->text);
+        } 
     }
     
 }
