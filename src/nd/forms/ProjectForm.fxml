@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?import javafx.scene.*?><?import javafx.collections.*?><?import javafx.scene.layout.*?><?import javafx.scene.control.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.scene.shape.*?><?import javafx.scene.paint.*?><?import javafx.scene.web.*?><?import javafx.geometry.*?><?import java.lang.*?><?import org.develnext.jphp.ext.javafx.classes.data.*?><?import org.develnext.jphp.ext.javafx.support.*?><?import org.develnext.jphp.ext.javafx.support.control.*?><?import org.develnext.jphp.ext.game.support.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" focusTraversable="false" id="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480" prefWidth="640" styleClass="">
+<?import javafx.scene.*?><?import javafx.collections.*?><?import javafx.scene.layout.*?><?import javafx.scene.control.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.scene.shape.*?><?import javafx.scene.paint.*?><?import javafx.scene.web.*?><?import javafx.geometry.*?><?import java.lang.*?><?import org.develnext.jphp.ext.javafx.classes.data.*?><?import org.develnext.jphp.ext.javafx.support.*?><?import org.develnext.jphp.ext.javafx.support.control.*?><?import org.develnext.jphp.ext.game.support.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" focusTraversable="false" id="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600" prefWidth="900" styleClass="">
   <children>
-    <Panel AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="24" backgroundColor="#00000000" borderColor="#c0c0c0" borderRadius="0" borderStyle="SOLID" borderWidth="0" focusTraversable="false" id="panel" layoutX="0" layoutY="24" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="456" prefWidth="640" styleClass="" titleColor="#333333" titleOffset="15" titlePosition="TOP_LEFT">
+    <Panel AnchorPane.bottomAnchor="24" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="24" backgroundColor="#00000000" borderColor="#c0c0c0" borderRadius="0" borderStyle="SOLID" borderWidth="0" focusTraversable="false" id="panel" layoutX="0" layoutY="24" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="552" prefWidth="900" styleClass="" titleColor="#333333" titleOffset="15" titlePosition="TOP_LEFT">
       <children/>
       <titleFont>
         <Font name="Source Sans Pro Regular" size="12"/>
       </titleFont>
     </Panel>
     <Data cursor="DEFAULT" enabled="1" id="data-panel" visible="1"/>
+    <HBox AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" alignment="CENTER_RIGHT" focusTraversable="false" id="hbox" layoutX="0" layoutY="576" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="24" prefWidth="900" spacing="8" styleClass="">
+      <padding>
+        <Insets bottom="0" left="0" right="4" top="0"/>
+      </padding>
+      <children/>
+    </HBox>
+    <Data cursor="DEFAULT" enabled="1" id="data-hbox" visible="1"/>
   </children>
 </AnchorPane>

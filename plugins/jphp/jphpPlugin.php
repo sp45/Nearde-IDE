@@ -22,6 +22,11 @@ class jphpPlugin extends Plugin
         return "Работа с файлами php.";
     }
     
+    public function getAuthor()
+    {
+        return "MWStudio";
+    }
+    
     public function onIDEStarting()
     {
         /** @var fileFormat $format */

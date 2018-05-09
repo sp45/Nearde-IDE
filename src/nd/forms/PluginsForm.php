@@ -18,7 +18,7 @@ class PluginsForm extends AbstractForm
         {
             $this->listView->items->add([
                 $plugin->getName(),
-                $plugin->getDscription(),
+                "Автор : " . $plugin->getAuthor(),
                 IDE::image($plugin->getIcon()),
                 function () use ($this, $plugin) {
                     $this->showPluginInfo($plugin);

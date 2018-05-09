@@ -74,6 +74,10 @@ class ProjectForm extends AbstractForm
                 IDE::getFormManger()->getForm('Main')->show();
             }),
             
+            NDTreeContextMenu::createItem("Открыть папку проекта.", IDE::ico("folder.png"), function () {
+                open($this->project->getPath());
+            }),
+            
             UXMenuItem::createSeparator(),
             
             NDTreeContextMenu::createItem("Выход из IDE.", IDE::ico("close16.png"), function () {
@@ -129,6 +133,17 @@ class ProjectForm extends AbstractForm
         
         $this->mainSplit->items->add($this->projectSplit);
         $this->panel->add($this->mainSplit);
+        
+        foreach ($this->template->getGunters() as $gunterArr)
+        {
+            $gunterNode = new UXFlatButton("");
+            $gunterNode->graphic = $gunterArr['image'];
+            $gunterNode->tooltipText = $gunterArr['name'];
+            $gunterNode->on('click', function () use ($gunterArr) {
+                $gunterArr['callable']($this->project->getPath());
+            });
+            $this->hbox->add($gunterNode);
+        }
     }
     
     private function executeCommand($callable)
