@@ -55,7 +55,6 @@ class NDCode extends UXCode
     {
         if (fs::exists($path))
         {
-            echo "seve to " . $path;
             Stream::putContents($path, $this->text);
         } 
     }

@@ -47,6 +47,6 @@ config:
   archive-dir: ./../
   archive-format: zip");
         fs::makeDir($path . "/src");
-        FileUtils::createFile($path . "/src", "index.php", "<?php \n\necho'Hello, World';");
+        FileUtils::createFile($path . "/src", "index.php", "<?php \n\necho 'Hello, World';");
     }
 }

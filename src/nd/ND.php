@@ -11,7 +11,7 @@ use nd;
 
 class ND 
 {
-    private $version = "2.0 alpha build 20"; // build is number commits on github
+    private $version = "2.0 alpha build 21"; // build is number commits on github
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath = "./config.json";
@@ -68,6 +68,8 @@ class ND
         $this->formManger->registerSettingForm("Основные", NeardeSettingsForm::class);
         $this->formManger->registerSettingForm("Редактор", CodeEditorSettingsForm::class);
         $this->formManger->registerSettingForm("Дополнения", PluginsForm::class);
+        if ($this->isDev())
+            $this->formManger->registerSettingForm("Песочница", SandBoxForm::class);
         
         $this->fileFormat->registerFileTemplate(NDTreeContextMenu::createItem("Пустой файл.", IDE::ico("file.png"), function ($item) {
             FileUtils::createFile($item->userData, UXDialog::input("Ввидите название нового файла."));
