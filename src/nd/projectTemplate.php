@@ -11,6 +11,8 @@ abstract class ProjectTemplate
     abstract public function getIcon();
     abstract public function getDscription();
     
+    private $commands;
+    
     public function makeProject($project)
     {
         $file = fs::abs($project->getPath() . "/" .  $project->getName() . ".ndproject");
@@ -21,5 +23,16 @@ abstract class ProjectTemplate
             "template" => get_class($project->getTemplate())
         ]);
         $project->loadConfig($file);
+    }
+    
+    public function registerCommand(string $type, callable $func)
+    {
+        if ($this->commands[$type]) return;
+        $this->commands[$type] = $func;
+    }
+    
+    public function getCommand(string $type)
+    {
+        return $this->commands[$type];
     }
 }

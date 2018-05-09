@@ -7,6 +7,17 @@ use nd;
 
 class JPHPConsoleProjectTemplate extends ProjectTemplate
 {
+    public function __construct()
+    {
+        $this->registerCommand("run", function ($path) {
+            return execute("cmd.exe /c cd $path && jppm start");
+        });
+        
+        $this->registerCommand("build", function ($path) {
+            return execute("cmd.exe /c cd $path && jppm build");
+        });
+    }
+    
     public function getName()
     {
         return "JPHP консольное приложение.";

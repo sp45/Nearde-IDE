@@ -1,6 +1,8 @@
 <?php
 namespace nd\forms;
 
+use php\gui\designer\UXCodeAreaScrollPane;
+use php\gui\UXRichTextArea;
 use std, gui, framework, nd;
 
 
@@ -22,13 +24,24 @@ class ProjectForm extends AbstractForm
     private $projectSplit;
     
     /**
+     * @var UXSplitPane
+     */
+    private $mainSplit;
+    
+    /**
      * @var UXTabPane
      */
     private $projectTabPane;
     
+    /**
+     * @var ProjectTemplate
+     */
+    private $template;
+    
     public function openProject(project $project)
     {
         $this->project = $project;
+        $this->template = $this->project->getTemplate();
         $this->initUI();
         $this->show();
     }
@@ -68,12 +81,27 @@ class ProjectForm extends AbstractForm
             }),
         ]);
         $menuBar->menus->add($projectMenu);
+        
+        $runMenu = new UXMenu("Запуск");
+        $runMenu->items->addAll([
+            NDTreeContextMenu::createItem("Запустить проект.", IDE::ico("run16.png"), function () {
+                $this->executeCommand($this->template->getCommand("run"));
+            }),
+            
+            NDTreeContextMenu::createItem("Собрать проект.", IDE::ico("build16.png"), function () {
+                $this->executeCommand($this->template->getCommand("build"));
+            }),
+        ]);
+        $menuBar->menus->add($runMenu);
         $this->add($menuBar);
         
-        $this->projectSplit = new UXSplitPane;
-        $this->projectSplit->anchors = [
+        $this->mainSplit = new UXSplitPane;
+        $this->mainSplit->orientation = "VERTICAL";
+        $this->mainSplit->anchors = [
             "top" => 1, "bottom" => 1, "left" => 1, "right" => 1
         ];
+        
+        $this->projectSplit = new UXSplitPane;
         $this->projectSplit->dividerPositions = [
             .4, .6
         ];
@@ -99,6 +127,45 @@ class ProjectForm extends AbstractForm
         $this->projectTabPane = new UXTabPane;
         $this->projectSplit->items->add($this->projectTabPane);
         
-        $this->panel->add($this->projectSplit);
+        $this->mainSplit->items->add($this->projectSplit);
+        $this->panel->add($this->mainSplit);
+    }
+    
+    private function executeCommand($callable)
+    {
+        if (!is_callable($callable)) return;
+        
+        $this->mainSplit->items->removeByIndex(1);
+        $this->mainSplit->dividerPositions = [
+            .7, .3
+        ];
+        
+        $textArea = new UXRichTextArea;
+        $textArea->padding = 8;
+        $process = $callable($this->project->getPath());
+        new Thread(function() use ($textArea, $process) {
+            $process->getInput()->eachLine(function($line) use ($textArea) {
+                uiLater(function() use ($line, $textArea) {
+                    $textArea->appendText($line . "\n", '-fx-fill: gray;');
+                    $textArea->selectLine();
+                });
+            });
+
+            $process->getError()->eachLine(function($line) use ($textArea) {
+                uiLater(function() use ($line, $textArea) {
+                    $textArea->appendText($line . "\n", '-fx-fill: red;');
+                    $textArea->selectLine();
+                });
+            });
+            
+            $exitValue = $process->getExitValue();
+            
+            uiLater(function () use ($exitValue, $textArea) {
+                $textArea->appendText("> exit code: " . $exitValue . "\n", '-fx-fill: #BBBBFF;');
+                $textArea->selectLine();
+            });
+        })->start();
+        
+        $this->mainSplit->items->add(new UXCodeAreaScrollPane($textArea));
     }
 }
