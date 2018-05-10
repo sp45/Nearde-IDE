@@ -18,7 +18,7 @@ class NDTree extends UXTreeView
     public function refreshTree($file, bool $rootV = false)
     {
         $root = new UXTreeItem(new NDTreeValue(fs::name($file), fs::abs($file)));
-        $root->graphic = IDE::ico("./nd16.png");
+        $root->graphic = IDE::ico("nd16.png");
         $root->expanded = true;
         $this->root = $root;
         $this->rootVisible = $rootV;
