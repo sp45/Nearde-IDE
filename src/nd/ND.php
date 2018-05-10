@@ -11,9 +11,9 @@ use nd;
 
 class ND 
 {
-    private $version = "2.0 alpha build 24"; // build is number commits on github
+    private $version = "2.0 alpha build 26"; // build is number commits on github
     private $name = "Nearde IDE";
-    private $dev = true;
+    private $dev = false;
     private $configPath = "./config.json";
     
     /**
@@ -40,6 +40,16 @@ class ND
     
     public function init()
     {
+        echo '                                   ' . "\n";
+        echo '   _  _____    _________  ___  ____' . "\n";
+        echo '  / |/ / _ \  / ___/ __ \/ _ \/ __/' . "\n";
+        echo ' /    / // / / /__/ /_/ / , _/ _/  ' . "\n";
+        echo '/_/|_/____/  \___/\____/_/|_/___/  ' . "\n";
+        echo '                                   ' . "\n";
+        echo '                                   ' . "\n";
+        
+        // :3
+        
         Logger::info("ND CORE starting init.");
         
         $libs = File::of("./libs");
