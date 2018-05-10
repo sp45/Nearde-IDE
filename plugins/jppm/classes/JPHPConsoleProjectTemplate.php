@@ -18,7 +18,7 @@ class JPHPConsoleProjectTemplate extends ProjectTemplate
             return execute("cmd.exe /c cd $path && jppm build");
         });
         
-        $this->regiserGunter("JPPM: Добовление пакета.", IDE::ico("build16.png"), function ($path) {
+        $this->regiserGunter("JPPM: Добавление пакета.", IDE::ico("build16.png"), function ($path) {
             IDE::getFormManger()->getForm("JPPMAddPackageForm")->show($path);
         });
     }

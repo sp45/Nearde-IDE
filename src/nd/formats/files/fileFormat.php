@@ -42,6 +42,8 @@ class fileFormat
             'ini' => 'ini',
             'cfg' => 'ini',
             'conf' => 'ini',
+            'html' => 'html',
+            'css' => 'css',
         ];
     }
     
