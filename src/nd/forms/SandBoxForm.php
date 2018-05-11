@@ -29,7 +29,7 @@ class SandBoxForm extends AbstractForm
         IDE::upgradeListView($this->listView); 
         
         $NDCode = new NDCode(Stream::getContents("res://nd/ND.php"));
-        $this->tabPane->tabs->toArray()[2]->content = $NDCode;
+        $this->tabPane->tabs->toArray()[2]->content = $NDCode;      
     }
 
 

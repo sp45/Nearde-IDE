@@ -51,7 +51,7 @@ class JPPMAddPackageForm extends UXForm
 
     function doButtonAction()
     {    
-        $process = execute("cmd.exe /c cd {$this->path} && jppm add {$this->edit->text}@{$this->editAlt->text}");
+        $process = new Process(explode(" ", "cmd.exe /c jppm add {$this->edit->text}@{$this->editAlt->text}"), $this->path)->start();
         new Thread(function() use ($process) {
             $process->getInput()->eachLine(function($line) {
                 uiLater(function() use ($line, $textArea) {

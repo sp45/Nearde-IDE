@@ -18,13 +18,18 @@ abstract class ProjectTemplate
     public function makeProject($project)
     {
         $file = fs::abs($project->getPath() . "/" .  $project->getName() . ".ndproject");
-        fs::makeFile($file);
-        fs::makeDir($project->getPath() . "/.nd");
-        Json::toFile($file, [
-            "name" => $project->getName(),
-            "template" => get_class($project->getTemplate())
-        ]);
-        $project->loadConfig($file);
+        if (fs::makeFile($file)){
+            fs::makeDir($project->getPath() . "/.nd");
+            Json::toFile($file, [
+                "name" => $project->getName(),
+                "template" => get_class($project->getTemplate())
+            ]);
+            $project->loadConfig($file);
+            return true;
+        } else {
+            alert("Не удалось создать проект.");
+            return false;
+        }
     }
     
     public function registerCommand(string $type, callable $func)

@@ -11,11 +11,11 @@ class JPHPConsoleProjectTemplate extends ProjectTemplate
     public function __construct()
     {
         $this->registerCommand("run", function ($path) {
-            return execute("cmd.exe /c cd $path && jppm start");
+            return new Process(explode(" ", "cmd.exe /c jppm start"), $path)->start();
         });
         
         $this->registerCommand("build", function ($path) {
-            return execute("cmd.exe /c cd $path && jppm build");
+            return new Process(explode(" ", "cmd.exe /c jppm build"), $path)->start();
         });
         
         $this->regiserGunter("JPPM: Добавление пакета.", IDE::ico("build16.png"), function ($path) {
@@ -40,7 +40,7 @@ class JPHPConsoleProjectTemplate extends ProjectTemplate
     
     public function makeProject($project)
     {
-        parent::makeProject($project);
+        if (!parent::makeProject($project)) return false;
         $path = $project->getPath();
         $name = $project->getName();
         fs::makeFile(fs::abs($path . "/package.php.yml"));
@@ -64,5 +64,6 @@ config:
   archive-format: zip");
         fs::makeDir($path . "/src");
         FileUtils::createFile($path . "/src", "index.php", "<?php \n\necho 'Hello, World';");
+        return true;
     }
 }

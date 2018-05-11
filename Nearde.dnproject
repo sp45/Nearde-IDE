@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1525976649108">
+<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1526057499127">
   <tree>
     <expanded>
     <path src=""/>
@@ -28,7 +28,7 @@
   <openedFiles>
   <file src="Nearde.dnproject"/>
     <file src="src/nd/forms/ProjectForm.php"/>
-    <file selected="1" src="src/nd/ND.php"/>
+    <file src="src/nd/ND.php"/>
     <file src="plugins/jppm/classes/JPHPConsoleProjectTemplate.php"/>
     <file src="src/nd/projectTemplate.php"/>
     <file src="plugins/jppm/jppmPlugin.php"/>
@@ -36,6 +36,10 @@
     <file src="src/nd/ui/NDCode.php"/>
     <file src="src/nd/forms/MainForm.php"/>
     <file src="src/nd/formats/files/fileFormat.php"/>
+    <file src="src/nd/forms/OpenProjectForm.php"/>
+    <file src="src/nd/forms/NewProjectForm.php"/>
+    <file src="plugins/jppm/forms/JPPMAddPackageForm.php"/>
+    <file selected="1" src="src/nd/forms/SandBoxForm.php"/>
   </openedFiles>
   <files/>
   <behaviours>

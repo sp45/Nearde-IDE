@@ -59,7 +59,7 @@ class NewProjectForm extends AbstractForm
         
         $project = new project($path . "/" . $name, $name, $template);
         
-        $template->makeProject($project);
+        if (!$template->makeProject($project)) return;
         IDE::getFormManger()->getForm("Project")->openProject($project);
         $this->hide();
     }

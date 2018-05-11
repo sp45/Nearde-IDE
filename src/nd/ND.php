@@ -11,9 +11,9 @@ use nd;
 
 class ND 
 {
-    private $version = "2.0 alpha build 26"; // build is number commits on github
+    private $version = "2.0 alpha build 28"; // build is number commits on github
     private $name = "Nearde IDE";
-    private $dev = false;
+    private $dev = true;
     private $configPath = "./config.json";
     
     /**
