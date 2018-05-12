@@ -32,8 +32,6 @@ class NewProjectForm extends AbstractForm
                 $template
             ]);
         }
-        
-        $this->listView->selectedIndex = 1;
     }
 
     /**

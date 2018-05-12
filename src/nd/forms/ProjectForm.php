@@ -1,6 +1,7 @@
 <?php
 namespace nd\forms;
 
+use facade\Json;
 use php\gui\designer\UXCodeAreaScrollPane;
 use php\gui\UXRichTextArea;
 use std, gui, framework, nd;
@@ -87,15 +88,36 @@ class ProjectForm extends AbstractForm
         $menuBar->menus->add($projectMenu);
         
         $runMenu = new UXMenu("Запуск");
-        $runMenu->items->addAll([
-            NDTreeContextMenu::createItem("Запустить проект.", IDE::ico("run16.png"), function () {
+        
+        if ($this->template->getCommand("run"))
+        {
+            $runMenu->items->add(NDTreeContextMenu::createItem("Запустить проект.", IDE::ico("run16.png"), function () {
                 $this->executeCommand($this->template->getCommand("run"));
-            }),
-            
-            NDTreeContextMenu::createItem("Собрать проект.", IDE::ico("build16.png"), function () {
+            }));
+        } 
+        
+        if ($this->template->getCommand("build"))
+        {
+            $runMenu->items->add(NDTreeContextMenu::createItem("Собрать проект.", IDE::ico("build16.png"), function () {
                 $this->executeCommand($this->template->getCommand("build"));
-            }),
-        ]);
+            }));
+        }
+        
+        if (fs::exists(fs::abs($this->project->getPath() . "/.nd/tasks.json")))
+        {
+            $json = Json::fromFile(fs::abs($this->project->getPath() . "/.nd/tasks.json"));
+            foreach ($json as $task)
+            {
+                $runMenu->items->add(NDTreeContextMenu::createItem($task['name'], IDE::ico("bat16.png"), function () use ($task) {
+                    
+                    if (IDE::isWin()) $prefix = "cmd.exe /c";
+                    else $prefix = "bash";
+                    
+                    $this->executeCommand(new Process(explode(" ", $prefix . " " . $task['shell']), $this->project->getPath())->start());
+                }));
+            }
+        }
+        
         $menuBar->menus->add($runMenu);
         $this->add($menuBar);
         
@@ -144,11 +166,21 @@ class ProjectForm extends AbstractForm
             });
             $this->hbox->add($gunterNode);
         }
+        
+        $templateImg = IDE::image($this->template->getIcon());
+        $templateImg->size = [ 16, 16 ];
+        $this->hboxAlt->add($templateImg);
+        $this->hboxAlt->add(new UXLabel($this->template->getName())); 
     }
     
-    private function executeCommand($callable)
+    private function executeCommand($obj)
     {
-        if (!is_callable($callable)) return;
+        if (is_callable($obj)) {
+            $process = $obj($this->project->getPath());
+        } elseif ($obj instanceof Process)
+            $process = $obj;
+        
+        if (!$process) return;
         
         $this->mainSplit->items->removeByIndex(1);
         $this->mainSplit->dividerPositions = [
@@ -157,7 +189,6 @@ class ProjectForm extends AbstractForm
         
         $textArea = new UXRichTextArea;
         $textArea->padding = 8;
-        $process = $callable($this->project->getPath());
         new Thread(function() use ($textArea, $process) {
             $process->getInput()->eachLine(function($line) use ($textArea) {
                 uiLater(function() use ($line, $textArea) {

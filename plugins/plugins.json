@@ -6,5 +6,9 @@
 	{
 		"dir" : "jppm",
 		"file": "jppmPlugin.php"
+	},
+	{
+		"dir" : "web",
+		"file": "webPlugin.php"
 	}
 ]

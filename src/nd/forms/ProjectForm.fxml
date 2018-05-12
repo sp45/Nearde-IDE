@@ -8,12 +8,19 @@
       </titleFont>
     </Panel>
     <Data cursor="DEFAULT" enabled="1" id="data-panel" visible="1"/>
-    <HBox AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" alignment="CENTER_RIGHT" focusTraversable="false" id="hbox" layoutX="0" layoutY="576" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="24" prefWidth="900" spacing="8" styleClass="">
+    <HBox AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="240" AnchorPane.rightAnchor="0" alignment="CENTER_RIGHT" focusTraversable="false" id="hbox" layoutX="240" layoutY="576" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="24" prefWidth="660" spacing="8" styleClass="">
       <padding>
         <Insets bottom="0" left="0" right="4" top="0"/>
       </padding>
       <children/>
     </HBox>
     <Data cursor="DEFAULT" enabled="1" id="data-hbox" visible="1"/>
+    <HBox AnchorPane.bottomAnchor="0" alignment="CENTER_LEFT" focusTraversable="false" id="hboxAlt" layoutX="0" layoutY="576" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="24" prefWidth="240" spacing="8" styleClass="">
+      <padding>
+        <Insets bottom="0" left="8" right="0" top="0"/>
+      </padding>
+      <children/>
+    </HBox>
+    <Data cursor="DEFAULT" enabled="1" id="data-hboxAlt" visible="1"/>
   </children>
 </AnchorPane>

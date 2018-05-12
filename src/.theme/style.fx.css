@@ -318,3 +318,7 @@ combo-box-base:editable:focused > .text-field,
     -fx-border-color:transparent;
     -fx-background-insets: 0;
 }
+
+.styled-text-area {
+    -fx-font-size: 14;
+}

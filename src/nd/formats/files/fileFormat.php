@@ -44,6 +44,7 @@ class fileFormat
             'conf' => 'ini',
             'html' => 'html',
             'css' => 'css',
+            'js' => 'javascript',
         ];
     }
     

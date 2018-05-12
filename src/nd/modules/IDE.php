@@ -77,4 +77,9 @@ class IDE extends AbstractModule
     {
         return self::get()->getFormManger();
     }
+    
+    public static function isWin()
+    {
+        return Str::posIgnoreCase(System::getProperty('os.name'), 'WIN') > -1;
+    }
 }
