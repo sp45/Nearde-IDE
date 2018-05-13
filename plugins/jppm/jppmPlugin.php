@@ -1,6 +1,6 @@
 <?php
 
-namespace plugins\jphp;
+namespace plugins\jppm;
 use gui;
 use std;
 use nd;
@@ -43,5 +43,3 @@ class jppmPlugin extends Plugin
         IDE::get()->getProjectManger()->registerTemplate("JPHP Console", new \plugins\jppm\classes\JPHPConsoleProjectTemplate());
     }
 }
-
-IDE::get()->getPluginsManger()->registerPlugin("jppm", new jppmPlugin());

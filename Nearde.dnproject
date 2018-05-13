@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1526150083058">
+<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1526224802277">
   <tree>
     <expanded>
     <path src=""/>
       <path src="/libs"/>
+      <path src="/plugins"/>
+      <path src="/plugins/jphp"/>
+      <path src="/plugins/jppm"/>
+      <path src="/plugins/jppm/classes"/>
+      <path src="/plugins/web"/>
       <path src="/src"/>
       <path src="/src/.theme"/>
       <path src="/src/nd"/>
@@ -17,21 +22,26 @@
   </tree>
   <openedFiles>
   <file src="Nearde.dnproject"/>
-    <file selected="1" src="src/nd/forms/ProjectForm.php"/>
+    <file src="src/nd/forms/ProjectForm.php"/>
     <file src="src/nd/ND.php"/>
     <file src="plugins/jppm/classes/JPHPConsoleProjectTemplate.php"/>
     <file src="src/nd/forms/PluginsForm.php"/>
     <file src="src/nd/ui/NDCode.php"/>
     <file src="src/nd/forms/MainForm.php"/>
-    <file src="src/nd/formats/files/fileFormat.php"/>
-    <file src="src/nd/forms/OpenProjectForm.php"/>
+    <file selected="1" src="src/nd/formats/files/fileFormat.php"/>
     <file src="src/nd/forms/NewProjectForm.php"/>
     <file src="plugins/jppm/forms/JPPMAddPackageForm.php"/>
-    <file src="src/nd/forms/SandBoxForm.php"/>
     <file src="plugins/web/webPlugin.php"/>
     <file src="plugins/web/classes/WEBProjectTemplate.php"/>
     <file src="plugins/jphp/jphpPlugin.php"/>
     <file src="src/nd/modules/IDE.php"/>
+    <file src="src/nd/forms/TreeDialogForm.php"/>
+    <file src="src/nd/forms/InputDialogForm.php"/>
+    <file src="src/nd/utils/FileUtils.php"/>
+    <file src="src/nd/projectTemplate.php"/>
+    <file src="src/nd/utils/project.php"/>
+    <file src="src/nd/utils/projectManger.php"/>
+    <file src="plugins/jppm/jppmPlugin.php"/>
   </openedFiles>
   <files/>
   <behaviours>

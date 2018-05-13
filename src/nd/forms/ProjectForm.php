@@ -156,15 +156,14 @@ class ProjectForm extends AbstractForm
         $this->mainSplit->items->add($this->projectSplit);
         $this->panel->add($this->mainSplit);
         
-        foreach ($this->template->getGunters() as $gunterArr)
+        foreach (IDE::get()->getProjectManger()->getGlobalGunters() as $globalGunter)
         {
-            $gunterNode = new UXFlatButton("");
-            $gunterNode->graphic = $gunterArr['image'];
-            $gunterNode->tooltipText = $gunterArr['name'];
-            $gunterNode->on('click', function () use ($gunterArr) {
-                $gunterArr['callable']($this->project->getPath());
-            });
-            $this->hbox->add($gunterNode);
+            $this->makeGunter($globalGunter);
+        }
+        
+        foreach ($this->template->getGunters() as $gunter)
+        {
+            $this->makeGunter($gunter);
         }
         
         $templateImg = IDE::image($this->template->getIcon());
@@ -213,5 +212,16 @@ class ProjectForm extends AbstractForm
         })->start();
         
         $this->mainSplit->items->add(new UXCodeAreaScrollPane($textArea));
+    }
+    
+    private function makeGunter(array $data)
+    {
+        $gunterNode = new UXFlatButton($data['text']);
+        $gunterNode->graphic = $data['image'];
+        $gunterNode->tooltipText = $data['name'];
+        $gunterNode->on('click', function () use ($data) {
+            $data['callable']($this->project->getPath());
+        });
+        $this->hbox->add($gunterNode);
     }
 }

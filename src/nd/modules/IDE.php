@@ -82,4 +82,14 @@ class IDE extends AbstractModule
     {
         return Str::posIgnoreCase(System::getProperty('os.name'), 'WIN') > -1;
     }
+    
+    public static function treeDialog(string $text, string $path)
+    {
+        return IDE::getFormManger()->getForm("TreeDialog")->open($text, $path);
+    }
+    
+    public static function inputDialog(string $text)
+    {
+        return IDE::getFormManger()->getForm("InputDialog")->open($text);
+    }
 }

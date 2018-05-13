@@ -77,7 +77,7 @@ class fileFormat
     
     public function getLang4ext($ext)
     {
-        if ($this->ext4lang[$ext] != null)
+        if ($this->ext4lang[$ext])
         {
             return $this->ext4lang[$ext];
         } else return 'text';

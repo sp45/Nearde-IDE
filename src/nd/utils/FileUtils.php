@@ -51,7 +51,7 @@ class FileUtils
     
     public static function createFile($path, $name, $content = null) : string 
     { 
-        if ($name == null || !fs::valid($name)) 
+        if ($name == null || !fs::valid($name) || !fs::nameNoExt($name)) 
         {
             alert("Не верное имя файла.");
             return;

@@ -1,14 +1,20 @@
 [
 	{
 		"dir" : "jphp",
-		"file": "jphpPlugin.php"
+		"file": "jphpPlugin.php",
+		"name": "PHP",
+		"class": "plugins\\jphp\\jphpPlugin"
 	},
 	{
 		"dir" : "jppm",
-		"file": "jppmPlugin.php"
+		"file": "jppmPlugin.php",
+		"name": "JPPM",
+		"class": "plugins\\jppm\\jppmPlugin"
 	},
 	{
 		"dir" : "web",
-		"file": "webPlugin.php"
+		"file": "webPlugin.php",
+		"name": "WEB", 
+		"class": "plugins\\web\\webPlugin"
 	}
 ]

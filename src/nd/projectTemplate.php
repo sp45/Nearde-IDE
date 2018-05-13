@@ -43,14 +43,15 @@ abstract class ProjectTemplate
         return $this->commands[$type];
     }
     
-    public function regiserGunter(string $name, UXImageView $img, callable $callable)
+    public function regiserGunter(string $name, UXImageView $img, callable $callable, string $text = null)
     {
         if ($this->gunters[$name]) return;
         
         $this->gunters[$name] = [
             'name'     => $name,
             'image'    => $img,
-            'callable' => $callable
+            'callable' => $callable,
+            'text'     => $text
         ];
     }
     

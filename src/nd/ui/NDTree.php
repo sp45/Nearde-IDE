@@ -1,6 +1,7 @@
 <?php
 namespace nd\ui;
 
+use framework;
 use nd;
 use std;
 use gui;
@@ -8,11 +9,17 @@ use gui;
 class NDTree extends UXTreeView
 {
     private $onAction;
+    private $readOnly = false;
     
     public function __construct($onAction = null)
     {
         parent::__construct();
         $this->onAction = $onAction;
+    }
+    
+    public function setReadOnly(bool $read)
+    {
+        $this->readOnly = $read;
     }
     
     public function refreshTree($file, bool $rootV = false)
@@ -23,6 +30,7 @@ class NDTree extends UXTreeView
         $this->root = $root;
         $this->rootVisible = $rootV;
         $this->refreshTreeItem($file, $root);
+        if (!$this->readOnly)
         $this->on('click', function (UXMouseEvent $e) use ($this) {
             if ($e->button != "SECONDARY") {
                 

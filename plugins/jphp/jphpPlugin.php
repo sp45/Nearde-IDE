@@ -34,17 +34,14 @@ class jphpPlugin extends Plugin
         $format->registerIcon("php", "./plugins/jphp/data/images/phpIcon.png");
         
         $format->registerFileTemplate(NDTreeContextMenu::createItem("PHP файл.", $format->getIcon("php"), function ($item) {
-            FileUtils::createFile($item->userData, UXDialog::input("Ввидите название нового php файла.") . ".php", "<?php \n");
+            FileUtils::createFile($item->userData, IDE::inputDialog("Ввидите название нового php файла.") . ".php", "<?php \n");
         }));
         
         $format->registerFileTemplate(NDTreeContextMenu::createItem("PHP класс.", $format->getIcon("php"), function ($item) {
-            $name = UXDialog::input("Ввидите название нового php класса.");
+            $name = IDE::inputDialog("Ввидите название нового php класса.");
             FileUtils::createFile($item->userData, $name . ".php", 
             "<?php \n\nclass $name { \n\n}"
             );
         }));
     }
 }
-
-// делаем так чтобы nearde могла увидеть плагин
-IDE::get()->getPluginsManger()->registerPlugin("php", new jphpPlugin());

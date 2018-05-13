@@ -11,7 +11,7 @@ use nd;
 
 class ND 
 {
-    private $version = "2.0 alpha build 29"; // build is number commits on github + 2
+    private $version = "2.0 alpha build 30";
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath = "./config.json";
@@ -72,14 +72,15 @@ class ND
         $this->formManger->registerForm("SandBox", SandBoxForm::class);
         $this->formManger->registerForm("Settings", SettingsForm::class);
         $this->formManger->registerForm("NewProject", NewProjectForm::class);
-        $this->formManger->registerForm("OpenProject", OpenProjectForm::class);
+        
+        // dialog forms
+        $this->formManger->registerForm("TreeDialog", TreeDialogForm::class);
+        $this->formManger->registerForm("InputDialog", InputDialogForm::class);
         
         // froms for settings form :D
         $this->formManger->registerSettingForm("Основные", NeardeSettingsForm::class);
         $this->formManger->registerSettingForm("Редактор", CodeEditorSettingsForm::class);
         $this->formManger->registerSettingForm("Дополнения", PluginsForm::class);
-        if ($this->isDev())
-            $this->formManger->registerSettingForm("Песочница", SandBoxForm::class);
         
         $this->fileFormat->registerFileTemplate(NDTreeContextMenu::createItem("Пустой файл.", IDE::ico("file.png"), function ($item) {
             FileUtils::createFile($item->userData, UXDialog::input("Ввидите название нового файла."));
@@ -89,6 +90,7 @@ class ND
         foreach ($plugins as $plugin)
         {
             include fs::abs("./plugins/" . $plugin['dir'] . "/" . $plugin['file']);
+            IDE::get()->getPluginsManger()->registerPlugin($plugin['name'], new $plugin['class']);
         }
         
         Logger::info("Starting plugins.");
@@ -170,7 +172,7 @@ class ND
                 "projectPath" => fs::abs("./projects/"),
                 "editorStyle" => "chrome",
                 "invisibles"  => false,
-                "font_size"   => 14,
+                "font_size"   => 15,
             ]
         ];
     }
