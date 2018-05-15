@@ -92,4 +92,24 @@ class IDE extends AbstractModule
     {
         return IDE::getFormManger()->getForm("InputDialog")->open($text);
     }
+    
+    public static function confirmDialog(string $text)
+    {
+        return IDE::getFormManger()->getForm("ConfirmDialog")->open($text);
+    }
+    
+    public static function dialog(string $text)
+    {
+        return IDE::getFormManger()->getForm("Dialog")->open($text);
+    }
+    
+    /**
+     * @return Process
+     */
+    public static function createProcess($shell, $path)
+    {
+        if (IDE::isWin()) $prefix = "cmd.exe /c";
+        else $prefix = "bash";
+        return new Process(explode(" ", $prefix . " " . $shell), $path);
+    }
 }

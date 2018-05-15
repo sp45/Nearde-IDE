@@ -23,7 +23,7 @@ class NDTreeContextMenu extends UXContextMenu
         $this->items->addAll([
             $this->createMenuItem("Создать", IDE::ico("newFile.png"), IDE::get()->getFileFormat()->getFileTemplats($path)),
             $this->createItem("Создать папку.", IDE::ico("folderAdd16.png"), function ($item) use ($path) {
-                $name = UXDialog::input("Ввидите название новой папки.");
+                $name = IDE::inputDialog("Ввидите название новой папки.");
                 
                 if (fs::isDir($path))
                 {
@@ -34,7 +34,7 @@ class NDTreeContextMenu extends UXContextMenu
                 
                 if (!fs::makeDir(fs::abs($path)))
                 {
-                    UXDialog::show("Не удалось создать папку : " . fs::abs($path));
+                    IDE::dialog("Не удалось создать папку : " . fs::abs($path));
                 }
             }),
             $this->createItem("Удалить.", IDE::ico("fileDelete16.png"), function ($item) use ($path) {
@@ -42,12 +42,12 @@ class NDTreeContextMenu extends UXContextMenu
                 {
                     if (!fs::delete($path))
                     {
-                        UXDialog::show("Не удалось файл : " . fs::abs($path));
+                        IDE::dialog("Не удалось файл : " . fs::abs($path));
                     }
                 } else {
                     if (!FileUtils::delete($path))
                     {
-                        UXDialog::show("Не удалось папку : " . fs::abs($path));
+                        IDE::dialog("Не удалось папку : " . fs::abs($path));
                     }
                 }
             }),

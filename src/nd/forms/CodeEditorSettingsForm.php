@@ -54,7 +54,7 @@ class CodeEditorSettingsForm extends AbstractForm
         $config = IDE::get()->getConfig();
         $config['settings']['editorStyle'] = $this->combobox->value;
         $config['settings']['invisibles']  = $this->checkbox->selected;
-        $config['settings']['font_size']   = $this->slider->value;
+        $config['settings']['font_size']   = (int) $this->slider->value;
         IDE::get()->toConfig($config);
     }
 

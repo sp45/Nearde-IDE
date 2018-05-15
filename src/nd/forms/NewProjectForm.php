@@ -45,13 +45,13 @@ class NewProjectForm extends AbstractForm
         
         if (!$name) 
         {
-            alert('Заполните имя проекта.');
+            IDE::dialog('Заполните имя проекта.');
             return;
         }
         
         if (fs::isDir($path . "/" . $name))
         {
-            alert('Папка с таким именем уже используется.');
+            IDE::dialog('Папка с таким именем уже используется.');
             return;
         }
         

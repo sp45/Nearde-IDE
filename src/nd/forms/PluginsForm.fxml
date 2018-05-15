@@ -8,18 +8,30 @@
     </ImageViewEx>
     <Panel AnchorPane.bottomAnchor="8" AnchorPane.leftAnchor="280" AnchorPane.rightAnchor="8" AnchorPane.topAnchor="8" backgroundColor="#ffffff" borderColor="#c0c0c0" borderRadius="0" borderStyle="SOLID" borderWidth="1" focusTraversable="false" id="panel" layoutX="280" layoutY="8" maxHeight="-1" maxWidth="-1" minHeight="-1" minWidth="-1" prefHeight="464" prefWidth="248" styleClass="" titleColor="#333333" titleOffset="15" titlePosition="TOP_LEFT">
       <children>
-        <LabelEx AnchorPane.leftAnchor="15" AnchorPane.rightAnchor="15" alignment="CENTER_LEFT" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="name" layoutX="16" layoutY="16" prefHeight="17" prefWidth="256" styleClass="label " text="Текст" textAlignment="LEFT" underline="false" wrapText="true">
+        <LabelEx AnchorPane.leftAnchor="15" AnchorPane.rightAnchor="15" alignment="CENTER_LEFT" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="name" layoutX="16" layoutY="16" prefHeight="17" prefWidth="256" styleClass="label " text="\%NAME%" textAlignment="LEFT" underline="false" wrapText="true">
           <font>
             <Font name="Source Sans Pro Regular" size="12"/>
           </font>
         </LabelEx>
         <Data cursor="DEFAULT" enabled="1" id="data-name" visible="1"/>
-        <LabelEx AnchorPane.bottomAnchor="16" AnchorPane.leftAnchor="15" AnchorPane.rightAnchor="15" AnchorPane.topAnchor="39" alignment="TOP_LEFT" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="desc" layoutX="16" layoutY="40" prefHeight="400" prefWidth="256" styleClass="label " text="Текст" textAlignment="LEFT" underline="false" wrapText="true">
+        <LabelEx AnchorPane.bottomAnchor="47" AnchorPane.leftAnchor="15" AnchorPane.rightAnchor="15" AnchorPane.topAnchor="64" alignment="TOP_LEFT" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="desc" layoutX="16" layoutY="65" prefHeight="352" prefWidth="216" styleClass="label " text="\%DESC%" textAlignment="LEFT" underline="false" wrapText="true">
           <font>
             <Font name="Source Sans Pro Regular" size="12"/>
           </font>
         </LabelEx>
         <Data cursor="DEFAULT" enabled="1" id="data-desc" visible="1"/>
+        <CheckBox alignment="CENTER_LEFT" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="checkbox" layoutX="16" layoutY="432" prefHeight="24" prefWidth="216" styleClass="check-box " text="Включен." textAlignment="LEFT" underline="false" wrapText="false">
+          <font>
+            <Font name="Source Sans Pro Regular" size="12"/>
+          </font>
+        </CheckBox>
+        <Data cursor="DEFAULT" enabled="1" id="data-checkbox" visible="1"/>
+        <LabelEx AnchorPane.leftAnchor="15" AnchorPane.rightAnchor="15" alignment="CENTER_LEFT" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="author" layoutX="16" layoutY="40" prefHeight="17" prefWidth="256" styleClass="label " text="\%AUTHOR%" textAlignment="LEFT" underline="false" wrapText="true">
+          <font>
+            <Font name="Source Sans Pro Regular" size="12"/>
+          </font>
+        </LabelEx>
+        <Data cursor="DEFAULT" enabled="1" id="data-author" visible="1"/>
       </children>
       <titleFont>
         <Font name="Source Sans Pro Regular" size="12"/>

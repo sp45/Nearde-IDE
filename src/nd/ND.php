@@ -11,7 +11,7 @@ use nd;
 
 class ND 
 {
-    private $version = "2.0 alpha build 30";
+    private $version = "2.0 beta build 30";
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath = "./config.json";
@@ -52,13 +52,6 @@ class ND
         
         Logger::info("ND CORE starting init.");
         
-        $libs = File::of("./libs");
-        foreach ($libs->findFiles() as $lib)
-        {
-            if (fs::ext($lib) == "jar")
-                Runtime::addJar($lib);
-        }
-        
         $this->formManger    = new formManger();
         $this->pluginsManger = new pluginsManger();
         $this->projectManger = new projectManger();
@@ -76,6 +69,8 @@ class ND
         // dialog forms
         $this->formManger->registerForm("TreeDialog", TreeDialogForm::class);
         $this->formManger->registerForm("InputDialog", InputDialogForm::class);
+        $this->formManger->registerForm("ConfirmDialog", ConfirmDialogForm::class);
+        $this->formManger->registerForm("Dialog", DialogForm::class);
         
         // froms for settings form :D
         $this->formManger->registerSettingForm("Основные", NeardeSettingsForm::class);
@@ -87,10 +82,11 @@ class ND
         }));
         
         $plugins = Json::fromFile("./plugins/plugins.json");
-        foreach ($plugins as $plugin)
+        foreach ($plugins as $name => $data)
         {
-            include fs::abs("./plugins/" . $plugin['dir'] . "/" . $plugin['file']);
-            IDE::get()->getPluginsManger()->registerPlugin($plugin['name'], new $plugin['class']);
+            include fs::abs("./plugins/" . $data['dir'] . "/" . $data['file']);
+            $this->pluginsManger->registerPlugin($name, new $data['class']);
+            $this->pluginsManger->setOfflineToPlugin($name, $data['offline']);
         }
         
         Logger::info("Starting plugins.");
@@ -98,7 +94,12 @@ class ND
         foreach ($this->pluginsManger->getAll() as $name => $plugin)
         {
             Logger::info("Starting: " . $name);
-            $plugin->onIDEStarting();
+            if (!$this->pluginsManger->getOfflineForPlugin($name))
+            {
+                $plugin->onIDEStarting();
+            } else {
+                Logger::info("Plugin $name is offline");
+            }
         }
         
         Logger::info("Plugins is started.");
@@ -189,7 +190,7 @@ class ND
     
     public function toConfig($newConfig)
     {
-        if (UXDialog::confirm("Сохранить настройки ?"))
+        if (IDE::confirmDialog("Сохранить настройки ?"))
         {
             $this->config = $newConfig;
             $this->saveConfig();

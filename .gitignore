@@ -1,5 +1,3 @@
-# Ignore rules for GIT (github.com, bitbucket.com, etc.)
-
 /.dn/cache
 /.dn/ide.lock
 /.dn/tmp
@@ -14,6 +12,8 @@
 /build.xml
 /build.gradle
 /settings.gradle
+/config.json
+/desktop.ini
 
 *.log
 *.pid

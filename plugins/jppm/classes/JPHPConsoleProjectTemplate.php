@@ -11,11 +11,11 @@ class JPHPConsoleProjectTemplate extends ProjectTemplate
     public function __construct()
     {
         $this->registerCommand("run", function ($path) {
-            return new Process(explode(" ", "cmd.exe /c jppm start"), $path)->start();
+            return IDE::createProcess("jppm start", $path)->start();
         });
         
         $this->registerCommand("build", function ($path) {
-            return new Process(explode(" ", "cmd.exe /c jppm build"), $path)->start();
+            return IDE::createProcess("jppm build", $path)->start();
         });
         
         $this->regiserGunter("JPPM: Добавление пакета.", IDE::ico("build16.png"), function ($path) {

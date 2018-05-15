@@ -9,7 +9,7 @@ class webPlugin extends Plugin
 {
     public function getName()
     {
-        return "web";
+        return "WEB";
     }
     
     public function getIcon()

@@ -47,7 +47,7 @@ class MainForm extends AbstractForm
         
         if (fs::ext($path) != "ndproject")
         {
-            alert("Файл не является проектом Nearde-IDE");
+            IDE::dialog("Файл не является проектом Nearde-IDE");
             $this->doButtonAltAction();
             return;
         }
@@ -57,7 +57,7 @@ class MainForm extends AbstractForm
         try {
             $project = new project(fs::parent($path), $json['name'], new $json['template']);
         } catch (Error $e) {
-            alert("Не известный тип проекта. Не удалось открыть проект.");
+            IDE::dialog("Не известный тип проекта. Не удалось открыть проект.");
             return;
         }
         

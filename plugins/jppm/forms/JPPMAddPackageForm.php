@@ -8,24 +8,20 @@ use std, gui, framework, nd;
 
 class JPPMAddPackageForm extends UXForm
 {
-
     /**
-     * @var UXRichTextArea
+     * @var NDLog 
      */
-    private $textArea;
+    private $log;
     
     private $path;
 
     function doShow()
     {    
-        $this->textArea = new UXRichTextArea;
-        $this->textArea->padding = 8;
-        
-        $scroll = new UXCodeAreaScrollPane($this->textArea);
-        $scroll->anchors = [
+        $this->log = new NDLog;
+        $this->log->anchors = [
             "top" => 1, "bottom" => 1, "left" => 1, "right" => 1
         ];
-        $this->panel->add($scroll);
+        $this->panel->add($this->log);
         
         $this->button->classesString .= "accent-btn";
         $this->button->on('click', function () {
@@ -51,26 +47,7 @@ class JPPMAddPackageForm extends UXForm
 
     function doButtonAction()
     {    
-        $process = new Process(explode(" ", "cmd.exe /c jppm add {$this->edit->text}@{$this->editAlt->text}"), $this->path)->start();
-        new Thread(function() use ($process) {
-            $process->getInput()->eachLine(function($line) {
-                uiLater(function() use ($line, $textArea) {
-                    $this->textArea->appendText($line . "\n", '-fx-fill: gray;');
-                });
-            });
-
-            $process->getError()->eachLine(function($line) {
-                uiLater(function() use ($line, $textArea) {
-                    $this->textArea->appendText($line . "\n", '-fx-fill: red;');
-                });
-            });
-            
-            $exitValue = $process->getExitValue();
-            
-            uiLater(function () use ($exitValue) {
-                $this->textArea->appendText("> exit code: " . $exitValue . "\n", '-fx-fill: #BBBBFF;');
-            });
-        })->start();
+        $this->log->reCreate(IDE::createProcess("jppm add {$this->edit->text}@{$this->editAlt->text}", $this->path)->start());
     }
 
 }

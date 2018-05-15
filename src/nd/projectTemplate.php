@@ -27,7 +27,7 @@ abstract class ProjectTemplate
             $project->loadConfig($file);
             return true;
         } else {
-            alert("Не удалось создать проект.");
+            IDE::dialog("Не удалось создать проект.");
             return false;
         }
     }

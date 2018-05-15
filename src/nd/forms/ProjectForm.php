@@ -109,11 +109,7 @@ class ProjectForm extends AbstractForm
             foreach ($json as $task)
             {
                 $runMenu->items->add(NDTreeContextMenu::createItem($task['name'], IDE::ico("bat16.png"), function () use ($task) {
-                    
-                    if (IDE::isWin()) $prefix = "cmd.exe /c";
-                    else $prefix = "bash";
-                    
-                    $this->executeCommand(new Process(explode(" ", $prefix . " " . $task['shell']), $this->project->getPath())->start());
+                    $this->executeCommand(IDE::createProcess($task['shell'], $this->project->getPath())->start());
                 }));
             }
         }
@@ -186,32 +182,7 @@ class ProjectForm extends AbstractForm
             .7, .3
         ];
         
-        $textArea = new UXRichTextArea;
-        $textArea->padding = 8;
-        new Thread(function() use ($textArea, $process) {
-            $process->getInput()->eachLine(function($line) use ($textArea) {
-                uiLater(function() use ($line, $textArea) {
-                    $textArea->appendText($line . "\n", '-fx-fill: gray;');
-                    $textArea->selectLine();
-                });
-            });
-
-            $process->getError()->eachLine(function($line) use ($textArea) {
-                uiLater(function() use ($line, $textArea) {
-                    $textArea->appendText($line . "\n", '-fx-fill: red;');
-                    $textArea->selectLine();
-                });
-            });
-            
-            $exitValue = $process->getExitValue();
-            
-            uiLater(function () use ($exitValue, $textArea) {
-                $textArea->appendText("> exit code: " . $exitValue . "\n", '-fx-fill: #BBBBFF;');
-                $textArea->selectLine();
-            });
-        })->start();
-        
-        $this->mainSplit->items->add(new UXCodeAreaScrollPane($textArea));
+        $this->mainSplit->items->add(new NDLog($process));
     }
     
     private function makeGunter(array $data)

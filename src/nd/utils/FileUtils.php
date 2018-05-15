@@ -1,6 +1,7 @@
 <?php
 namespace nd\utils;
 
+use nd;
 use php\io\IOException;
 use gui;
 use framework;
@@ -53,7 +54,7 @@ class FileUtils
     { 
         if ($name == null || !fs::valid($name) || !fs::nameNoExt($name)) 
         {
-            alert("Не верное имя файла.");
+            IDE::dialog("Не верное имя файла.");
             return;
         }
         
@@ -64,7 +65,7 @@ class FileUtils
         try        
             Stream::putContents($path, $content);
         catch (IOException $e) 
-            alert("Не удалось создать файл.");
+            IDE::dialog("Не удалось создать файл.");
             
         return $path;
     }
