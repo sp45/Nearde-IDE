@@ -1,6 +1,7 @@
 <?php
 namespace nd\formats\files;
 
+use std;
 use gui;
 use nd;
 
@@ -45,6 +46,16 @@ class fileFormat
             'html' => 'html',
             'css' => 'css',
             'js' => 'javascript',
+            // цэ пу пус и цэ
+            'c' => 'c_cpp',
+            'cc' => 'c_cpp',
+            'cpp' => 'c_cpp',
+            'h' => 'c_cpp',
+            'hpp' => 'c_cpp',
+            // кэк :D
+            'md' => 'markdown',
+            'makefile' => 'makefile',
+            'py' => 'python',
         ];
     }
     
@@ -75,11 +86,16 @@ class fileFormat
         return $list;
     }
     
-    public function getLang4ext($ext)
+    public function getLang($path)
     {
-        if ($this->ext4lang[$ext])
+        if ($this->ext4lang[fs::ext($path)])
         {
-            return $this->ext4lang[$ext];
-        } else return 'text';
+            return $this->ext4lang[fs::ext($path)];
+        } else if ($this->ext4lang[fs::nameNoExt($path)])
+        {
+            return $this->ext4lang[fs::nameNoExt($path)];
+        } 
+        
+        return 'text';
     }
 }

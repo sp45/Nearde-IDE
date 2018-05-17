@@ -11,7 +11,7 @@ use nd;
 
 class ND 
 {
-    private $version = "2.0 beta build 30";
+    private $version = "2.0 beta build 31";
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath = "./config.json";
@@ -78,8 +78,10 @@ class ND
         $this->formManger->registerSettingForm("Дополнения", PluginsForm::class);
         
         $this->fileFormat->registerFileTemplate(NDTreeContextMenu::createItem("Пустой файл.", IDE::ico("file.png"), function ($item) {
-            FileUtils::createFile($item->userData, UXDialog::input("Ввидите название нового файла."));
+            FileUtils::createFile($item->userData, IDE::inputDialog("Ввидите название нового файла."));
         }));
+        
+        $this->projectManger->registerTemplate("Empty", new EmptyProjectTemplate);
         
         $plugins = Json::fromFile("./plugins/plugins.json");
         foreach ($plugins as $name => $data)
@@ -171,9 +173,11 @@ class ND
         $this->config = [
             "settings" => [
                 "projectPath" => fs::abs("./projects/"),
-                "editorStyle" => "chrome",
-                "invisibles"  => false,
-                "font_size"   => 15,
+                "editor" => [
+                    "style" => "chrome",
+                    "invisibles"  => false,
+                    "font_size"   => 15,
+                ]
             ]
         ];
     }

@@ -20,9 +20,9 @@ class NDCode extends UXCode
                 if (!fs::isDir($file)) // fix
                     $this->text = Stream::getContents($file);   
             }
-            $this->setTheme(IDE::get()->getConfig()['settings']['editorStyle']);
-            $this->setShowInvisibles(IDE::get()->getConfig()['settings']['invisibles']);
-            $this->setFontSize(IDE::get()->getConfig()['settings']['font_size']);
+            $this->setTheme(IDE::get()->getConfig()['settings']['editor']['style']);
+            $this->setShowInvisibles(IDE::get()->getConfig()['settings']['editor']['invisibles']);
+            $this->setFontSize(IDE::get()->getConfig()['settings']['editor']['font_size']);
             $this->setReadOnly($readOnly);
         }, $lang);
         $this->userData = $this;

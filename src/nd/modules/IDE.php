@@ -78,21 +78,33 @@ class IDE extends AbstractModule
         return self::get()->getFormManger();
     }
     
+    /**
+     * @return bool 
+     */
     public static function isWin()
     {
         return Str::posIgnoreCase(System::getProperty('os.name'), 'WIN') > -1;
     }
     
+    /**
+     * @return string 
+     */
     public static function treeDialog(string $text, string $path)
     {
         return IDE::getFormManger()->getForm("TreeDialog")->open($text, $path);
     }
     
+    /**
+     * @return bool 
+     */
     public static function inputDialog(string $text)
     {
         return IDE::getFormManger()->getForm("InputDialog")->open($text);
     }
     
+    /**
+     * @return bool 
+     */
     public static function confirmDialog(string $text)
     {
         return IDE::getFormManger()->getForm("ConfirmDialog")->open($text);
@@ -100,7 +112,7 @@ class IDE extends AbstractModule
     
     public static function dialog(string $text)
     {
-        return IDE::getFormManger()->getForm("Dialog")->open($text);
+        IDE::getFormManger()->getForm("Dialog")->open($text);
     }
     
     /**
@@ -109,7 +121,7 @@ class IDE extends AbstractModule
     public static function createProcess($shell, $path)
     {
         if (IDE::isWin()) $prefix = "cmd.exe /c";
-        else $prefix = "bash";
-        return new Process(explode(" ", $prefix . " " . $shell), $path);
+
+        return new Process(explode(" ", trim($prefix . " " . $shell)), $path);
     }
 }

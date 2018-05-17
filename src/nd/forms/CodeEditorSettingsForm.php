@@ -52,9 +52,9 @@ class CodeEditorSettingsForm extends AbstractForm
     function doButtonAction(UXEvent $e = null)
     {
         $config = IDE::get()->getConfig();
-        $config['settings']['editorStyle'] = $this->combobox->value;
-        $config['settings']['invisibles']  = $this->checkbox->selected;
-        $config['settings']['font_size']   = (int) $this->slider->value;
+        $config['settings']['editor']['style'] = $this->combobox->value;
+        $config['settings']['editor']['invisibles']  = $this->checkbox->selected;
+        $config['settings']['editor']['font_size']   = (int) $this->slider->value;
         IDE::get()->toConfig($config);
     }
 
@@ -64,10 +64,10 @@ class CodeEditorSettingsForm extends AbstractForm
     function doShow(UXWindowEvent $e = null)
     {    
         $config = IDE::get()->getConfig();
-        $this->combobox->value = $config['settings']['editorStyle'];
+        $this->combobox->value = $config['settings']['editor']['style'];
         $this->combobox->items->addAll($this->thems);
-        $this->checkbox->selected = $config['settings']['invisibles'];
-        $this->slider->value = $config['settings']['font_size'];
+        $this->checkbox->selected = $config['settings']['editor']['invisibles'];
+        $this->slider->value = $config['settings']['editor']['font_size'];
         $this->editor = new NDCode("<?php\necho 'Hello, world';", "php", true);
         $this->editor->anchors = [
             "top" => 1, "bottom" => 1, "left" => 1, "right" => 1,

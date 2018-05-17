@@ -134,13 +134,13 @@ class ProjectForm extends AbstractForm
             {
                 $tab = new UXTab(fs::name($path));
                 $tab->graphic  = IDE::get()->getFileFormat()->getIcon(fs::ext($path));
-                $tab->content  = new NDCode(File::of($path), IDE::get()->getFileFormat()->getLang4ext(fs::ext($path)));
+                $tab->content  = new NDCode(File::of($path), IDE::get()->getFileFormat()->getLang($path));
                 $tab->userData = $path;
                 $this->projectTabPane->tabs->add($tab);
                 $this->projectTabPane->selectTab($tab);
             } else 
             {
-                $this->projectTree->selectedItems[0]->expanded = true;
+                $this->projectTree->selectedItems[0]->expanded = !$this->projectTree->selectedItems[0]->expanded;
             }
         });
         $this->projectTree->refreshTree($this->project->getPath(), true);
