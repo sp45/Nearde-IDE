@@ -11,7 +11,7 @@ use nd;
 
 class ND 
 {
-    private $version = "2.0 beta build 31";
+    private $version = "2.0 beta build 32";
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath = "./config.json";
@@ -82,6 +82,7 @@ class ND
         }));
         
         $this->projectManger->registerTemplate("Empty", new EmptyProjectTemplate);
+        $this->fileFormat->registerEditor(new ProjectEditor, "ndproject"); // register custom editor for ndproject format
         
         $plugins = Json::fromFile("./plugins/plugins.json");
         foreach ($plugins as $name => $data)

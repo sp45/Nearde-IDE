@@ -12,6 +12,8 @@ class fileFormat
     private $templats;
     private $ext4lang;
     
+    private $editors;
+    
     public function init()
     {
         $this->formats = [
@@ -88,6 +90,8 @@ class fileFormat
     
     public function getLang($path)
     {
+        $path = strtolower($path);
+        
         if ($this->ext4lang[fs::ext($path)])
         {
             return $this->ext4lang[fs::ext($path)];
@@ -97,5 +101,27 @@ class fileFormat
         } 
         
         return 'text';
+    }
+    
+    public function registerEditor(UXNode $editor, string $ext)
+    {
+        if ($this->editors[$ext]) return;
+        $this->editors[$ext] = $editor;
+    }
+    
+    public function getEditor(string $path) : UXNode
+    {
+        if ($this->editors[fs::ext($path)]) {
+            $editor = clone $this->editors[fs::ext($path)];
+            $editor->open($path);
+            return $editor;
+        }
+        
+        return $this->getCodeEditor($path);
+    }
+    
+    public function getCodeEditor(string $path) : NDCode
+    {
+        return new NDCode($path, $this->getLang(fs::ext($path)));
     }
 }

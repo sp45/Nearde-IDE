@@ -134,7 +134,7 @@ class ProjectForm extends AbstractForm
             {
                 $tab = new UXTab(fs::name($path));
                 $tab->graphic  = IDE::get()->getFileFormat()->getIcon(fs::ext($path));
-                $tab->content  = new NDCode(File::of($path), IDE::get()->getFileFormat()->getLang($path));
+                $tab->content  = IDE::get()->getFileFormat()->getEditor($path); // get code editor
                 $tab->userData = $path;
                 $this->projectTabPane->tabs->add($tab);
                 $this->projectTabPane->selectTab($tab);

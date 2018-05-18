@@ -9,7 +9,7 @@ use \php\gui\UXCode;
 class NDCode extends UXCode
 {
     
-    public function __construct($file, $lang = "php", $readOnly = false)
+    public function __construct($file, $lang = "text", $readOnly = false)
     {
         parent::__construct(function () use ($file, $readOnly) {
             // on editor init
@@ -17,8 +17,7 @@ class NDCode extends UXCode
                 $this->text = $file;
             if (fs::exists($file))
             {
-                if (!fs::isDir($file)) // fix
-                    $this->text = Stream::getContents($file);   
+                $this->text = Stream::getContents($file);   
             }
             $this->setTheme(IDE::get()->getConfig()['settings']['editor']['style']);
             $this->setShowInvisibles(IDE::get()->getConfig()['settings']['editor']['invisibles']);
