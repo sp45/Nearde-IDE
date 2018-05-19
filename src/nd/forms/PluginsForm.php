@@ -46,6 +46,49 @@ class PluginsForm extends AbstractForm
             $this->checkbox->selected = !$s;
         }
     }
+
+    /**
+     * @event button.action 
+     */
+    function doButtonAction(UXEvent $e = null)
+    {    
+        $this->zipChooser->execute();
+        $file = $this->zipChooser->file;
+        if (!$file) {
+            IDE::dialog("Файл не выбран.");
+            return;
+        }
+        
+        $tempDir = fs::abs("./plugins/temp/" . substr(md5(Time::now()), 5));
+        fs::makeDir($tempDir);
+        if (!IDE::unpackDialog((string) $file, $tempDir)) return;
+        
+        if (!fs::exists($tempDir . "/.ndp"))
+        {
+            IDE::dialog("Архив не является плагином для " . IDE::get()->getName());
+            FileUtils::delete($tempDir);
+            return;
+        }
+        
+        $ini = new IniStorage(fs::abs($tempDir . "/.ndp"));
+        
+        $pluginData = $ini->toArray()[''];
+        $pluginDir = fs::abs("./plugins/" . $pluginData['dir']);
+        if (fs::exists($pluginDir)) {
+            IDE::dialog("Плагин уже установлен.");
+            FileUtils::delete($tempDir);
+            return;
+        }
+        
+        fs::makeDir($pluginDir);
+        FileUtils::copy($tempDir, $pluginDir);
+        FileUtils::delete($tempDir);
+        $json = Json::fromFile("./plugins/plugins.json");
+        $json[strtoupper($pluginData['dir'])] = $pluginData;
+        Json::toFile("./plugins/plugins.json", $json);
+        
+        IDE::dialog("Плагин успешно установлен! Для его активации нужно перезагрузить " . IDE::get()->getName());
+    }
     
     public function showPluginInfo(Plugin $plugin, string $name)
     {
@@ -53,7 +96,8 @@ class PluginsForm extends AbstractForm
         $this->panel->visible = true;
         $this->name->text = "Имя : " . $plugin->getName();
         $this->author->text = "Автор : " . $plugin->getAuthor();
-        $this->desc->text = "Описание : " .$plugin->getDscription();
+        $this->version->text = "Версия : " . $plugin->getVersion();
+        $this->desc->text = "Описание : " . $plugin->getDscription();
         $this->checkbox->selected = !IDE::get()->getPluginsManger()->getOfflineForPlugin($name);
     }
 

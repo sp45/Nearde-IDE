@@ -27,6 +27,11 @@ class jppmPlugin extends Plugin
         return "MWStudio";
     }
     
+    public function getVersion()
+    {
+        return '1.0';
+    }
+    
     public function onIDEStarting()
     {
         if (!IDE::get()->getPluginsManger()->getPlugin("PHP"))

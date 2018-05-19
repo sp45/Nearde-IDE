@@ -79,6 +79,11 @@ class fileFormat
         $this->templats[] = $item;
     }
     
+    public function registerLang4ext(string $ext, string $lang)
+    {
+        $this->formats[$ext] = $lang;
+    }
+    
     public function getFileTemplats($path)
     {
         $list = $this->templats;

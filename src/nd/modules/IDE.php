@@ -116,6 +116,14 @@ class IDE extends AbstractModule
     }
     
     /**
+     * @return bool 
+     */
+    public static function unpackDialog(string $zip, string $dir)
+    {
+        return IDE::getFormManger()->getForm("UnpackDialog")->unpack($zip, $dir);
+    }
+    
+    /**
      * @return Process
      */
     public static function createProcess($shell, $path)

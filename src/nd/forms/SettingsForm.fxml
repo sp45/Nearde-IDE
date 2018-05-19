@@ -6,7 +6,7 @@
         <Font name="System Regular" size="12"/>
       </font>
     </ImageViewEx>
-    <ListViewEx AnchorPane.bottomAnchor="8" AnchorPane.topAnchor="8" editable="false" fixedCellSize="-1" focusTraversable="true" id="listView" layoutX="8" layoutY="8" prefHeight="440" prefWidth="240" styleClass="list-view ">
+    <ListViewEx AnchorPane.bottomAnchor="16" AnchorPane.topAnchor="16" editable="false" fixedCellSize="-1" focusTraversable="true" id="listView" layoutX="16" layoutY="16" prefHeight="464" prefWidth="232" styleClass="list-view ">
       <items xmlns:fx="http://javafx.com/fxml">
         <FXCollections fx:factory="observableArrayList"/>
       </items>

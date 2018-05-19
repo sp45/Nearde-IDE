@@ -10,11 +10,5 @@
     "file": "jppmPlugin.php",
     "class": "plugins\\jppm\\jppmPlugin",
     "offline": false
-  },
-  "WEB": {
-    "dir": "web",
-    "file": "webPlugin.php",
-    "class": "plugins\\web\\webPlugin",
-    "offline": false
   }
 }

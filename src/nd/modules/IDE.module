@@ -1,6 +1,18 @@
 {
   "props": [],
   "components": {
+    "zipChooser": {
+      "type": "script\\FileChooserScript",
+      "x": 176,
+      "y": 16,
+      "props": {
+        "filterName": "Все файлы",
+        "filterExtensions": "*.zip",
+        "filterAny": "0",
+        "inputNode": "",
+        "actionNode": ""
+      }
+    },
     "dirChooser": {
       "type": "script\\DirectoryChooserScript",
       "x": 16,

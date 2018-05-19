@@ -27,6 +27,11 @@ class jphpPlugin extends Plugin
         return "MWStudio";
     }
     
+    public function getVersion()
+    {
+        return '1.0';
+    }
+    
     public function onIDEStarting()
     {
         /** @var fileFormat $format */
