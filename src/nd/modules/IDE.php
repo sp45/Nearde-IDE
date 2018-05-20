@@ -120,7 +120,7 @@ class IDE extends AbstractModule
      */
     public static function unpackDialog(string $zip, string $dir)
     {
-        return IDE::getFormManger()->getForm("UnpackDialog")->unpack($zip, $dir, false);
+        return IDE::getFormManger()->getForm("ProgressDialog")->unpack($zip, $dir, false);
     }
     
     /**

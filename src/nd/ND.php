@@ -11,7 +11,7 @@ use nd;
 
 class ND 
 {
-    private $version = "2.0 beta build 34";
+    private $version = "2.0 beta build 35";
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath = "./config.json";
@@ -71,7 +71,7 @@ class ND
         $this->formManger->registerForm("InputDialog", InputDialogForm::class);
         $this->formManger->registerForm("ConfirmDialog", ConfirmDialogForm::class);
         $this->formManger->registerForm("Dialog", DialogForm::class);
-        $this->formManger->registerForm("UnpackDialog", UnpackDialogForm::class);
+        $this->formManger->registerForm("ProgressDialog", ProgressDialogForm::class);
         
         // froms for settings form :D
         $this->formManger->registerSettingForm("Основные", NeardeSettingsForm::class);

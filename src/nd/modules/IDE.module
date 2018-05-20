@@ -3,11 +3,11 @@
   "components": {
     "zipChooser": {
       "type": "script\\FileChooserScript",
-      "x": 80.0,
+      "x": 80,
       "y": 16,
       "props": {
         "filterName": "Плагины для ND CORE",
-        "filterExtensions": "*.zip *.ndp",
+        "filterExtensions": "*.zip",
         "filterAny": false,
         "inputNode": "",
         "actionNode": ""

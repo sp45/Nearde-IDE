@@ -55,7 +55,7 @@ class PluginsForm extends AbstractForm
         $this->zipChooser->execute();
         $file = $this->zipChooser->file;
         if (!$file) {
-            IDE::dialog("Файл не выбран.");
+            IDE::dialog("Файл не выбран");
             return;
         }
         
@@ -75,10 +75,25 @@ class PluginsForm extends AbstractForm
         $pluginData = $ini->toArray()[''];
         $pluginDir = fs::abs("./plugins/" . $pluginData['dir']);
         if (fs::exists($pluginDir)) {
-            IDE::dialog("Плагин уже установлен.");
-            FileUtils::delete($tempDir);
-            return;
+            $oldVersion = new IniStorage($pluginDir . '/.ndp')->toArray()['']['version'];
+            if ($oldVersion != $pluginData['version'])
+            {
+                if (IDE::confirmDialog("Заменить другой версиеяй (" . $oldVersion . " => ". $pluginData['version'] . ") ?"))
+                {
+                    FileUtils::delete($pluginDir);
+                    goto copyPlugin;
+                } else {
+                    FileUtils::delete($tempDir);
+                    return;
+                }
+            } else {
+                IDE::dialog("Данный плагин уже установлен");
+                FileUtils::delete($tempDir);
+                return;
+            }
         }
+        
+        copyPlugin:
         
         fs::makeDir($pluginDir);
         FileUtils::copy($tempDir, $pluginDir);

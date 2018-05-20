@@ -58,30 +58,30 @@ class ProjectForm extends AbstractForm
         
         $projectMenu = new UXMenu("Проект");
         $projectMenu->items->addAll([
-            NDTreeContextMenu::createItem("Новый проект.", IDE::ico("newFile.png"), function () {
+            NDTreeContextMenu::createItem("Новый проект", IDE::ico("newFile.png"), function () {
                 $this->hide();
                 IDE::getFormManger()->getForm('NewProject')->show();
             }),
             
-            NDTreeContextMenu::createItem("Открыть проект.", IDE::ico("folder.png"), function () {
+            NDTreeContextMenu::createItem("Открыть проект", IDE::ico("folder.png"), function () {
                 $this->hide();
                 IDE::getFormManger()->getForm('OpenProject')->show();
             }),
             
             UXMenuItem::createSeparator(),
             
-            NDTreeContextMenu::createItem("Закрыть проект.", IDE::ico("close16.png"), function () {
+            NDTreeContextMenu::createItem("Закрыть проект", null, function () {
                 $this->hide();
                 IDE::getFormManger()->getForm('Main')->show();
             }),
             
-            NDTreeContextMenu::createItem("Открыть папку проекта.", IDE::ico("folder.png"), function () {
+            NDTreeContextMenu::createItem("Открыть папку проекта", IDE::ico("folder.png"), function () {
                 open($this->project->getPath());
             }),
             
             UXMenuItem::createSeparator(),
             
-            NDTreeContextMenu::createItem("Выход из IDE.", IDE::ico("close16.png"), function () {
+            NDTreeContextMenu::createItem("Выход из IDE", null, function () {
                 app()->shutdown();
             }),
         ]);
@@ -91,14 +91,14 @@ class ProjectForm extends AbstractForm
         
         if ($this->template->getCommand("run"))
         {
-            $runMenu->items->add(NDTreeContextMenu::createItem("Запустить проект.", IDE::ico("run16.png"), function () {
+            $runMenu->items->add(NDTreeContextMenu::createItem("Запустить проект", IDE::ico("run16.png"), function () {
                 $this->executeCommand($this->template->getCommand("run"));
             }));
         } 
         
         if ($this->template->getCommand("build"))
         {
-            $runMenu->items->add(NDTreeContextMenu::createItem("Собрать проект.", IDE::ico("build16.png"), function () {
+            $runMenu->items->add(NDTreeContextMenu::createItem("Собрать проект", IDE::ico("compile16.png"), function () {
                 $this->executeCommand($this->template->getCommand("build"));
             }));
         }
@@ -108,7 +108,7 @@ class ProjectForm extends AbstractForm
             $json = Json::fromFile(fs::abs($this->project->getPath() . "/.nd/tasks.json"));
             foreach ($json as $task)
             {
-                $runMenu->items->add(NDTreeContextMenu::createItem($task['name'], IDE::ico("bat16.png"), function () use ($task) {
+                $runMenu->items->add(NDTreeContextMenu::createItem($task['name'], null, function () use ($task) {
                     $this->executeCommand(IDE::createProcess($task['shell'], $this->project->getPath())->start());
                 }));
             }

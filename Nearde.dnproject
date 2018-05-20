@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1526740431068">
+<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1526835402981">
   <tree>
     <expanded>
     <path src=""/>
+      <path src="/plugins"/>
       <path src="/src"/>
       <path src="/src/nd"/>
+      <path src="/src/nd/forms"/>
+      <path src="/src/nd/ui"/>
     </expanded>
   </tree>
   <openedFiles>
   <file src="Nearde.dnproject"/>
     <file src="src/nd/forms/ProjectForm.php"/>
-    <file selected="1" src="src/nd/ND.php"/>
+    <file src="src/nd/ND.php"/>
     <file src="plugins/jppm/classes/JPHPConsoleProjectTemplate.php"/>
     <file src="src/nd/forms/PluginsForm.php"/>
     <file src="src/nd/ui/NDCode.php"/>
     <file src="src/nd/forms/MainForm.php"/>
     <file src="src/nd/formats/files/fileFormat.php"/>
     <file src="src/nd/forms/NewProjectForm.php"/>
-    <file src="src/nd/modules/IDE.php"/>
+    <file selected="1" src="src/nd/modules/IDE.php"/>
     <file src="src/nd/forms/TreeDialogForm.php"/>
     <file src="src/nd/forms/InputDialogForm.php"/>
     <file src="src/nd/utils/FileUtils.php"/>
@@ -28,9 +31,6 @@
     <file src="src/nd/modules/AppModule.php"/>
     <file src="src/nd/utils/pluginsManger.php"/>
     <file src="src/nd/Plugin.php"/>
-    <file src="src/nd/forms/CodeEditorSettingsForm.php"/>
-    <file src="src/nd/forms/ConfirmDialogForm.php"/>
-    <file src="src/nd/forms/DialogForm.php"/>
     <file src="src/nd/utils/formManger.php"/>
     <file src="src/nd/ui/NDTreeValue.php"/>
     <file src="src/nd/ui/NDTreeContextMenu.php"/>
@@ -41,7 +41,7 @@
     <file src="plugins/jppm/forms/JPPMAddPackageForm.php"/>
     <file src="src/nd/external/EmptyProjectTemplate.php"/>
     <file src="src/nd/external/ProjectEditor.php"/>
-    <file src="src/nd/forms/UnpackDialogForm.php"/>
+    <file src="src/nd/forms/ProgressDialogForm.php"/>
   </openedFiles>
   <files/>
   <behaviours>

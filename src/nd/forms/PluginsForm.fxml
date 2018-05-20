@@ -43,7 +43,7 @@
             <Font name="Source Sans Pro SemiBold" size="12"/>
           </font>
         </Button>
-        <Data cursor="DEFAULT" enabled="1" id="data-buttonAlt" visible="1"/>
+        <Data cursor="DEFAULT" enabled="1" graphic="" id="data-buttonAlt" visible="1"/>
       </children>
       <titleFont>
         <Font name="Source Sans Pro Regular" size="12"/>
@@ -57,7 +57,7 @@
       </items>
     </ListViewEx>
     <Data cursor="DEFAULT" enabled="1" id="data-listView" visible="1"/>
-    <Button AnchorPane.bottomAnchor="7" AnchorPane.leftAnchor="280" AnchorPane.rightAnchor="8" alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button" layoutX="280" layoutY="457" prefHeight="32" prefWidth="248" styleClass="button accent-btn " text="Добавить новый." textAlignment="CENTER" underline="false" wrapText="false">
+    <Button AnchorPane.bottomAnchor="7" AnchorPane.leftAnchor="280" AnchorPane.rightAnchor="8" alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button" layoutX="280" layoutY="457" prefHeight="32" prefWidth="248" styleClass="button accent-btn " text="Добавить новый" textAlignment="CENTER" underline="false" wrapText="false">
       <font>
         <Font name="Source Sans Pro SemiBold" size="12"/>
       </font>

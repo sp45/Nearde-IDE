@@ -1,14 +1,3 @@
 {
-  "PHP": {
-    "dir": "jphp",
-    "file": "jphpPlugin.php",
-    "class": "plugins\\jphp\\jphpPlugin",
-    "offline": false
-  },
-  "JPPM": {
-    "dir": "jppm",
-    "file": "jppmPlugin.php",
-    "class": "plugins\\jppm\\jppmPlugin",
-    "offline": false
-  }
+  
 }

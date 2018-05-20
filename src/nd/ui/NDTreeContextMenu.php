@@ -22,7 +22,7 @@ class NDTreeContextMenu extends UXContextMenu
     {
         $this->items->addAll([
             $this->createMenuItem("Создать", IDE::ico("newFile.png"), IDE::get()->getFileFormat()->getFileTemplats($path)),
-            $this->createItem("Создать папку.", IDE::ico("folderAdd16.png"), function ($item) use ($path) {
+            $this->createItem("Создать папку", IDE::ico("folderAdd16.png"), function ($item) use ($path) {
                 $name = IDE::inputDialog("Ввидите название новой папки.");
                 
                 if (fs::isDir($path))
@@ -37,7 +37,7 @@ class NDTreeContextMenu extends UXContextMenu
                     IDE::dialog("Не удалось создать папку : " . fs::abs($path));
                 }
             }),
-            $this->createItem("Удалить.", IDE::ico("fileDelete16.png"), function ($item) use ($path) {
+            $this->createItem("Удалить", IDE::ico("fileDelete16.png"), function ($item) use ($path) {
                 if (fs::isFile($path))
                 {
                     if (!fs::delete($path))
@@ -51,16 +51,16 @@ class NDTreeContextMenu extends UXContextMenu
                     }
                 }
             }),
-            $this->createItem("Открыть.", IDE::ico("folder.png"), function ($item) use ($path) {
+            $this->createItem("Показать в папке", IDE::ico("folder.png"), function ($item) use ($path) {
                 new UXDesktop->open($path);
             }),
-            $this->createItem("Скопировать путь.", IDE::ico("clipboard.png"), function ($item) use ($path) {
+            $this->createItem("Скопировать путь", IDE::ico("clipboard.png"), function ($item) use ($path) {
                 UXClipboard::setText($path);
             })
         ]);
     }
     
-    public static function createItem(string $name, UXImageView $img, callable $callback)
+    public static function createItem(string $name, $img, callable $callback)
     {
         $item = new UXMenuItem($name);
         $item->graphic = $img;
@@ -71,7 +71,7 @@ class NDTreeContextMenu extends UXContextMenu
         return $item;
     }
     
-    public static function createMenuItem(string $name, UXImageView $img, array $items)
+    public static function createMenuItem(string $name, $img, array $items)
     {
         $menu = new UXMenu($name);
         $menu->graphic = $img;
