@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1526727129113">
+<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1526740431068">
   <tree>
     <expanded>
     <path src=""/>

@@ -120,7 +120,7 @@ class IDE extends AbstractModule
      */
     public static function unpackDialog(string $zip, string $dir)
     {
-        return IDE::getFormManger()->getForm("UnpackDialog")->unpack($zip, $dir);
+        return IDE::getFormManger()->getForm("UnpackDialog")->unpack($zip, $dir, false);
     }
     
     /**
@@ -131,5 +131,19 @@ class IDE extends AbstractModule
         if (IDE::isWin()) $prefix = "cmd.exe /c";
 
         return new Process(explode(" ", trim($prefix . " " . $shell)), $path);
+    }
+    
+    public static function restart()
+    {
+        $path = substr($GLOBALS['argv'][0], '1');
+        if (str::endsWith($path, '/lib/jphp-core.jar'))
+        {
+            Logger::error(IDE::get()->getName() . " Runing in another IDE.");
+            exit(-1);
+        }
+        
+        IDE::createProcess("java -jar " . fs::name($path), fs::parent($path))->start();
+        Logger::info(IDE::get()->getName() . "Restarting ...");
+        exit(0);
     }
 }

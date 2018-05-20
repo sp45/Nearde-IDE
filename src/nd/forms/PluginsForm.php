@@ -88,6 +88,23 @@ class PluginsForm extends AbstractForm
         Json::toFile("./plugins/plugins.json", $json);
         
         IDE::dialog("Плагин успешно установлен! Для его активации нужно перезагрузить " . IDE::get()->getName());
+        if (IDE::confirmDialog("Перезапустить " . IDE::get()->getName() . " ?"))
+            IDE::restart();
+    }
+
+    /**
+     * @event buttonAlt.action 
+     */
+    function doButtonAltAction(UXEvent $e = null)
+    {    
+        if (!IDE::confirmDialog("Точно удалить плагин ?")) return;
+        $json = Json::fromFile("./plugins/plugins.json");
+        FileUtils::delete("./plugins/" . $json[$this->selectedPlugin]['dir']);
+        unset($json[$this->selectedPlugin]);
+        Json::toFile("./plugins/plugins.json", $json);
+        IDE::dialog("Плагин {$this->selectedPlugin} успешно удалён. Для продолжение работы нужно перезапустить " . IDE::get()->getName());
+        if (IDE::confirmDialog("Перезапустить " . IDE::get()->getName() . " ?"))
+            IDE::restart();
     }
     
     public function showPluginInfo(Plugin $plugin, string $name)

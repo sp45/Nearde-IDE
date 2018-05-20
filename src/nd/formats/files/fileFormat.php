@@ -81,7 +81,7 @@ class fileFormat
     
     public function registerLang4ext(string $ext, string $lang)
     {
-        $this->formats[$ext] = $lang;
+        $this->ext4lang[$ext] = $lang;  // fix bug
     }
     
     public function getFileTemplats($path)

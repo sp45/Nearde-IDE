@@ -11,7 +11,7 @@ use nd;
 
 class ND 
 {
-    private $version = "2.0 beta build 33";
+    private $version = "2.0 beta build 34";
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath = "./config.json";
