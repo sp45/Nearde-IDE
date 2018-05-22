@@ -6,6 +6,10 @@ use std, gui, framework, nd;
 
 class IDE extends AbstractModule
 {
+
+    /**
+     * return UXImageView
+     */
     public static function ico($name)
     {
         return self::image("res://.data/img/" . $name);
@@ -124,6 +128,14 @@ class IDE extends AbstractModule
     }
     
     /**
+     * @return bool 
+     */
+    public static function downloadDialog(string $url, string $to)
+    {
+        return IDE::getFormManger()->getForm("ProgressDialog")->download($url, $to);
+    }
+    
+    /**
      * @return Process
      */
     public static function createProcess($shell, $path)
@@ -146,4 +158,36 @@ class IDE extends AbstractModule
         Logger::info(IDE::get()->getName() . "Restarting ...");
         exit(0);
     }
+    
+    /**
+     * @return array 
+     */
+    public static function githubApiQueryGET(string $query, $data = null)
+    {
+        $res = app()->module("IDE")->githubClient->get($query, $data);
+        echo "[INFO][GITHUB][GET] Server code : " . $res->statusCode() . "\n";
+        return $res->body();
+    }
+    
+    public static function cleanPluginsTemp()
+    {
+        FileUtils::delete("./plugins/temp/");
+        fs::makeDir("./plugins/temp/");
+    }
+    
+    function setBorderRadius($element, $radius) 
+    {
+        // функция от TsSaltan
+        $rect = new UXRectangle;
+        $rect->width = $element->width;
+        $rect->height = $element->height;
+        $rect->arcWidth = $radius * 2;
+        $rect->arcHeight = $radius * 2;
+        $element->clip = $rect;
+        $circledImage = $element->snapshot();
+        $element->clip = NULL;
+        $rect->free();
+        $element->image = $circledImage;
+    }
+    
 }

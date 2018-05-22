@@ -1,6 +1,5 @@
 <?php
 namespace nd;
-
 use gui;
 use facade\Json;
 use php\desktop\Runtime;
@@ -8,10 +7,9 @@ use std;
 use Error;
 use framework;
 use nd;
-
 class ND 
 {
-    private $version = "2.0 beta build 35";
+    private $version = "2.0 beta build 36";
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath = "./config.json";
@@ -72,6 +70,7 @@ class ND
         $this->formManger->registerForm("ConfirmDialog", ConfirmDialogForm::class);
         $this->formManger->registerForm("Dialog", DialogForm::class);
         $this->formManger->registerForm("ProgressDialog", ProgressDialogForm::class);
+        $this->formManger->registerForm("GithubPluginParser", GithubPluginParserForm::class);
         
         // froms for settings form :D
         $this->formManger->registerSettingForm("Основные", NeardeSettingsForm::class);

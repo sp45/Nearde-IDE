@@ -50,13 +50,16 @@ class PluginsForm extends AbstractForm
     /**
      * @event button.action 
      */
-    function doButtonAction(UXEvent $e = null)
+    function installPlugin($file = null)
     {    
-        $this->zipChooser->execute();
-        $file = $this->zipChooser->file;
-        if (!$file) {
-            IDE::dialog("Файл не выбран");
-            return;
+        if ($file == "NaN") return;
+        if (is_object($file)) $file = null; // event блэт
+        
+        if (!$file)
+        {
+            $this->zipChooser->execute();
+            $file = $this->zipChooser->file;
+            if (!$file) return;
         }
         
         $tempDir = fs::abs("./plugins/temp/" . substr(md5(Time::now()), 5));
@@ -66,7 +69,7 @@ class PluginsForm extends AbstractForm
         if (!fs::exists($tempDir . "/.ndp"))
         {
             IDE::dialog("Архив не является плагином для " . IDE::get()->getName());
-            FileUtils::delete($tempDir);
+            IDE::cleanPluginTemp();
             return;
         }
         
@@ -83,12 +86,12 @@ class PluginsForm extends AbstractForm
                     FileUtils::delete($pluginDir);
                     goto copyPlugin;
                 } else {
-                    FileUtils::delete($tempDir);
+                    IDE::cleanPluginsTemp();
                     return;
                 }
             } else {
                 IDE::dialog("Данный плагин уже установлен");
-                FileUtils::delete($tempDir);
+                IDE::cleanPluginsTemp();
                 return;
             }
         }
@@ -97,7 +100,7 @@ class PluginsForm extends AbstractForm
         
         fs::makeDir($pluginDir);
         FileUtils::copy($tempDir, $pluginDir);
-        FileUtils::delete($tempDir);
+        IDE::cleanPluginsTemp();
         $json = Json::fromFile("./plugins/plugins.json");
         $json[strtoupper($pluginData['dir'])] = $pluginData;
         Json::toFile("./plugins/plugins.json", $json);
@@ -120,6 +123,15 @@ class PluginsForm extends AbstractForm
         IDE::dialog("Плагин {$this->selectedPlugin} успешно удалён. Для продолжение работы нужно перезапустить " . IDE::get()->getName());
         if (IDE::confirmDialog("Перезапустить " . IDE::get()->getName() . " ?"))
             IDE::restart();
+    }
+
+    /**
+     * @event button3.action 
+     */
+    function doButton3Action(UXEvent $e = null)
+    {    
+        $file = IDE::getFormManger()->getForm("GithubPluginParser")->parse();
+        $this->installPlugin($file);
     }
     
     public function showPluginInfo(Plugin $plugin, string $name)

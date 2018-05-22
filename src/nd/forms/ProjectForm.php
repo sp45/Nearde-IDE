@@ -115,6 +115,10 @@ class ProjectForm extends AbstractForm
         }
         
         $menuBar->menus->add($runMenu);
+        
+        foreach (IDE::get()->getProjectManger()->getGlobalMenus() as $menu)
+            $menuBar->menus->add($menu);
+        
         $this->add($menuBar);
         
         $this->mainSplit = new UXSplitPane;

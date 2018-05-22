@@ -10,6 +10,8 @@ class projectManger
     
     private $gunters;
     
+    private $menus;
+    
     public function registerTemplate(String $name, $class)
     {
         if ($this->templates[$name]) return;
@@ -44,5 +46,17 @@ class projectManger
     public function getGlobalGunters()
     {
         return $this->gunters;
+    } 
+    
+    public function regiserGlobalMenu(string $name, UXMenu $menu)
+    {
+        if ($this->menus[$name]) return;
+        
+        $this->menus[$name] = $menu;
+    }
+    
+    public function getGlobalMenus()
+    {
+        return $this->menus;
     }
 }
