@@ -9,7 +9,7 @@ use framework;
 use nd;
 class ND 
 {
-    private $version = "2.0 beta build 36";
+    private $version = "2.0 beta build 37";
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath = "./config.json";

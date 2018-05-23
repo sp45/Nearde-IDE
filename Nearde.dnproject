@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1527016490827">
+<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1527016944507">
   <tree>
     <expanded>
     <path src=""/>
+      <path src="/build"/>
+      <path src="/build/dist"/>
       <path src="/plugins"/>
       <path src="/src"/>
       <path src="/src/nd"/>

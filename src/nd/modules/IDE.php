@@ -47,19 +47,27 @@ class IDE extends AbstractModule
                 $titleName = new UXLabel($item[0]);
                 $titleName->style = '-fx-font-weight: bold;';
              
-                $titleDescription = new UXLabel($item[1]);
-                $titleDescription->opacity = 0.7;
+                if ($item[1])
+                {
+                    $titleDescription = new UXLabel($item[1]);
+                    $titleDescription->opacity = 0.7;
+                }
                 
-                $cell->observer("width")->addListener(function ($old, $new) use ($titleDescription) {
+                $cell->observer("width")->addListener(function ($old, $new) use ($titleDescription, $item) {
                     if ($old == $new) return;
-                    
-                    $titleDescription->maxWidth = $new - 63;
+                    if ($item[1])
+                        $titleDescription->maxWidth = $new - 63;
                 });
-             
-                $title  = new UXVBox([$titleName, $titleDescription]);
-                $title->spacing = 0;
-               
-                $line = new UXHBox([$item[2], $title]);
+                
+                if ($titleDescription)
+                {
+                    $title  = new UXVBox([$titleName, $titleDescription]);
+                    $title->spacing = 0;
+                }
+                
+                if ($titleDescription)
+                    $line = new UXHBox([$item[2], $title]);
+                else $line = new UXHBox([$item[2], $titleName]);
                 $line->spacing = 7;
                 $line->padding = 5;
                 $line->on('click', function (UXMouseEvent $e) use ($item) {
