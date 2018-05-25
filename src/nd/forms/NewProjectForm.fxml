@@ -9,7 +9,7 @@
     <Data cursor="DEFAULT" enabled="1" id="data-image" image=".data/img/if_page_white_edit_36279(1).png" visible="1"/>
     <LabelEx alignment="CENTER_LEFT" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="label" layoutX="72" layoutY="30" prefHeight="25" prefWidth="160" styleClass="label " text="Новый проект." textAlignment="LEFT" underline="false" wrapText="false">
       <font>
-        <Font name="Source Sans Pro Regular" size="12"/>
+        <Font name="System Regular" size="12"/>
       </font>
     </LabelEx>
     <Data cursor="DEFAULT" enabled="1" id="data-label" visible="1"/>
@@ -17,7 +17,7 @@
     <Data cursor="DEFAULT" enabled="1" id="data-separator" visible="1"/>
     <TextField alignment="CENTER_LEFT" editable="true" focusTraversable="true" id="edit" layoutX="24" layoutY="80" prefColumnCount="12" prefHeight="32" prefWidth="504" promptText="Название проекта." styleClass="text-input text-field " text="">
       <font>
-        <Font name="Source Sans Pro Regular" size="12"/>
+        <Font name="System Regular" size="12"/>
       </font>
     </TextField>
     <Data cursor="DEFAULT" enabled="1" id="data-edit" visible="1"/>
@@ -29,13 +29,13 @@
     <Data cursor="DEFAULT" enabled="1" id="data-listView" visible="1"/>
     <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="button" layoutX="432" layoutY="416" prefHeight="32" prefWidth="96" styleClass="button accent-btn " text="Создать" textAlignment="CENTER" underline="false" wrapText="false">
       <font>
-        <Font name="Source Sans Pro SemiBold" size="12"/>
+        <Font name="System Regular" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="" graphic=".data/img/newFile.png" id="data-button" visible="1"/>
     <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" id="buttonAlt" layoutX="336" layoutY="416" prefHeight="32" prefWidth="80" styleClass="button warning-btn " text="Отмена" textAlignment="CENTER" underline="false" wrapText="false">
       <font>
-        <Font name="Source Sans Pro SemiBold" size="12"/>
+        <Font name="System Regular" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" id="data-buttonAlt" visible="1"/>

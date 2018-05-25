@@ -5,8 +5,13 @@ use Error;
 use std, gui, framework, nd;
 
 
-class NeardeSettingsForm extends AbstractForm
+class NeardeSettingsForm extends AbstarctIDEForm
 {
+    private $theme = [
+        'Светлая' => 'light',
+        'Тёмная' => 'dark',
+    ];
+    
     /**
      * @event button.action 
      */
@@ -14,7 +19,13 @@ class NeardeSettingsForm extends AbstractForm
     {    
         $config = IDE::get()->getConfig();
         $config['settings']['projectPath'] = $this->edit->text;
+        $t = $config['settings']['style'];
+        $config['settings']['style'] = $this->theme[$this->combobox->value];
         IDE::get()->toConfig($config);
+        
+        if ($this->theme[$this->combobox->value] != $t)
+            if (IDE::confirmDialog("Тема изменена, перезапустить IDE ?"))
+                IDE::restart();
     }
 
     /**
@@ -24,6 +35,10 @@ class NeardeSettingsForm extends AbstractForm
     {    
         $config = IDE::get()->getConfig();
         $this->edit->text = $config['settings']['projectPath'];
+        if ($config['settings']['style'] == 'light')
+        {
+            $this->combobox->value = 'Светлая';
+        } else $this->combobox->value = 'Тёмная';
     }
 
     /**

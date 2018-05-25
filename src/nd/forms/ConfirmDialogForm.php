@@ -4,7 +4,7 @@ namespace nd\forms;
 use std, gui, framework, nd;
 
 
-class ConfirmDialogForm extends AbstractForm
+class ConfirmDialogForm extends AbstarctIDEForm
 {
 
     private $res = false;

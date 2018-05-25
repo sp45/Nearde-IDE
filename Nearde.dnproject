@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1527016944507">
+<project author="Пользователь" authorOS="Windows 7" createdAt="1524241803620" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="Nearde" packageName="nd" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1527252101941">
   <tree>
     <expanded>
     <path src=""/>
-      <path src="/build"/>
-      <path src="/build/dist"/>
       <path src="/plugins"/>
       <path src="/src"/>
+      <path src="/src/.theme"/>
       <path src="/src/nd"/>
       <path src="/src/nd/formats"/>
       <path src="/src/nd/forms"/>
+      <path src="/src/nd/modules"/>
       <path src="/src/nd/ui"/>
       <path src="/src/nd/utils"/>
       <path src="/vendor"/>
@@ -17,7 +17,7 @@
   </tree>
   <openedFiles>
   <file src="Nearde.dnproject"/>
-    <file selected="1" src="src/nd/forms/ProjectForm.php"/>
+    <file src="src/nd/forms/ProjectForm.php"/>
     <file src="src/nd/ND.php"/>
     <file src="src/nd/forms/PluginsForm.php"/>
     <file src="src/nd/ui/NDCode.php"/>
@@ -26,7 +26,6 @@
     <file src="src/nd/forms/NewProjectForm.php"/>
     <file src="src/nd/modules/IDE.php"/>
     <file src="src/nd/forms/TreeDialogForm.php"/>
-    <file src="src/nd/forms/InputDialogForm.php"/>
     <file src="src/nd/utils/FileUtils.php"/>
     <file src="src/nd/projectTemplate.php"/>
     <file src="src/nd/utils/project.php"/>
@@ -39,12 +38,12 @@
     <file src="src/nd/ui/NDTreeContextMenu.php"/>
     <file src="src/nd/ui/NDTree.php"/>
     <file src="src/nd/ui/NDLog.php"/>
-    <file src="src/nd/forms/SettingsForm.php"/>
-    <file src="src/nd/forms/NeardeSettingsForm.php"/>
-    <file src="src/nd/external/EmptyProjectTemplate.php"/>
-    <file src="src/nd/external/ProjectEditor.php"/>
-    <file src="src/nd/forms/ProgressDialogForm.php"/>
+    <file src="src/.theme/dark.css"/>
+    <file src="src/nd/forms/AbstarctIDEForm.php"/>
     <file src="src/nd/forms/GithubPluginParserForm.php"/>
+    <file src="src/nd/forms/NeardeSettingsForm.php"/>
+    <file src="src/.theme/light.css"/>
+    <file selected="1" src="src/nd/forms/CodeEditorSettingsForm.php"/>
   </openedFiles>
   <files/>
   <behaviours>

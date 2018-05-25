@@ -4,7 +4,7 @@ namespace nd\forms;
 use std, gui, framework, nd;
 
 
-class TreeDialogForm extends AbstractForm
+class TreeDialogForm extends AbstarctIDEForm
 {
     /**
      * @var NDTree

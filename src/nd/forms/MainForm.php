@@ -6,7 +6,7 @@ use facade\Json;
 use std, gui, framework, nd;
 
 
-class MainForm extends AbstractForm
+class MainForm extends AbstarctIDEForm
 {
 
     /**

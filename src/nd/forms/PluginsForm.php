@@ -5,7 +5,7 @@ use facade\Json;
 use std, gui, framework, nd;
 
 
-class PluginsForm extends AbstractForm
+class PluginsForm extends AbstarctIDEForm
 {
 
     private $selectedPlugin;
@@ -62,52 +62,8 @@ class PluginsForm extends AbstractForm
             if (!$file) return;
         }
         
-        $tempDir = fs::abs("./plugins/temp/" . substr(md5(Time::now()), 5));
-        fs::makeDir($tempDir);
-        if (!IDE::unpackDialog((string) $file, $tempDir)) return;
-        
-        if (!fs::exists($tempDir . "/.ndp"))
-        {
-            IDE::dialog("Архив не является плагином для " . IDE::get()->getName());
-            IDE::cleanPluginTemp();
-            return;
-        }
-        
-        $ini = new IniStorage(fs::abs($tempDir . "/.ndp"));
-        
-        $pluginData = $ini->toArray()[''];
-        $pluginDir = fs::abs("./plugins/" . $pluginData['dir']);
-        if (fs::exists($pluginDir)) {
-            $oldVersion = new IniStorage($pluginDir . '/.ndp')->toArray()['']['version'];
-            if ($oldVersion != $pluginData['version'])
-            {
-                if (IDE::confirmDialog("Заменить другой версиеяй (" . $oldVersion . " => ". $pluginData['version'] . ") ?"))
-                {
-                    FileUtils::delete($pluginDir);
-                    goto copyPlugin;
-                } else {
-                    IDE::cleanPluginsTemp();
-                    return;
-                }
-            } else {
-                IDE::dialog("Данный плагин уже установлен");
-                IDE::cleanPluginsTemp();
-                return;
-            }
-        }
-        
-        copyPlugin:
-        
-        fs::makeDir($pluginDir);
-        FileUtils::copy($tempDir, $pluginDir);
-        IDE::cleanPluginsTemp();
-        $json = Json::fromFile("./plugins/plugins.json");
-        $json[strtoupper($pluginData['dir'])] = $pluginData;
-        Json::toFile("./plugins/plugins.json", $json);
-        
-        IDE::dialog("Плагин успешно установлен! Для его активации нужно перезагрузить " . IDE::get()->getName());
-        if (IDE::confirmDialog("Перезапустить " . IDE::get()->getName() . " ?"))
-            IDE::restart();
+        if (IDE::installPlugin($file, "windows"))
+                IDE::restart();
     }
 
     /**
@@ -120,9 +76,8 @@ class PluginsForm extends AbstractForm
         FileUtils::delete("./plugins/" . $json[$this->selectedPlugin]['dir']);
         unset($json[$this->selectedPlugin]);
         Json::toFile("./plugins/plugins.json", $json);
-        IDE::dialog("Плагин {$this->selectedPlugin} успешно удалён. Для продолжение работы нужно перезапустить " . IDE::get()->getName());
-        if (IDE::confirmDialog("Перезапустить " . IDE::get()->getName() . " ?"))
-            IDE::restart();
+        IDE::dialog("Плагин {$this->selectedPlugin} успешно удалён.");
+        IDE::restart();
     }
 
     /**
@@ -138,6 +93,7 @@ class PluginsForm extends AbstractForm
     {
         $this->selectedPlugin = $name;
         $this->panel->visible = true;
+        $this->image->visible = false;
         $this->name->text = "Имя : " . $plugin->getName();
         $this->author->text = "Автор : " . $plugin->getAuthor();
         $this->version->text = "Версия : " . $plugin->getVersion();

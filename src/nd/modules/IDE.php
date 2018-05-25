@@ -1,6 +1,7 @@
 <?php
 namespace nd\modules;
 
+use facade\Json;
 use std, gui, framework, nd;
 
 
@@ -183,7 +184,7 @@ class IDE extends AbstractModule
         fs::makeDir("./plugins/temp/");
     }
     
-    function setBorderRadius($element, $radius) 
+    public static function setBorderRadius($element, $radius) 
     {
         // функция от TsSaltan
         $rect = new UXRectangle;
@@ -196,6 +197,66 @@ class IDE extends AbstractModule
         $element->clip = NULL;
         $rect->free();
         $element->image = $circledImage;
+    }
+    
+    public static function installPlugin($file, $mode = "windows")
+    {
+        $tempDir = fs::abs("./plugins/temp/" . substr(md5(Time::now()), 5));
+        fs::makeDir($tempDir);
+        if (!IDE::unpackDialog((string) $file, $tempDir)) return;
+        
+        if (!fs::exists($tempDir . "/.ndp"))
+        {
+            if ($mode == "windows")
+                IDE::dialog("Архив не является плагином для " . IDE::get()->getName());
+            else
+                exit(-1);
+            IDE::cleanPluginTemp();
+            return;
+        }
+        
+        $ini = new IniStorage(fs::abs($tempDir . "/.ndp"));
+        
+        $pluginData = $ini->toArray()[''];
+        $pluginDir = fs::abs("./plugins/" . $pluginData['dir']);
+        if (fs::exists($pluginDir)) {
+            $oldVersion = new IniStorage($pluginDir . '/.ndp')->toArray()['']['version'];
+            if ($oldVersion != $pluginData['version'])
+            {
+                
+                if ($mode != "windows") goto copyPlugin;
+                
+                if (IDE::confirmDialog("Заменить другой версиеяй (" . $oldVersion . " => ". $pluginData['version'] . ") ?"))
+                {
+                    FileUtils::delete($pluginDir);
+                    goto copyPlugin;
+                } else {
+                    IDE::cleanPluginsTemp();
+                    return;
+                }
+            } else {
+                if ($mode == "windows") {
+                    IDE::dialog("Данный плагин уже установлен");
+                    IDE::cleanPluginsTemp();
+                } else {
+                    IDE::cleanPluginsTemp();
+                    exit(-2);
+                }
+                
+                return;
+            }
+        }
+        
+        copyPlugin:
+        
+        fs::makeDir($pluginDir);
+        FileUtils::copy($tempDir, $pluginDir);
+        IDE::cleanPluginsTemp();
+        $json = Json::fromFile("./plugins/plugins.json");
+        $json[strtoupper($pluginData['dir'])] = $pluginData;
+        Json::toFile("./plugins/plugins.json", $json);
+        
+        return true;
     }
     
 }

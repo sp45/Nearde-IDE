@@ -7,7 +7,7 @@ use php\gui\UXRichTextArea;
 use std, gui, framework, nd;
 
 
-class ProjectForm extends AbstractForm
+class ProjectForm extends AbstarctIDEForm
 {
     /**
      * @var project

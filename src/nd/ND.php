@@ -9,7 +9,7 @@ use framework;
 use nd;
 class ND 
 {
-    private $version = "2.0 beta build 37";
+    private $version = "2.0 beta build 38";
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath = "./config.json";
@@ -36,18 +36,8 @@ class ND
     
     private $config;
     
-    public function init()
+    public function init($type = "window")
     {
-        echo '                                   ' . "\n";
-        echo '   _  _____    _________  ___  ____' . "\n";
-        echo '  / |/ / _ \  / ___/ __ \/ _ \/ __/' . "\n";
-        echo ' /    / // / / /__/ /_/ / , _/ _/  ' . "\n";
-        echo '/_/|_/____/  \___/\____/_/|_/___/  ' . "\n";
-        echo '                                   ' . "\n";
-        echo '                                   ' . "\n";
-        
-        // :3
-        
         Logger::info("ND CORE starting init.");
         
         $this->formManger    = new formManger();
@@ -71,6 +61,12 @@ class ND
         $this->formManger->registerForm("Dialog", DialogForm::class);
         $this->formManger->registerForm("ProgressDialog", ProgressDialogForm::class);
         $this->formManger->registerForm("GithubPluginParser", GithubPluginParserForm::class);
+        
+        if ($type == "console") 
+        {
+            $this->consoleInit();
+            return;
+        }
         
         // froms for settings form :D
         $this->formManger->registerSettingForm("Основные", NeardeSettingsForm::class);
@@ -110,6 +106,15 @@ class ND
         $this->formManger->getForm("Main")->show();
         
         Logger::info("ND CORE init - done.");
+    }
+    
+    public function consoleInit()
+    {
+        foreach ($GLOBALS['argv'] as $key => $val)
+        {
+            if ($val == "--install")
+                IDE::installPlugin($GLOBALS['argv'][$key + 1], "console");
+        }
     }
     
     /**
@@ -174,6 +179,7 @@ class ND
         $this->config = [
             "settings" => [
                 "projectPath" => fs::abs("./projects/"),
+                "style" => "light",
                 "editor" => [
                     "style" => "chrome",
                     "invisibles"  => false,

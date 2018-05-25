@@ -4,7 +4,7 @@ namespace nd\forms;
 use std, gui, framework, nd;
 
 
-class CodeEditorSettingsForm extends AbstractForm
+class CodeEditorSettingsForm extends AbstarctIDEForm
 {
     private $thems = [
         "chrome",
@@ -68,7 +68,7 @@ class CodeEditorSettingsForm extends AbstractForm
         $this->combobox->items->addAll($this->thems);
         $this->checkbox->selected = $config['settings']['editor']['invisibles'];
         $this->slider->value = $config['settings']['editor']['font_size'];
-        $this->editor = new NDCode("<?php\necho 'Hello, world';", "php", true);
+        $this->editor = new NDCode("# Code on python\nprint \"Hello, World!\"", "python", true);
         $this->editor->anchors = [
             "top" => 1, "bottom" => 1, "left" => 1, "right" => 1,
         ];

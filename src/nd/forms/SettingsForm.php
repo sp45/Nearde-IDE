@@ -4,7 +4,7 @@ namespace nd\forms;
 use std, gui, framework, nd;
 
 
-class SettingsForm extends AbstractForm
+class SettingsForm extends AbstarctIDEForm
 {
 
     /**

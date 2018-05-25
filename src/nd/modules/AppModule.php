@@ -19,8 +19,12 @@ class AppModule extends AbstractModule
                 Runtime::addJar(fs::abs($lib));
         }
         
+        if (count($GLOBALS['argv']) == 1)
+            $initType = "window";
+        else $initType = "console";
+        
         $GLOBALS['ND'] = new ND();
-        $GLOBALS['ND']->init();
+        $GLOBALS['ND']->init($initType);
     }
 
 }

@@ -9,31 +9,31 @@
     <Data cursor="DEFAULT" enabled="1" id="data-image" image=".data/img/ic_launcher.png" visible="1"/>
     <LabelEx AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" alignment="CENTER" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="label" layoutX="0" layoutY="128" prefHeight="24" prefWidth="528" styleClass="label " text="\%IDENAME%" textAlignment="LEFT" underline="false" wrapText="false">
       <font>
-        <Font name="Source Sans Pro Regular" size="12"/>
+        <Font name="System Regular" size="12"/>
       </font>
     </LabelEx>
     <Data cursor="DEFAULT" enabled="1" id="data-label" visible="1"/>
     <LabelEx alignment="CENTER" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="ver" layoutX="0" layoutY="152" prefHeight="16" prefWidth="472" styleClass="label " text="\%VERSION%" textAlignment="LEFT" textFill="#b3b3b3" underline="false" wrapText="false">
       <font>
-        <Font name="Source Sans Pro Regular" size="12"/>
+        <Font name="System Regular" size="12"/>
       </font>
     </LabelEx>
     <Data cursor="DEFAULT" enabled="1" id="data-ver" visible="1"/>
     <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8" id="button" layoutX="160" layoutY="192" prefHeight="32" prefWidth="152" styleClass="button " text="Создать проект." textAlignment="CENTER" underline="false" wrapText="false">
       <font>
-        <Font name="Source Sans Pro Regular" size="12"/>
+        <Font name="System Regular" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" graphic=".data/img/newFile.png" id="data-button" visible="1"/>
     <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8" id="buttonAlt" layoutX="160" layoutY="232" prefHeight="32" prefWidth="152" styleClass="button " text="Открыть проект." textAlignment="CENTER" underline="false" wrapText="false">
       <font>
-        <Font name="Source Sans Pro Regular" size="12"/>
+        <Font name="System Regular" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" graphic=".data/img/folder.png" id="data-buttonAlt" visible="1"/>
     <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8" id="button3" layoutX="160" layoutY="288" prefHeight="32" prefWidth="152" styleClass="button accent-btn " text="Настройки" textAlignment="CENTER" underline="false" wrapText="false">
       <font>
-        <Font name="Source Sans Pro SemiBold" size="12"/>
+        <Font name="System Regular" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" graphic=".data/img/settings.png" id="data-button3" visible="1"/>
