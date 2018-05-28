@@ -9,6 +9,7 @@ use std, gui, framework, nd;
 
 class ProjectForm extends AbstarctIDEForm
 {
+
     /**
      * @var project
      */
@@ -33,6 +34,11 @@ class ProjectForm extends AbstarctIDEForm
      * @var UXTabPane
      */
     private $projectTabPane;
+    
+    /**
+     * @var UXTabPane
+     */
+    private $consoleTabPane;
     
     /**
      * @var ProjectTemplate
@@ -89,17 +95,22 @@ class ProjectForm extends AbstarctIDEForm
         
         $runMenu = new UXMenu("Запуск");
         
+        $runMenu->items->add(NDTreeContextMenu::createItem("Терминал", IDE::ico("terminal16.png"), function () {
+                $log = $this->showConsole("Терминал", IDE::ico("terminal16.png"));
+                $log->printUserAndDir();
+        }));
+        
         if ($this->template->getCommand("run"))
         {
-            $runMenu->items->add(NDTreeContextMenu::createItem("Запустить проект", IDE::ico("run16.png"), function () {
-                $this->executeCommand($this->template->getCommand("run"));
+            $runMenu->items->add(NDTreeContextMenu::createItem("Запуск проекта", IDE::ico("run16.png"), function () {
+                $this->executeCommand($this->template->getCommand("run"), "Запустить проект", IDE::ico("run16.png"));
             }));
         } 
         
         if ($this->template->getCommand("build"))
         {
-            $runMenu->items->add(NDTreeContextMenu::createItem("Собрать проект", IDE::ico("compile16.png"), function () {
-                $this->executeCommand($this->template->getCommand("build"));
+            $runMenu->items->add(NDTreeContextMenu::createItem("Собрка проекта", IDE::ico("compile16.png"), function () {
+                $this->executeCommand($this->template->getCommand("build"), "Собрать проект", IDE::ico("compile16.png"));
             }));
         }
         
@@ -109,7 +120,7 @@ class ProjectForm extends AbstarctIDEForm
             foreach ($json as $task)
             {
                 $runMenu->items->add(NDTreeContextMenu::createItem($task['name'], null, function () use ($task) {
-                    $this->executeCommand(IDE::createProcess($task['shell'], $this->project->getPath())->start());
+                    $this->executeCommand(new NDProcess($task['shell'], $this->project->getPath())->start(), $task['name']);
                 }));
             }
         }
@@ -153,7 +164,21 @@ class ProjectForm extends AbstarctIDEForm
         $this->projectTabPane = new UXTabPane;
         $this->projectSplit->items->add($this->projectTabPane);
         
+        $this->consoleTabPane = new UXTabPane;
+        $this->consoleTabPane->on('close', function () {
+            if ($this->consoleTabPane->tabs->count() <= 0)
+            {
+                $this->mainSplit->dividerPositions = [
+                    1, 0
+                ];
+            }
+        });
+        
         $this->mainSplit->items->add($this->projectSplit);
+        $this->mainSplit->items->add($this->consoleTabPane);
+        $this->mainSplit->dividerPositions = [
+            1, 0
+        ];
         $this->panel->add($this->mainSplit);
         
         foreach (IDE::get()->getProjectManger()->getGlobalGunters() as $globalGunter)
@@ -172,21 +197,39 @@ class ProjectForm extends AbstarctIDEForm
         $this->hboxAlt->add(new UXLabel($this->template->getName())); 
     }
     
-    private function executeCommand($obj)
+    private function executeCommand($obj, $tabTitle, $tabGraphic = null)
     {
+        /** @var NDProcess $process */
+        
         if (is_callable($obj)) {
             $process = $obj($this->project->getPath());
-        } elseif ($obj instanceof Process)
+        } elseif ($obj instanceof NDProcess)
             $process = $obj;
         
         if (!$process) return;
         
-        $this->mainSplit->items->removeByIndex(1);
+        $log = $this->showConsole($tabTitle, $tabGraphic);
+        $log->addConsole(" -> Execute command : " . $process->getCommand() . "\n", '#6680e6');
+        $log->runProcess($process, function () use ($log) {
+            $log->printUserAndDir();
+        });
+    }
+    
+    /**
+     * @return NDLog
+     */
+    public function showConsole($text, $graphic = null) : NDLog
+    {
         $this->mainSplit->dividerPositions = [
             .7, .3
         ];
-        
-        $this->mainSplit->items->add(new NDLog($process));
+        $log = new NDLog($this->project->getPath());
+        $tab = new UXTab($text);
+        $tab->content = $log;
+        $tab->graphic = $graphic;
+        $this->consoleTabPane->tabs->add($tab);
+        $this->consoleTabPane->selectTab($tab);
+        return $log;
     }
     
     private function makeGunter(array $data)

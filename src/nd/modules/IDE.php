@@ -145,13 +145,11 @@ class IDE extends AbstractModule
     }
     
     /**
-     * @return Process
+     * @return NDProcess
      */
     public static function createProcess($shell, $path)
     {
-        if (IDE::isWin()) $prefix = "cmd.exe /c";
-
-        return new Process(explode(" ", trim($prefix . " " . $shell)), $path);
+        return new NDProcess($shell, $path);
     }
     
     public static function restart()
@@ -174,7 +172,7 @@ class IDE extends AbstractModule
     public static function githubApiQueryGET(string $query, $data = null)
     {
         $res = app()->module("IDE")->githubClient->get($query, $data);
-        echo "[INFO][GITHUB][GET] Server code : " . $res->statusCode() . "\n";
+        echo "[INFO] [GITHUB] [GET] Server code : " . $res->statusCode() . "\n";
         return $res->body();
     }
     

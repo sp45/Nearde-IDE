@@ -19,19 +19,19 @@
       </font>
     </LabelEx>
     <Data cursor="DEFAULT" enabled="1" id="data-ver" visible="1"/>
-    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8" id="button" layoutX="160" layoutY="192" prefHeight="32" prefWidth="152" styleClass="button " text="Создать проект." textAlignment="CENTER" underline="false" wrapText="false">
+    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="8" id="button" layoutX="160" layoutY="192" prefHeight="32" prefWidth="152" styleClass="button " text="Создать проект." textAlignment="CENTER" underline="false" wrapText="false">
       <font>
         <Font name="System Regular" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" graphic=".data/img/newFile.png" id="data-button" visible="1"/>
-    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8" id="buttonAlt" layoutX="160" layoutY="232" prefHeight="32" prefWidth="152" styleClass="button " text="Открыть проект." textAlignment="CENTER" underline="false" wrapText="false">
+    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="8" id="buttonAlt" layoutX="160" layoutY="232" prefHeight="32" prefWidth="152" styleClass="button " text="Открыть проект." textAlignment="CENTER" underline="false" wrapText="false">
       <font>
         <Font name="System Regular" size="12"/>
       </font>
     </Button>
     <Data cursor="DEFAULT" enabled="1" graphic=".data/img/folder.png" id="data-buttonAlt" visible="1"/>
-    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="8" id="button3" layoutX="160" layoutY="288" prefHeight="32" prefWidth="152" styleClass="button accent-btn " text="Настройки" textAlignment="CENTER" underline="false" wrapText="false">
+    <Button alignment="CENTER" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="8" id="button3" layoutX="160" layoutY="288" prefHeight="32" prefWidth="152" styleClass="button accent-btn " text="Настройки" textAlignment="CENTER" underline="false" wrapText="false">
       <font>
         <Font name="System Regular" size="12"/>
       </font>

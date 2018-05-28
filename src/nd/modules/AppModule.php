@@ -21,10 +21,13 @@ class AppModule extends AbstractModule
         
         if (count($GLOBALS['argv']) == 1)
             $initType = "window";
-        else $initType = "console";
-        
+        else {
+            $initType = "console";
+            //$this->visible = false;
+        }
         $GLOBALS['ND'] = new ND();
         $GLOBALS['ND']->init($initType);
+        
     }
 
 }

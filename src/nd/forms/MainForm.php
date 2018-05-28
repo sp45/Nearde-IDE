@@ -1,14 +1,10 @@
 <?php
 namespace nd\forms;
-
 use Error;
 use facade\Json;
 use std, gui, framework, nd;
-
-
 class MainForm extends AbstarctIDEForm
 {
-
     /**
      * @event showing 
      */
@@ -17,8 +13,6 @@ class MainForm extends AbstarctIDEForm
         $this->ver->text = IDE::get()->getVersion();
         $this->label->text = IDE::get()->getName();
     }
-
-
     /**
      * @event button3.action 
      */
@@ -26,7 +20,6 @@ class MainForm extends AbstarctIDEForm
     {    
         IDE::getFormManger()->getForm("Settings")->show();
     }
-
     /**
      * @event button.action 
      */
@@ -35,7 +28,6 @@ class MainForm extends AbstarctIDEForm
         IDE::getFormManger()->getForm("NewProject")->show();
         $this->hide();
     }
-
     /**
      * @event buttonAlt.action 
      */
@@ -65,5 +57,4 @@ class MainForm extends AbstarctIDEForm
         IDE::get()->getFormManger()->getForm("Project")->openProject($project);
         $this->hide();
     }
-
 }

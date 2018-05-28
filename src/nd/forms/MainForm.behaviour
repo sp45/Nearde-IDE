@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<behaviours/>
+<behaviours>
+  <target id="buttonAlt">
+    <behaviour color="#b3b3b3" offsetX="0" offsetY="0" radius="0" spread="0" type="behaviour\custom\DropShadowEffectBehaviour" when="ALWAYS"/>
+  </target>
+</behaviours>

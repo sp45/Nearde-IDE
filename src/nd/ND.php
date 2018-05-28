@@ -1,5 +1,6 @@
 <?php
 namespace nd;
+
 use gui;
 use facade\Json;
 use php\desktop\Runtime;
@@ -7,9 +8,10 @@ use std;
 use Error;
 use framework;
 use nd;
+
 class ND 
 {
-    private $version = "2.0 beta build 38";
+    private $version = "2.0 beta build 39";
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath = "./config.json";
@@ -38,6 +40,8 @@ class ND
     
     public function init($type = "window")
     {
+        $this->configPath = fs::abs($this->getUserHome("config") . "/config.json");
+        
         Logger::info("ND CORE starting init.");
         
         $this->formManger    = new formManger();
@@ -102,9 +106,7 @@ class ND
         }
         
         Logger::info("Plugins is started.");
-        
         $this->formManger->getForm("Main")->show();
-        
         Logger::info("ND CORE init - done.");
     }
     
@@ -206,5 +208,17 @@ class ND
             $this->config = $newConfig;
             $this->saveConfig();
         }
+    }
+    
+    public function getUserHome(string $dir): string
+    {
+        $home = System::getProperty('user.home');
+        $result = fs::normalize("$home/.nd/$dir");
+        if (!fs::isDir($result)) {
+            if (!fs::makeDir($result)) {
+                return null;
+            }
+        }
+        return $result;
     }
 }  
