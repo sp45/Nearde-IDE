@@ -1,18 +1,6 @@
 {
   "props": [],
   "components": {
-    "zipChooser": {
-      "type": "script\\FileChooserScript",
-      "x": 80,
-      "y": 16,
-      "props": {
-        "filterName": "",
-        "filterExtensions": "*.ndplugin",
-        "filterAny": false,
-        "inputNode": "",
-        "actionNode": ""
-      }
-    },
     "githubClient": {
       "type": "bundle\\http\\HttpClient",
       "x": 144,
@@ -26,6 +14,18 @@
         "followRedirects": "1",
         "proxyType": "HTTP",
         "userAgent": "Nearde IDE 2.0"
+      }
+    },
+    "zipChooser": {
+      "type": "script\\FileChooserScript",
+      "x": 80,
+      "y": 16,
+      "props": {
+        "filterName": "",
+        "filterExtensions": "*.ndplugin",
+        "filterAny": false,
+        "inputNode": "",
+        "actionNode": ""
       }
     },
     "dirChooser": {

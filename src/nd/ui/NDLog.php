@@ -97,7 +97,7 @@ class NDLog extends UXCodeAreaScrollPane
     {
         $this->addConsole("\n");
         $this->addConsole(System::getProperty('user.name'), 'blue');
-        $this->addConsole("@localhost : ");
+        $this->addConsole(" : ");
         $this->addConsole(fs::abs($this->dir), 'green');
         $this->addConsole(" $ ", 'blue');
     }
@@ -123,6 +123,12 @@ class NDLog extends UXCodeAreaScrollPane
                 $this->dir = $file->getAbsolutePath();
                 $this->printUserAndDir();
             break;
+            case 'mkdir' : 
+                if (explode(' ', $command)[1])
+                    fs::makeDir(fs::abs($this->dir) . '/' . explode(' ', $command)[1]);
+                    
+                $this->printUserAndDir();
+            break;
             case 'clear' : 
                 $this->textArea->clear();
                 $this->consoleBuffer = null;
@@ -145,6 +151,8 @@ class NDLog extends UXCodeAreaScrollPane
         if (!($process instanceof NDProcess)) return;
         
         $this->process = $process;
+        if (!$process->isStarted())
+            $process->start();
         
         $this->processRuning = true;
         

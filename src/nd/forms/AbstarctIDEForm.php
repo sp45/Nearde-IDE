@@ -22,5 +22,6 @@ abstract class AbstarctIDEForm extends AbstractForm
     {
         $this->clearStylesheets();
         $this->addStylesheet(".theme/". IDE::get()->getConfig()['settings']['style'] .".css");
+        $this->centerOnScreen();
     }
 }

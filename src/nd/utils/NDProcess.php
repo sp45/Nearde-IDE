@@ -39,6 +39,7 @@ class NDProcess
     public function start()
     {
         $this->process = $this->process->start();
+        $this->started = false;
         return $this;
     }
     
@@ -53,6 +54,14 @@ class NDProcess
     public function getExitValue()
     {
         return $this->process->getExitValue();
+    }
+    
+    /**
+     * @return bool 
+     */
+    public function isStarted()
+    {
+        return $this->started;
     }
     
     /**

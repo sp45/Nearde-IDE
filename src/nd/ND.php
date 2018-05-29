@@ -11,11 +11,11 @@ use nd;
 
 class ND 
 {
-    private $version = "2.0 beta build 40";
-    private $buildVersion = "40";
+    private $version = "2.0 beta build 41";
+    private $buildVersion = "41";
     private $name = "Nearde IDE";
     private $dev = true;
-    private $configPath = "./config.json";
+    private $configPath;
     
     /**
      * @var formManger
