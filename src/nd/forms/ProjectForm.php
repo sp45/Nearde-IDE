@@ -4,6 +4,8 @@ namespace nd\forms;
 use facade\Json;
 use php\gui\designer\UXCodeAreaScrollPane;
 use php\gui\UXRichTextArea;
+use php\gui\UXDndTabPane;
+
 use std, gui, framework, nd;
 
 
@@ -31,12 +33,12 @@ class ProjectForm extends AbstarctIDEForm
     private $mainSplit;
     
     /**
-     * @var UXTabPane
+     * @var UXDndTabPane
      */
     private $projectTabPane;
     
     /**
-     * @var UXTabPane
+     * @var UXDndTabPane
      */
     private $consoleTabPane;
     
@@ -161,18 +163,11 @@ class ProjectForm extends AbstarctIDEForm
         $this->projectTree->refreshTree($this->project->getPath(), true);
         $this->projectSplit->items->add($this->projectTree);
         
-        $this->projectTabPane = new UXTabPane;
+        $this->projectTabPane = new UXDndTabPane;
         $this->projectSplit->items->add($this->projectTabPane);
         
-        $this->consoleTabPane = new UXTabPane;
-        $this->consoleTabPane->on('close', function () {
-            if ($this->consoleTabPane->tabs->count() <= 0)
-            {
-                $this->mainSplit->dividerPositions = [
-                    1, 0
-                ];
-            }
-        });
+        $this->consoleTabPane = new UXDndTabPane;
+        
         
         $this->mainSplit->items->add($this->projectSplit);
         $this->mainSplit->items->add($this->consoleTabPane);

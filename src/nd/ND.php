@@ -11,7 +11,8 @@ use nd;
 
 class ND 
 {
-    private $version = "2.0 beta build 39";
+    private $version = "2.0 beta build 40";
+    private $buildVersion = "40";
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath = "./config.json";
@@ -57,6 +58,7 @@ class ND
         $this->formManger->registerForm("SandBox", SandBoxForm::class);
         $this->formManger->registerForm("Settings", SettingsForm::class);
         $this->formManger->registerForm("NewProject", NewProjectForm::class);
+        $this->formManger->registerForm("Update", UpdateForm::class);
         
         // dialog forms
         $this->formManger->registerForm("TreeDialog", TreeDialogForm::class);
@@ -107,6 +109,9 @@ class ND
         
         Logger::info("Plugins is started.");
         $this->formManger->getForm("Main")->show();
+        
+        new updater($this->buildVersion)->checkUpdate();
+        
         Logger::info("ND CORE init - done.");
     }
     

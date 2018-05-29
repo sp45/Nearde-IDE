@@ -34,7 +34,6 @@ class NDProcess
         if (IDE::isWin()) $prefix = "cmd.exe /c chcp 65001 > nul &";
         
         $this->process = new Process(explode(" ", trim($prefix . " " . $this->exec)), $this->dir);
-        $this->start();
     }
     
     public function start()

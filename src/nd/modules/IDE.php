@@ -161,8 +161,8 @@ class IDE extends AbstractModule
             exit(-1);
         }
         
-        IDE::createProcess("java -jar " . fs::name($path), fs::parent($path))->start();
-        Logger::info(IDE::get()->getName() . "Restarting ...");
+        new NDProcess("java -jar " . fs::name($path), fs::parent($path))->start();
+        Logger::info(IDE::get()->getName() . " Restarting ...");
         exit(0);
     }
     
