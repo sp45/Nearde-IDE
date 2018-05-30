@@ -43,7 +43,7 @@ class ND
     {
         $this->configPath = fs::abs($this->getUserHome("config") . "/config.json");
         
-        Logger::info("ND CORE starting init.");
+        Logger::info("ND CORE starting init");
         
         $this->formManger    = new formManger();
         $this->pluginsManger = new pluginsManger();
@@ -94,25 +94,29 @@ class ND
             $this->pluginsManger->setOfflineToPlugin($name, $data['offline']);
         }
         
-        Logger::info("Starting plugins.");
+        Logger::info("Starting plugins");
         
         foreach ($this->pluginsManger->getAll() as $name => $plugin)
         {
             Logger::info("Starting: " . $name);
             if (!$this->pluginsManger->getOfflineForPlugin($name))
             {
-                $plugin->onIDEStarting();
+                try {
+                    $plugin->onIDEStarting();
+                } catch (Error $e) {
+                    Logger::warn("Error starting plugin $name");
+                }
             } else {
                 Logger::info("Plugin $name is offline");
             }
         }
         
-        Logger::info("Plugins is started.");
+        Logger::info("Plugins is started");
         $this->formManger->getForm("Main")->show();
         
+        Logger::info("ND CORE init - done");
+        Logger::info("checking update for IDE");
         new updater($this->buildVersion)->checkUpdate();
-        
-        Logger::info("ND CORE init - done.");
     }
     
     public function consoleInit()

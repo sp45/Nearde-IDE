@@ -104,6 +104,7 @@ class IDE extends AbstractModule
      */
     public static function treeDialog(string $text, string $path)
     {
+        app()->hideSplash();
         return IDE::getFormManger()->getForm("TreeDialog")->open($text, $path);
     }
     
@@ -112,6 +113,7 @@ class IDE extends AbstractModule
      */
     public static function inputDialog(string $text)
     {
+        app()->hideSplash();
         return IDE::getFormManger()->getForm("InputDialog")->open($text);
     }
     
@@ -120,11 +122,13 @@ class IDE extends AbstractModule
      */
     public static function confirmDialog(string $text)
     {
+        app()->hideSplash();
         return IDE::getFormManger()->getForm("ConfirmDialog")->open($text);
     }
     
     public static function dialog(string $text)
     {
+        app()->hideSplash();
         IDE::getFormManger()->getForm("Dialog")->open($text);
     }
     
@@ -133,6 +137,7 @@ class IDE extends AbstractModule
      */
     public static function unpackDialog(string $zip, string $dir)
     {
+        app()->hideSplash();
         return IDE::getFormManger()->getForm("ProgressDialog")->unpack($zip, $dir, false);
     }
     
@@ -141,6 +146,7 @@ class IDE extends AbstractModule
      */
     public static function downloadDialog(string $url, string $to)
     {
+        app()->hideSplash();
         return IDE::getFormManger()->getForm("ProgressDialog")->download($url, $to);
     }
     

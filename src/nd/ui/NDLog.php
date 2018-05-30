@@ -33,6 +33,7 @@ class NDLog extends UXCodeAreaScrollPane
     {    
         $this->dir = $dir;
         $this->textArea = new UXRichTextArea;
+        $this->textArea->padding = 8;
         $this->textArea->on('keyUp', function (UXKeyEvent $e) {
             $this->doConsoleWrite($e);
         });
@@ -172,7 +173,7 @@ class NDLog extends UXCodeAreaScrollPane
             $exitValue = $this->process->getExitValue();
             uiLater(function () use ($onExit, $exitValue) {
                 $this->processRuning = false;
-                call_user_func($onExit);
+                call_user_func($onExit, $exitValue);
             });
         }))->start();
     }      
