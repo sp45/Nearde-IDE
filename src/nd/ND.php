@@ -11,8 +11,8 @@ use nd;
 
 class ND 
 {
-    private $version = "2.0 beta build 41";
-    private $buildVersion = "41";
+    private $version = "2.0 beta build 42";
+    private $buildVersion = "42";
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath;
