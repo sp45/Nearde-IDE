@@ -168,7 +168,7 @@ class IDE extends AbstractModule
         }
         
         new NDProcess("java -jar " . fs::name($path), fs::parent($path))->start();
-        Logger::info(IDE::get()->getName() . " Restarting ...");
+        log::info("IDE", IDE::get()->getName() . " Restarting ...");
         exit(0);
     }
     
@@ -178,7 +178,7 @@ class IDE extends AbstractModule
     public static function githubApiQueryGET(string $query, $data = null)
     {
         $res = app()->module("IDE")->githubClient->get($query, $data);
-        echo "[INFO] [GITHUB] [GET] Server code : " . $res->statusCode() . "\n";
+        log::info("IDE", "Server code : " . $res->statusCode());
         return $res->body();
     }
     

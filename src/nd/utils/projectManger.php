@@ -1,6 +1,7 @@
 <?php
 namespace nd\utils;
 
+use nd;
 use gui;
 use framework;
 
@@ -15,19 +16,19 @@ class projectManger
     public function registerTemplate(String $name, $class)
     {
         if ($this->templates[$name]) return;
-        Logger::info("Register template: " . $name);
+        log::info(get_class($this), "Register template: " . $name);
         $this->templates[$name] = $class;
     }
     
     public function getTemplate($name)
     {
-        Logger::info("Getting template: " . $name);
+        log::info(get_class($this), "Getting template: " . $name);
         return $this->templates[$name];
     }
     
     public function getAll()
     {
-        Logger::info("Getting all templates.");
+        log::info(get_class($this), "Getting all templates.");
         return $this->templates;
     }
     

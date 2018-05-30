@@ -26,20 +26,10 @@ class UpdateForm extends AbstarctIDEForm
     {    
         $this->showPreloader();
         IDE::downloadDialog($this->downloadLink, fs::abs("./"));
-        $zip = new ZipFile($this->downloadFile);
-        
         $pid = UXApplication::getPid();
-        $execND = 'java -jar Nearde.jar --kill ' . $pid;
-        
-        $process = new NDProcess($execND, './');
-        
-        $zip->unpack(fs::abs("./"), null, function ($file) use ($process) {
-            Logger::info("-> Unpack : " . $file);
-            
-            if ($file == "plugins/")
-                $process->start();
-        });
-        fs::delete($this->downloadFile);
+        $execND = 'java -jar updater.jar "' . fs::abs($this->downloadFile) . '" "'.fs::abs('./').'" '.$pid.' "java -jar Nearde.jar"';
+        $process = new NDProcess($execND, './')->start();
+        exit;
     }
 
     public function update(int $newVer, array $info)

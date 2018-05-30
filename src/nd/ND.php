@@ -43,7 +43,7 @@ class ND
     {
         $this->configPath = fs::abs($this->getUserHome("config") . "/config.json");
         
-        Logger::info("ND CORE starting init");
+        log::info(get_class($this), "ND CORE starting init");
         
         $this->formManger    = new formManger();
         $this->pluginsManger = new pluginsManger();
@@ -94,28 +94,28 @@ class ND
             $this->pluginsManger->setOfflineToPlugin($name, $data['offline']);
         }
         
-        Logger::info("Starting plugins");
+        log::info(get_class($this), "Starting plugins");
         
         foreach ($this->pluginsManger->getAll() as $name => $plugin)
         {
-            Logger::info("Starting: " . $name);
+            log::info(get_class($this), "Starting: " . $name);
             if (!$this->pluginsManger->getOfflineForPlugin($name))
             {
                 try {
                     $plugin->onIDEStarting();
                 } catch (Error $e) {
-                    Logger::warn("Error starting plugin $name");
+                    log::warn(get_class($this), "Error starting plugin $name");
                 }
             } else {
-                Logger::info("Plugin $name is offline");
+                log::info(get_class($this), "Plugin $name is offline");
             }
         }
         
-        Logger::info("Plugins is started");
+        log::info(get_class($this), "Plugins is started");
         $this->formManger->getForm("Main")->show();
         
-        Logger::info("ND CORE init - done");
-        Logger::info("checking update for IDE");
+        log::info(get_class($this), "ND CORE init - done");
+        log::info(get_class($this), "checking update for IDE");
         new updater($this->buildVersion)->checkUpdate();
     }
     

@@ -1,6 +1,7 @@
 <?php
 namespace nd\utils;
 
+use nd;
 use framework;
 
 class formManger 
@@ -11,26 +12,26 @@ class formManger
     public function registerForm(String $name, $class)
     {
         if ($this->forms[$name]) return;
-        Logger::info("Register form: " . $name);
+        log::info(get_class($this), "Register form: " . $name);
         $this->forms[$name] = $class;
     }
     
     public function getForm($name)
     {
-        Logger::info("Getting form: " . $name);
+        log::info(get_class($this), "Getting form: " . $name);
         return new $this->forms[$name];
     }
     
     public function registerSettingForm(String $name, $class)
     {
         if ($this->settingForms[$name]) return;
-        Logger::info("Register setting form: " . $name);
+        log::info(get_class($this), "Register setting form: " . $name);
         $this->settingForms[$name] = $class;
     }
     
     public function getSettingForm($name)
     {
-        Logger::info("Getting setting form: " . $name);
+        log::info(get_class($this), "Getting setting form: " . $name);
         return new $this->settingForms[$name];
     }
     
