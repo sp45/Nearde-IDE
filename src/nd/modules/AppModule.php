@@ -24,7 +24,7 @@ class AppModule extends AbstractModule
             $pid = $GLOBALS['argv'][2];
             if (IDE::isWin())
             {
-                new NDProcess('taskkill //PID ' . $pid, './')->start();
+                new NDProcess('taskkill /PID ' . $pid, './')->start();
             } else {
                 new NDProcess('kill -9 ' . $pid, './')->start();
             }
