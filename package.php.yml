@@ -1,0 +1,3 @@
+name: Nearde-IDE
+deps:
+  jphp-gui-desktop-ext: '*'

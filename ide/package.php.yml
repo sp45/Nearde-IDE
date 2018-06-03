@@ -1,0 +1,31 @@
+name: 'Nearde'
+
+deps:
+  jphp-core: '*'
+  jphp-zend-ext: '*'
+  nd-framework: '*'
+  jphp-gui-desktop-ext: '*'
+  dn-httpclient-bundle: '*'
+  jphp-zip-ext: '*'
+  designer: '*'
+  gui-tabs-ext: '*'
+
+plugins:
+- App
+
+app:
+  bootstrap: index.php
+  encoding: UTF-8
+  metrics: true
+  trace: false
+
+sources:
+- src
+
+includes:
+- index.php
+
+config:
+  build-dir: ./build
+  vendor-dir: ./vendor
+  archive-format: zip

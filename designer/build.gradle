@@ -1,0 +1,42 @@
+apply plugin: "java"
+apply plugin: "idea"
+apply plugin: "eclipse"
+
+version '1.0.0'
+
+sourceSets {
+    main.java.srcDirs = ['src-jvm/main/java']
+    main.resources.srcDirs = ['src-jvm/main/resources']
+}
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+  jcenter()
+  maven { url 'https://oss.sonatype.org/content/groups/public' }
+}
+
+configurations { provided }
+
+sourceSets { main { compileClasspath += configurations.provided } }
+
+dependencies {
+  provided files('vendor/jphp-core/jars/jphp-core-0.9.3-SNAPSHOT.jar',
+ 'vendor/jphp-core/jars/asm-all-5.2.jar',
+ 'vendor/jphp-runtime/jars/jphp-runtime-0.9.3-SNAPSHOT.jar',
+ 'vendor/jphp-gui-ext/jars/jphp-gui-ext-0.9.3-SNAPSHOT.jar',
+ 'vendor/jphp-xml-ext/jars/jphp-xml-ext-0.9.3-SNAPSHOT.jar',
+ 'vendor/jphp-graphic-ext/jars/jphp-graphic-ext-0.9.3-SNAPSHOT.jar')
+  compile 'org.fxmisc.richtext:richtextfx:0.8.2'
+}
+
+jar {
+   destinationDir = file('jars/')
+   baseName = 'x-designer'
+}
+
+task copyJars(type: Copy) {
+  from project.configurations.compile
+  into file(projectDir.path + '/jars/')
+  rename { name -> 'x-' + name }
+}
