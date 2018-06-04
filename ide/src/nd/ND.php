@@ -28,8 +28,8 @@ use nd\external\ProjectEditor;
 
 class ND 
 {
-    private $version = "2.0 beta build 42";
-    private $buildVersion = "42";
+    private $version = "2.0 beta build 43";
+    private $buildVersion = "43";
     private $name = "Nearde IDE";
     private $dev = true;
     private $configPath;

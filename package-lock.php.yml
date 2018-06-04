@@ -1,7 +1,0 @@
-dependencies:
-  jphp-gui-desktop-ext:
-    version: 1.0.0
-    info:
-      sha256: 7bff335df9f0713baedc117125e1b1eac8c1af0fc0ad5a99f2d77a44d6d0da6c
-      size: 28037
-      repo: http://api.develnext.org

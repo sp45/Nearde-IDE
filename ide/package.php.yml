@@ -6,6 +6,7 @@ deps:
   nd-framework: '*'
   jphp-gui-desktop-ext: '*'
   dn-httpclient-bundle: '*'
+  jphp-httpclient-ext: '*'
   jphp-zip-ext: '*'
   designer: '*'
   gui-tabs-ext: '*'

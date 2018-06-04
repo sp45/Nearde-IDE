@@ -1,5 +1,7 @@
 <?php
 use packager\Event;
+use php\lib\fs;
+use packager\cli\Console;
 
 function task_publish(Event $e)
 {
@@ -35,4 +37,13 @@ function task_startIde(Event $e)
 function task_buildIde(Event $e)
 {
     Tasks::runExternal('./ide', 'build', $e->args(), ...$e->flags());
+
+    Console::log('-> Copy files to build ...');
+
+    Tasks::copy('./ide/libs', './ide/build/libs');
+    Tasks::copy('./ide/plugins', './ide/build/plugins');
+
+    fs::rename('./ide/build/Nearde-last.jar', 'Nearde.jar');
+
+    Console::log('--> done!');
 }

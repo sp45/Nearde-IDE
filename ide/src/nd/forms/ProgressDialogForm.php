@@ -1,7 +1,7 @@
 <?php
 namespace nd\forms;
 
-use httpclient;
+use bundle\http\HttpDownloader;
 use Exception;
 use php\compress\ZipFile;
 use php\lang\Thread;
@@ -56,7 +56,7 @@ class ProgressDialogForm extends AbstarctIDEForm
         
         $this->label->text = $url;
         
-        $dwn = new HttpDownloader;
+        $dwn = new HttpDownloader();
         $dwn->urls = [$url];
         $dwn->destDirectory = $to;
         
