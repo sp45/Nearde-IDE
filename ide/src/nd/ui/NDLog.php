@@ -10,6 +10,11 @@ use std;
 use php\gui\designer\UXCodeAreaScrollPane;
 use php\lang\Thread;
 use nd\utils\NDProcess;
+use php\lib\fs;
+use php\gui\event\UXKeyEvent;
+use php\lib\str;
+use php\io\File;
+use php\lang\System;
 
 class NDLog extends UXCodeAreaScrollPane
 {
@@ -25,6 +30,9 @@ class NDLog extends UXCodeAreaScrollPane
     
     private $dir;
     private $line;
+
+    private $commandsArr;
+    private $commandsInt;
     
     /**
      * @var NDProcess
@@ -37,6 +45,33 @@ class NDLog extends UXCodeAreaScrollPane
         $this->dir = $dir;
         $this->textArea = new UXRichTextArea;
         $this->textArea->padding = 8;
+        $this->textArea->on('keyDown', function (UXKeyEvent $e) {
+            if ($e->codeName == 'Up')
+            {
+                $this->restoreFromBuffer();
+                $this->commandsInt--;
+
+                if ($this->commandsInt <= -1)
+                    $this->commandsInt = count($this->commandsArr);
+
+                $this->addConsole($this->commandsArr[$this->commandsInt], 'blue', false);
+                $this->scrollY = $this->line * 25;
+                return;
+            }
+
+            if ($e->codeName == 'Down')
+            {
+                $this->restoreFromBuffer();
+                $this->commandsInt++;
+
+                if ($this->commandsInt >= count($this->commandsArr))
+                    $this->commandsInt = 0;
+
+                $this->addConsole($this->commandsArr[$this->commandsInt], 'blue', false);
+                $this->scrollY = $this->line * 25;
+                return;
+            }
+        });
         $this->textArea->on('keyUp', function (UXKeyEvent $e) {
             $this->doConsoleWrite($e);
         });
@@ -50,15 +85,10 @@ class NDLog extends UXCodeAreaScrollPane
             $this->restoreFromBuffer();
             return;
         }
-             
-        if ($e->codeName == "Backspace")
-        {
-            $this->commandBuffer = substr($this->commandBuffer, 0, -1);
-            return;
-        }
         
         if ($e->codeName == "Enter")
         {
+            $this->commandBuffer = trim(substr($this->textArea->text, $this->consoleBuffer['length']));
             $this->restoreFromBuffer();
             $this->addConsole($this->commandBuffer . "\n", 'blue');
             if (!$this->processRuning)
@@ -67,6 +97,8 @@ class NDLog extends UXCodeAreaScrollPane
                 $this->process->getOutput()->write($this->commandBuffer . " \n");
                 $this->process->getOutput()->flush();
             }
+            $this->commandsArr[] = $this->commandBuffer;
+            $this->commandsInt++;
             $this->commandBuffer = null;
             return;
         }
@@ -99,7 +131,6 @@ class NDLog extends UXCodeAreaScrollPane
     
     public function printUserAndDir()
     {
-        $this->addConsole("\n");
         $this->addConsole(System::getProperty('user.name'), 'blue');
         $this->addConsole(" : ");
         $this->addConsole(fs::abs($this->dir), 'green');

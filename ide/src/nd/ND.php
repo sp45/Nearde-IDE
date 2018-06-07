@@ -4,14 +4,26 @@ namespace nd;
 use gui;
 use facade\Json;
 use nd\forms\CodeEditorSettingsForm;
+use nd\forms\ConfirmDialogForm;
+use nd\forms\DialogForm;
+use nd\forms\GithubPluginParserForm;
+use nd\forms\InputDialogForm;
+use nd\forms\MainForm;
 use nd\forms\NeardeSettingsForm;
 use nd\forms\NewProjectForm;
 use nd\forms\PluginsForm;
+use nd\forms\ProgressDialogForm;
+use nd\forms\ProjectForm;
+use nd\forms\SettingsForm;
+use nd\forms\TreeDialogForm;
+use nd\forms\UpdateForm;
+use php\desktop\Runtime;
 use php\framework\Logger;
+use php\io\File;
+use php\io\IOException;
 use std;
 use Error;
 use framework;
-use nd\utils\log;
 
 use nd\utils\formManger;
 use nd\utils\pluginsManger;
@@ -25,6 +37,7 @@ use nd\modules\IDE;
 use nd\ui\NDTreeContextMenu;
 use nd\external\EmptyProjectTemplate;
 use nd\external\ProjectEditor;
+use php\lang\System;
 
 class ND 
 {
@@ -74,19 +87,19 @@ class ND
         
         $this->loadConfig();
         
-        $this->formManger->registerForm("Main", \nd\forms\MainForm::class);
-        $this->formManger->registerForm("Project", \nd\forms\ProjectForm::class);
-        $this->formManger->registerForm("Settings", \nd\forms\SettingsForm::class);
-        $this->formManger->registerForm("Update", \nd\forms\UpdateForm::class);
+        $this->formManger->registerForm("Main", MainForm::class);
+        $this->formManger->registerForm("Project", ProjectForm::class);
+        $this->formManger->registerForm("Settings", SettingsForm::class);
+        $this->formManger->registerForm("Update", UpdateForm::class);
         $this->formManger->registerForm("NewProject", NewProjectForm::class);
+        $this->formManger->registerForm("GithubPluginParser", GithubPluginParserForm::class);
 
         // dialog forms
-        $this->formManger->registerForm("TreeDialog", \nd\forms\TreeDialogForm::class);
-        $this->formManger->registerForm("InputDialog", \nd\forms\InputDialogForm::class);
-        $this->formManger->registerForm("ConfirmDialog", \nd\forms\ConfirmDialogForm::class);
-        $this->formManger->registerForm("Dialog", \nd\forms\DialogForm::class);
-        $this->formManger->registerForm("ProgressDialog", \nd\forms\ProgressDialogForm::class);
-        $this->formManger->registerForm("GithubPluginParser", \nd\forms\GithubPluginParserForm::class);
+        $this->formManger->registerForm("TreeDialog", TreeDialogForm::class);
+        $this->formManger->registerForm("InputDialog", InputDialogForm::class);
+        $this->formManger->registerForm("ConfirmDialog", ConfirmDialogForm::class);
+        $this->formManger->registerForm("Dialog", DialogForm::class);
+        $this->formManger->registerForm("ProgressDialog", ProgressDialogForm::class);
         
         if ($type == "console") 
         {
@@ -104,17 +117,11 @@ class ND
         }));
         
         $this->projectManger->registerTemplate("Empty", new EmptyProjectTemplate);
-        //$this->fileFormat->registerEditor(new ProjectEditor, "ndproject"); // register custom editor for ndproject format
         
         $plugins = Json::fromFile("./plugins/plugins.json");
         foreach ($plugins as $name => $data)
         {
-            try {
-                include fs::abs("./plugins/" . $data['dir'] . "/" . $data['file']);
-            } catch (Error $e) {
-                Logger::error('Error include plugin ' . $name . ', error log:');
-                echo $e->getTraceAsString();
-            }
+            $this->addToRuntime($data['dir']);
 
             $this->pluginsManger->registerPlugin($name, new $data['class']);
             $this->pluginsManger->setOfflineToPlugin($name, $data['offline']);
@@ -124,7 +131,7 @@ class ND
         
         foreach ($this->pluginsManger->getAll() as $name => $plugin)
         {
-            log::info(get_class($this), "Starting: " . $name);
+            Logger::info("Starting: " . $name);
             if (!$this->pluginsManger->getOfflineForPlugin($name))
             {
                 try {
@@ -257,5 +264,42 @@ class ND
             }
         }
         return $result;
+    }
+
+    /**
+     * @param string $dir
+     */
+    private function addToRuntime(string $dir)
+    {
+        $file = File::of($dir);
+
+        foreach ($file->findFiles() as $file)
+        {
+            if (fs::isDir($file)) $this->addToRuntime($file);
+
+            if (fs::ext($file) == 'php')
+            {
+                try {
+                    include (string) $file;
+                } catch (Error $exception) {
+                    Logger::error('Error include file ' . $file->getAbsolutePath());
+                    Logger::error('Trace : ' . $exception->getTraceAsString());
+                    Logger::error('Message : ' . $exception->getMessage());
+                }
+            }
+
+            if (fs::ext($file) == 'jar')
+            {
+                try {
+                    Runtime::addJar($file);
+                } catch (IOException $exception) {
+                    Logger::error('Error include jar ' . $file->getAbsolutePath());
+                    Logger::error('Trace : ' . $exception->getTraceAsString());
+                    Logger::error('Message : ' . $exception->getMessage());
+                }
+            }
+        }
+
+
     }
 }  
