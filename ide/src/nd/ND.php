@@ -17,6 +17,7 @@ use nd\forms\ProjectForm;
 use nd\forms\SettingsForm;
 use nd\forms\TreeDialogForm;
 use nd\forms\UpdateForm;
+use nd\utils\updater;
 use php\desktop\Runtime;
 use php\framework\Logger;
 use php\io\File;
@@ -76,15 +77,13 @@ class ND
     public function init($type = "window")
     {
         $this->configPath = fs::abs($this->getUserHome("config") . "/config.json");
-        
-        Logger::info('ND CORE starting init');
-        
+
         $this->formManger    = new formManger();
         $this->pluginsManger = new pluginsManger();
         $this->projectManger = new projectManger();
         $this->fileFormat    = new fileFormat();
+
         $this->fileFormat->init();
-        
         $this->loadConfig();
         
         $this->formManger->registerForm("Main", MainForm::class);
@@ -94,23 +93,21 @@ class ND
         $this->formManger->registerForm("NewProject", NewProjectForm::class);
         $this->formManger->registerForm("GithubPluginParser", GithubPluginParserForm::class);
 
-        // dialog forms
         $this->formManger->registerForm("TreeDialog", TreeDialogForm::class);
         $this->formManger->registerForm("InputDialog", InputDialogForm::class);
         $this->formManger->registerForm("ConfirmDialog", ConfirmDialogForm::class);
         $this->formManger->registerForm("Dialog", DialogForm::class);
         $this->formManger->registerForm("ProgressDialog", ProgressDialogForm::class);
+
+        $this->formManger->registerSettingForm("Основные", NeardeSettingsForm::class);
+        $this->formManger->registerSettingForm("Редактор", CodeEditorSettingsForm::class);
+        $this->formManger->registerSettingForm("Дополнения", PluginsForm::class);
         
         if ($type == "console") 
         {
             $this->consoleInit();
             return;
         }
-        
-        // froms for settings form :D
-        $this->formManger->registerSettingForm("Основные", NeardeSettingsForm::class);
-        $this->formManger->registerSettingForm("Редактор", CodeEditorSettingsForm::class);
-        $this->formManger->registerSettingForm("Дополнения", PluginsForm::class);
         
         $this->fileFormat->registerFileTemplate(NDTreeContextMenu::createItem("Пустой файл.", IDE::ico("file.png"), function ($item) {
             FileUtils::createFile($item->userData, IDE::inputDialog("Ввидите название нового файла."));
@@ -127,11 +124,8 @@ class ND
             $this->pluginsManger->setOfflineToPlugin($name, $data['offline']);
         }
         
-        Logger::info("Starting plugins");
-        
         foreach ($this->pluginsManger->getAll() as $name => $plugin)
         {
-            Logger::info("Starting: " . $name);
             if (!$this->pluginsManger->getOfflineForPlugin($name))
             {
                 try {
@@ -140,18 +134,12 @@ class ND
                     Logger::error("Error starting plugin $name");
                 }
             } else {
-                Logger::info("Plugin $name is offline");
             }
         }
-        
-        Logger::info("Plugins is started");
-        $this->formManger->getForm("Main")->show();
-        
-        Logger::info("ND CORE init - done");
-        Logger::info("checking update for IDE");
 
-        $updater = new \nd\utils\updater($this->buildVersion);
-        $updater->checkUpdate();
+        $this->formManger->getForm("Main")->show();
+
+        (new updater($this->buildVersion))->checkUpdate();
     }
     
     public function consoleInit()
@@ -228,7 +216,7 @@ class ND
                 "style" => "light",
                 "editor" => [
                     "style" => "chrome",
-                    "invisibles"  => false,
+                    "invisible"  => false,
                     "font_size"   => 15,
                 ]
             ]
@@ -280,7 +268,7 @@ class ND
             if (fs::ext($file) == 'php')
             {
                 try {
-                    include (string) $file;
+                    include_once (string) $file;
                 } catch (Error $exception) {
                     Logger::error('Error include file ' . $file->getAbsolutePath());
                     Logger::error('Trace : ' . $exception->getTraceAsString());

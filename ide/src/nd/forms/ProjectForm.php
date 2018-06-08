@@ -229,12 +229,12 @@ class ProjectForm extends AbstarctIDEForm
     /**
      * @return NDLog
      */
-    public function showConsole($text, $graphic = null) : \nd\ui\NDLog
+    public function showConsole($text, $graphic = null) : \nd\ui\NDConsole
     {
         $this->mainSplit->dividerPositions = [
             .7, .3
         ];
-        $log = new \nd\ui\NDLog($this->project->getPath());
+        $log = new \nd\ui\NDConsole($this->project->getPath());
         $tab = new UXTab($text);
         $tab->content = $log;
         $tab->graphic = $graphic;

@@ -16,7 +16,7 @@ use php\lib\str;
 use php\io\File;
 use php\lang\System;
 
-class NDLog extends UXCodeAreaScrollPane
+class NDConsole extends UXCodeAreaScrollPane
 {
     /**
      * @var UXRichTextArea
@@ -38,14 +38,25 @@ class NDLog extends UXCodeAreaScrollPane
      * @var NDProcess
      */
     private $process;
-    
-    
+
+
+    /**
+     * NDConsole constructor.
+     * @param string $dir
+     */
     public function __construct(string $dir)
     {    
         $this->dir = $dir;
         $this->textArea = new UXRichTextArea;
         $this->textArea->padding = 8;
         $this->textArea->on('keyDown', function (UXKeyEvent $e) {
+
+            if (str::length($this->textArea->text) < $this->consoleBuffer['length'])
+            {
+                $this->restoreFromBuffer();
+                return;
+            }
+
             if ($e->codeName == 'Up')
             {
                 $this->restoreFromBuffer();
@@ -80,12 +91,6 @@ class NDLog extends UXCodeAreaScrollPane
     
     public function doConsoleWrite(UXKeyEvent $e)
     {
-        if (str::length($this->textArea->text) < $this->consoleBuffer['length'])
-        {
-            $this->restoreFromBuffer();
-            return;
-        }
-        
         if ($e->codeName == "Enter")
         {
             $this->commandBuffer = trim(substr($this->textArea->text, $this->consoleBuffer['length']));

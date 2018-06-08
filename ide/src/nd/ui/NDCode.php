@@ -23,7 +23,7 @@ class NDCode extends UXCode
                 $this->text = Stream::getContents($file);   
             }
             $this->setTheme(IDE::get()->getConfig()['settings']['editor']['style']);
-            $this->setShowInvisibles(IDE::get()->getConfig()['settings']['editor']['invisibles']);
+            $this->setShowInvisibles(IDE::get()->getConfig()['settings']['editor']['invisible']);
             $this->setFontSize(IDE::get()->getConfig()['settings']['editor']['font_size']);
             $this->setReadOnly($readOnly);
         }, $lang);

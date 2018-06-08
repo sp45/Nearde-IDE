@@ -3,6 +3,7 @@ namespace nd\utils;
 
 use framework;
 use php\framework\Logger;
+use php\io\IOException;
 use std;
 use nd;
 
@@ -49,7 +50,11 @@ class updater
         
         Logger::info('updater -> create updater.jar');
         fs::makeFile('./updater.jar');
-        Stream::putContents('./updater.jar', Stream::getContents('res://.data/vendor/updater.jar'));
+        try {
+            Stream::putContents('./updater.jar', Stream::getContents('res://.data/vendor/updater.jar'));
+        } catch (IOException $e) {
+            ;
+        }
         Logger::info('updater -> create updater.jar - done');
     }
 }
