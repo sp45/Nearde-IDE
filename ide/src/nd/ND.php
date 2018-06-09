@@ -118,7 +118,7 @@ class ND
         $plugins = Json::fromFile("./plugins/plugins.json");
         foreach ($plugins as $name => $data)
         {
-            $this->addToRuntime($data['dir']);
+            $this->addToRuntime("./plugins/" . $data['dir']);
 
             $this->pluginsManger->registerPlugin($name, new $data['class']);
             $this->pluginsManger->setOfflineToPlugin($name, $data['offline']);
@@ -130,10 +130,10 @@ class ND
             {
                 try {
                     $plugin->onIDEStarting();
-                } catch (Error $e) {
+                } catch (\Exception $e) {
                     Logger::error("Error starting plugin $name");
+                    echo $e->getMessage();
                 }
-            } else {
             }
         }
 
@@ -259,16 +259,19 @@ class ND
      */
     private function addToRuntime(string $dir)
     {
-        $file = File::of($dir);
-
-        foreach ($file->findFiles() as $file)
+        echo 'Include dir to runtime -> ' . fs::abs($dir) . "\n";
+        $file = new File(fs::abs($dir));
+        $filses = $file->findFiles();
+        foreach ($filses as $file)
         {
             if (fs::isDir($file)) $this->addToRuntime($file);
 
             if (fs::ext($file) == 'php')
             {
+                echo 'Include php file -> ' . $file . "\n";
+
                 try {
-                    include_once (string) $file;
+                    include (string) $file;
                 } catch (Error $exception) {
                     Logger::error('Error include file ' . $file->getAbsolutePath());
                     Logger::error('Trace : ' . $exception->getTraceAsString());
@@ -278,6 +281,8 @@ class ND
 
             if (fs::ext($file) == 'jar')
             {
+                echo 'Include jar file -> ' . $file . "\n";
+
                 try {
                     Runtime::addJar($file);
                 } catch (IOException $exception) {

@@ -282,7 +282,9 @@ class IDE extends AbstractModule
         copyPlugin:
         
         fs::makeDir($pluginDir);
-        FileUtils::copy($tempDir, $pluginDir);
+
+        if (!FileUtils::copy($tempDir, $pluginDir)) return;
+
         IDE::cleanPluginsTemp();
         $json = Json::fromFile("./plugins/plugins.json");
         $json[strtoupper($pluginData['dir'])] = $pluginData;

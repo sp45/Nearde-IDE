@@ -134,8 +134,6 @@ abstract class AbstractForm extends UXForm
             $this->loadBehaviours();
             $this->loadClones();  // TODO Refactor it.
         }
-
-        Logger::debug("Form '{$this->getName()}' is created.");
     }
 
     protected static function getResourcePathByClassName()
@@ -449,7 +447,7 @@ abstract class AbstractForm extends UXForm
         return 'res://' . str::replace(reflect::typeOf($this), '\\', '/');
     }
 
-    protected function applyConfig()
+    public function applyConfig()
     {
         if ($this->_config->has('form.minWidth')) {
             $this->minWidth = $this->_config->get('form.minWidth', 0);
@@ -542,7 +540,11 @@ abstract class AbstractForm extends UXForm
         }
     }
 
-    protected function loadConfig($path = null, $applyConfig = true)
+    /**
+     * @param null $path
+     * @param bool $applyConfig
+     */
+    public function loadConfig($path = null, $applyConfig = true)
     {
         if ($path === null) {
             $path = $this->getResourcePath() . '.conf';
@@ -846,10 +848,6 @@ abstract class AbstractForm extends UXForm
             }
         }
 
-        /*if ($this->__fragmentPane) {
-            return $this->__fragmentPane->layout->lookup("#$name");
-        }*/
-
         return parent::__get($name);
     }
 
@@ -864,11 +862,6 @@ abstract class AbstractForm extends UXForm
                 return true;
             }
         }
-
-        /*if ($this->__fragmentPane) {
-            return (bool) $this->__fragmentPane->layout->lookup("#$name");
-        }*/
-
         return parent::__isset($name);
     }
 
@@ -884,7 +877,14 @@ abstract class AbstractForm extends UXForm
             }
         }
 
-        $class = 'Error';
-        throw new $class("Unable to call " . get_class($this) . "::" . $name . "() method");
+        throw new \Error("Unable to call '" . $name . "' method on '".get_class($this) ."' class");
+    }
+
+    /**
+     * @param AbstractModule $module
+     */
+    public function addModule(AbstractModule $module)
+    {
+        $this->_modules[] = $module;
     }
 }

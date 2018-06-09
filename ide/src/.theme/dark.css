@@ -2,25 +2,25 @@
 
 .root, .FormEditor {
 
-    -fx-base: rgb(50, 50, 55);
+    -fx-base: rgb(50, 50, 50);
     -fx-background: rgb(50, 50, 50);
 
     /* make controls (buttons, thumb, etc.) slightly lighter */
     -fx-color: derive(-fx-base, 10%);
 
     /* text fields and table rows background */
-    -fx-control-inner-background: rgb(20, 20, 20);
+    -fx-control-inner-background: rgb(50, 50, 50);
     /* version of -fx-control-inner-background for alternative rows */
     -fx-control-inner-background-alt: derive(-fx-control-inner-background, 2.5%);
 
     /* text colors depending on background's brightness */
     -fx-light-text-color: rgb(220, 220, 220);
     -fx-mid-text-color: rgb(100, 100, 100);
-    -fx-dark-text-color: rgb(20, 20, 20);
+    -fx-dark-text-color: rgb(50, 50, 50);
 
     /* A bright blue for highlighting/accenting objects.  For example: selected
      * text; selected items in menus, lists, trees, and tables; progress bars */
-    -fx-accent: #1a1a1a;
+    -fx-accent: #333;
 
     /* color of non-focused yet selected elements */
     -fx-selection-bar-non-focused: rgb(50, 50, 50);
@@ -45,7 +45,6 @@
         black 5%,
         derive(-fx-color,-7%) 30%
     );
-    // Цвет border у компонентов управления
     -fx-outer-border: derive(-fx-color, -13%);
     -fx-body-color: linear-gradient(to bottom,
             ladder(
@@ -55,8 +54,7 @@
             ),
             derive(-fx-color,-2%));
     
-    
-    // установка параметров шрифта
+
     -fx-font-family: "Source Sans Pro Regular";
     -fx-font-size: 1em;
     
@@ -148,19 +146,25 @@
     -fx-text-fill: #fff;
 }
 .tab-pane > .tab-header-area > .tab-header-background {
-    -fx-background-color:
-        -fx-outer-border,
-        -fx-text-box-border,
-        linear-gradient(from 0px 0px to 0px 5px, -fx-text-box-border, derive(-fx-text-box-border, 30%));
-    -fx-background-radius: 0 0;    
+    -fx-background-color: #2d2d2d;
 }
 .tab-pane:top > .tab-header-area {
     -fx-padding: 0.616667em 5 0.0em 0.616667em; /* 5 2 0 5 */
 }
 
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-radius: 0;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab {
+    -fx-background-color: #252525;
+}
+
 
 .button {
     -fx-font-family: "Source Sans Pro Regular";
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
 }
 .accent-btn {
     -fx-base: #088acc;
@@ -214,7 +218,7 @@ combo-box-base:editable:focused > .text-field,
  ******************************************************************************/
 
 .scroll-bar:vertical > .track-background, .scroll-bar:horizontal > .track-background {
-    -fx-background-color: #F1F1F1;
+    -fx-background-color: #333;
     -fx-background-insets: 0.0;
 }
 
@@ -317,6 +321,8 @@ combo-box-base:editable:focused > .text-field,
 
 .styled-text-area {
     -fx-font-size: 14;
+    -fx-background-color: #333;
+    -fx-font-smoothing-type: gray;
 }
 
 
@@ -344,4 +350,12 @@ combo-box-base:editable:focused > .text-field,
 .scroll-bar > .increment-button:pressed > .increment-arrow,
 .scroll-bar > .decrement-button:pressed > .decrement-arrow {
     -fx-background-color: -fx-mark-highlight-color, rgb(255, 255, 255);
+}
+
+.menu-bar{
+    -fx-background-color: #2d2d2d;
+}
+
+.split-pane *.split-pane-divider {
+    -fx-background-color: #2d2d2d;
 }

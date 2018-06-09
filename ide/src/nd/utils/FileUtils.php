@@ -8,6 +8,8 @@ use framework;
 use std;
 
 use php\lib\fs;
+use php\io\File;
+use nd\modules\IDE;
 
 class FileUtils 
 {
@@ -37,25 +39,34 @@ class FileUtils
      */
     public static function copy(string $fromDir, string $toDir)
     {
-        if (fs::exists($fromDir = fs::abs($fromDir)) && fs::exists($toDir = fs::abs($toDir))) {
-            $dir = new File($fromDir);
-            if ($dir->findFiles()) {
-                foreach ($dir as $path)
-                    $list[] = $path->getPath();
-                    
-                if (isset($list)) {
-                    foreach ($list as $file) {
-                        $path = $toDir . '\\' . fs::name($file);
-                        if (fs::isDir($file)) {
-                            fs::makeDir($path);
-                            self::copy($file, $path);
-                        } else fs::copy($file, $path);
-                    }
-                    return true;
-                }
-            }
+        $fromDir = fs::abs($fromDir);
+        $toDir   = fs::abs($toDir);
+
+        if (!fs::exists($fromDir))
+        {
+            echo 'Dir from copy not found' . "\n";
+            return false;
         }
-        return false;
+
+        if (!fs::exists($toDir))
+        {
+            echo 'Dir to copy not found' . "\n";
+            return false;
+        }
+
+        $dir = new File($fromDir);
+        if ($dir->findFiles()) {
+            foreach ($dir->findFiles() as $file)
+            {
+                $path = fs::abs($toDir . '/' . fs::name($file));
+                echo 'Copy from -> ' . $file . ', to -> ' . $path . "\n";
+                if (fs::isDir($file)) {
+                    fs::makeDir($path);
+                    self::copy($file, $path);
+                } else fs::copy($file, $path);
+            }
+            return true;
+        }
     }
 
     /**

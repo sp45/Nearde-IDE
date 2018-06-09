@@ -65,7 +65,7 @@ class NDConsole extends UXCodeAreaScrollPane
                 if ($this->commandsInt <= -1)
                     $this->commandsInt = count($this->commandsArr);
 
-                $this->addConsole($this->commandsArr[$this->commandsInt], 'blue', false);
+                $this->addConsole($this->commandsArr[$this->commandsInt], '#3259d1', false);
                 $this->scrollY = $this->line * 25;
                 return;
             }
@@ -78,7 +78,7 @@ class NDConsole extends UXCodeAreaScrollPane
                 if ($this->commandsInt >= count($this->commandsArr))
                     $this->commandsInt = 0;
 
-                $this->addConsole($this->commandsArr[$this->commandsInt], 'blue', false);
+                $this->addConsole($this->commandsArr[$this->commandsInt], '#3259d1', false);
                 $this->scrollY = $this->line * 25;
                 return;
             }
@@ -95,7 +95,7 @@ class NDConsole extends UXCodeAreaScrollPane
         {
             $this->commandBuffer = trim(substr($this->textArea->text, $this->consoleBuffer['length']));
             $this->restoreFromBuffer();
-            $this->addConsole($this->commandBuffer . "\n", 'blue');
+            $this->addConsole($this->commandBuffer . "\n", '#3259d1');
             if (!$this->processRuning)
                 $this->parseCommand($this->commandBuffer);
             else {
@@ -111,9 +111,9 @@ class NDConsole extends UXCodeAreaScrollPane
         $this->commandBuffer = trim(substr($this->textArea->text, $this->consoleBuffer['length']));
     }
     
-    public function addConsole(string $text, string $color = '#333', $addToBuffer = true, $customCss = null)
+    public function addConsole(string $text, string $color = 'gray', $addToBuffer = true, $customCss = null)
     {
-        $this->textArea->appendText($text, '-fx-fill:' . $color . '; ' . $customCss);
+        $this->textArea->appendText($text, '-fx-font-smoothing-type: gray; -fx-fill:' . $color . '; ' . $customCss);
         if (!$addToBuffer) return;
         
         $this->line++;
@@ -136,10 +136,10 @@ class NDConsole extends UXCodeAreaScrollPane
     
     public function printUserAndDir()
     {
-        $this->addConsole(System::getProperty('user.name'), 'blue');
+        $this->addConsole(System::getProperty('user.name'), '#3259d1');
         $this->addConsole(" : ");
-        $this->addConsole(fs::abs($this->dir), 'green');
-        $this->addConsole(" $ ", 'blue');
+        $this->addConsole(fs::abs($this->dir), '#3fd132');
+        $this->addConsole(" $ ", '#3259d1');
     }
     
     public function parseCommand(string $command)
@@ -197,7 +197,7 @@ class NDConsole extends UXCodeAreaScrollPane
                 $process->start();
 
         } catch (IOException $exception) {
-            $this->addConsole('Error run program ' . $process->getCommand() . "\n", 'red');
+            $this->addConsole('Error run program ' . $process->getCommand() . "\n", '#d15732');
             $this->printUserAndDir();
             return;
         }
@@ -213,7 +213,7 @@ class NDConsole extends UXCodeAreaScrollPane
         
             $this->process->getError()->eachLine(function($line){
                 uiLater(function () use ($line) {
-                    $this->addConsole($line  . "\n", 'red');
+                    $this->addConsole($line  . "\n", '#d15732');
                 }); 
             });
                     

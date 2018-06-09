@@ -21,9 +21,6 @@ use php\lib\Str;
  */
 class DataUtils
 {
-    private function __construct() {}
-
-
     public static function scanAll(UXParent $layout, callable $callback)
     {
         foreach ($layout->childrenUnmodifiable as $node) {

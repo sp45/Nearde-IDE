@@ -7,6 +7,7 @@ use php\gui\event\UXMouseEvent;
 use php\gui\event\UXWindowEvent;
 use std, gui, framework, nd;
 use nd\modules\IDE;
+use nd\utils\FileUtils;
 
 
 class PluginsForm extends AbstarctIDEForm

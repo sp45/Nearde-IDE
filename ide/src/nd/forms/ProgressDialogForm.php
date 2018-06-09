@@ -2,8 +2,12 @@
 namespace nd\forms;
 
 use bundle\http\HttpDownloader;
+use compress\ZipArchive;
+use compress\ZipArchiveEntry;
 use Exception;
-use php\compress\ZipFile;
+use php\io\File;
+use php\io\Stream;
+use php\lib\fs;
 use php\lang\Thread;
 use php\lib\arr;
 use nd\modules\IDE;
@@ -14,64 +18,51 @@ class ProgressDialogForm extends AbstarctIDEForm
 {
     private $res = false;
     
-    public function unpack(string $zip, string $dir, bool $dialog = true)
+    public function unpack(string $zip, string $dir)
     {
-        $zip = new ZipFile($zip);
-        $t = new Thread(function () use ($zip, $dir, $dialog) {
-            try {
-                $unpacked = 0;
-                $count = arr::count($zip->statAll());
-                $zip->unpack($dir, null, function ($name) use (&$unpacked, $count, $dialog) {
-                    $unpacked += 1;
-                    $isEnd = $unpacked == $count; 
-                    uiLater(function()use($unpacked, $isEnd, $count, $name, $dialog){
-                        $this->progressBar->progressK = $unpacked / $count;
-                        if($isEnd)
-                        {
-                            $this->res = true;
-                            if ($dialog)
-                                IDE::dialog("Распаковка завершина.");
-                            
-                            $this->hide();
-                        }
-                        $this->label->text = $name.' ( '.$unpacked.' / '.$count.' )';
-                    });
-                });
-            } catch(Exception $e)
-            {
-                uiLater(function () {
-                    IDE::dialog('Ошибка при распаковке архива!');
-                    $this->hide();
-                });
-            }
-        });
-        $t->start();
-        $this->showAndWait();
+        try {
+            $zip = new ZipArchive($zip);
+            $zip->readAll(function (ZipArchiveEntry $entry, ?Stream $stream) use ($dir) {
+                $file = fs::abs($dir . '/' . $entry->name);
+                echo 'Unpack -> ' . $file . "\n";
+                if (!$entry->isDirectory())
+                {
+                    fs::makeDir(fs::parent($file));
+                    fs::copy($stream, $file);
+                }
+                else fs::makeDir($file);
+            });
+            $this->res = true;
+        } catch (\Error $exception)
+        {
+            $this->res = false;
+        }
+
         return $this->res;
     }
-    
+
     public function download(string $url, string $to)
     {
         $this->title = "Загрузка";
-        
+
         $this->label->text = $url;
-        
+
         $dwn = new HttpDownloader();
         $dwn->urls = [$url];
         $dwn->destDirectory = $to;
-        
+
         $dwn->on('successAll', function () {
             $this->res = true;
             $this->hide();
         });
-        
+
         $dwn->on('errorOne', function () {
             IDE::dialog("Не удалось скачать файл.");
             $this->hide();
         });
-        
+
         $dwn->start();
-        
+
         $this->showAndWait();
         
         return $this->res;

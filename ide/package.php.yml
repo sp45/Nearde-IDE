@@ -7,7 +7,7 @@ deps:
   jphp-gui-desktop-ext: '*'
   dn-httpclient-bundle: '*'
   jphp-httpclient-ext: '*'
-  jphp-zip-ext: '*'
+  jphp-compress-ext: '*'
   designer: '*'
   gui-tabs-ext: '*'
 
