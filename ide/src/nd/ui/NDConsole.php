@@ -93,7 +93,7 @@ class NDConsole extends UXCodeAreaScrollPane
     {
         if ($e->codeName == "Enter")
         {
-            $this->commandBuffer = trim(substr($this->textArea->text, $this->consoleBuffer['length']));
+            $this->commandBuffer = str_replace("\n", '', trim(substr($this->textArea->text, $this->consoleBuffer['length'])));
             $this->restoreFromBuffer();
             $this->addConsole($this->commandBuffer . "\n", '#3259d1');
             if (!$this->processRuning)
