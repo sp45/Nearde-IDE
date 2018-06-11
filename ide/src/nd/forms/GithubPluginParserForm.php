@@ -3,6 +3,7 @@ namespace nd\forms;
 
 use php\gui\event\UXEvent;
 use nd\modules\IDE;
+use php\lib\fs;
 use std, gui, framework, nd;
 
 
@@ -68,6 +69,8 @@ class GithubPluginParserForm extends AbstarctIDEForm
             IDE::dialog("Выберете репозиторий.");
             return;
         }
+
+        IDE::cleanPluginsTemp();
         
         if (IDE::downloadDialog($this->listView->selectedItem[5], "./plugins/temp/"))
         {

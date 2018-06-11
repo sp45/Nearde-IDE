@@ -8,4 +8,6 @@ abstract class Plugin
     abstract public function getAuthor();
     abstract public function getVersion();
     abstract public function getDscription();
+
+    abstract public function onIDEStarting();
 }

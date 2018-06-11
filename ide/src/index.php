@@ -3,11 +3,9 @@
 use php\lib\fs;
 use nd\ND;
 use php\desktop\Runtime;
-use php\framework\FrameworkPackageLoader;
+use php\gui\framework\Application;
 
-(new FrameworkPackageLoader())->register();
-
-$app = new \php\gui\framework\Application();
+$app = new Application();
 try {
     $app->launch(function () {
 

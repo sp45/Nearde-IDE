@@ -32,12 +32,7 @@
     </LabelEx>
     <Data cursor="DEFAULT" enabled="1" id="data-labelAlt" visible="1"/>
     <ComboBox editable="false" focusTraversable="true" id="combobox" layoutX="16" layoutY="96" prefHeight="24" prefWidth="152" promptText="" styleClass="combo-box-base combo-box " value="" visibleRowCount="10">
-      <items xmlns:fx="http://javafx.com/fxml">
-        <FXCollections fx:factory="observableArrayList">
-          <String fx:value="Светлая"/>
-          <String fx:value="Тёмная"/>
-        </FXCollections>
-      </items>
+
     </ComboBox>
     <Data cursor="DEFAULT" enabled="1" id="data-combobox" visible="1"/>
   </children>

@@ -157,31 +157,28 @@
 }
 
 .tab-pane > .tab-header-area > .headers-region > .tab {
-    -fx-background-color: #252525;
+    -fx-background-color: #3a3a3a;
 }
 
 
 .button {
     -fx-font-family: "Source Sans Pro Regular";
-    -fx-border-radius: 0;
-    -fx-border-width: 0;
+    -fx-background-color: #333;
+    -fx-text-fill: #fff;
 }
 .accent-btn {
-    -fx-base: #088acc;
+    -fx-background-color: #088acc;
     -fx-text-fill: #fff;
-    -fx-focus-color: #088acc;
     -fx-font-family: "Source Sans Pro SemiBold";
 }
 .warning-btn {
-    -fx-base: #d6312b;
+    -fx-background-color: #d6312b;
     -fx-text-fill: #fff;
-    -fx-focus-color: #d6312b;
     -fx-font-family: "Source Sans Pro SemiBold";
 }
 .green-btn {
-    -fx-base: #55bd63;
+    -fx-background-color: #55bd63;
     -fx-text-fill: #fff;
-    -fx-focus-color: #55bd63;
     -fx-font-family: "Source Sans Pro SemiBold";
 }
 

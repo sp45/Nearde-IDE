@@ -17,6 +17,9 @@ use nd\forms\ProjectForm;
 use nd\forms\SettingsForm;
 use nd\forms\TreeDialogForm;
 use nd\forms\UpdateForm;
+use nd\theme\DarkTheme;
+use nd\theme\LightTheme;
+use nd\utils\ThemeManger;
 use nd\utils\updater;
 use php\desktop\Runtime;
 use php\framework\Logger;
@@ -37,7 +40,6 @@ use nd\modules\IDE;
 
 use nd\ui\NDTreeContextMenu;
 use nd\external\EmptyProjectTemplate;
-use nd\external\ProjectEditor;
 use php\lang\System;
 
 class ND 
@@ -45,7 +47,6 @@ class ND
     private $version = "2.0 beta build 43";
     private $buildVersion = "43";
     private $name = "Nearde IDE";
-    private $dev = true;
     private $configPath;
     
     /**
@@ -67,6 +68,11 @@ class ND
      * @var projectManger
      */
     private $projectManger;
+
+    /**
+     * @var ThemeManger
+     */
+    private $themeManger;
     
     private $config;
 
@@ -82,10 +88,14 @@ class ND
         $this->pluginsManger = new pluginsManger();
         $this->projectManger = new projectManger();
         $this->fileFormat    = new fileFormat();
+        $this->themeManger   = new ThemeManger();
 
         $this->fileFormat->init();
         $this->loadConfig();
-        
+
+        $this->themeManger->registerTheme(new LightTheme);
+        $this->themeManger->registerTheme(new DarkTheme);
+
         $this->formManger->registerForm("Main", MainForm::class);
         $this->formManger->registerForm("Project", ProjectForm::class);
         $this->formManger->registerForm("Settings", SettingsForm::class);
@@ -126,6 +136,7 @@ class ND
         
         foreach ($this->pluginsManger->getAll() as $name => $plugin)
         {
+            /** @var Plugin $plugin */
             if (!$this->pluginsManger->getOfflineForPlugin($name))
             {
                 try {
@@ -166,19 +177,21 @@ class ND
     {
         return $this->pluginsManger;
     }
-    
+
+    /**
+     * @return string
+     */
     public function getVersion()
     {
         return $this->version;
     }
+
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
-    }
-    
-    public function isDev()
-    {
-        return $this->dev;
     }
     
     /**
@@ -256,13 +269,14 @@ class ND
 
     /**
      * @param string $dir
+     * @throws IOException
      */
     private function addToRuntime(string $dir)
     {
         echo 'Include dir to runtime -> ' . fs::abs($dir) . "\n";
         $file = new File(fs::abs($dir));
-        $filses = $file->findFiles();
-        foreach ($filses as $file)
+        $files = $file->findFiles();
+        foreach ($files as $file)
         {
             if (fs::isDir($file)) $this->addToRuntime($file);
 
@@ -294,5 +308,13 @@ class ND
         }
 
 
+    }
+
+    /**
+     * @return ThemeManger
+     */
+    public function getThemeManger(): ThemeManger
+    {
+        return $this->themeManger;
     }
 }  

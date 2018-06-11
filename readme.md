@@ -13,6 +13,10 @@ jppm prepare-ide
 ```bash
 jppm start-ide
 ```
+or 
+```bash
+jppm start
+```
 
 ## How to build?
 1. Install **Java Development Kit 8** and the last version of JPPM.
@@ -23,6 +27,10 @@ jppm prepare-ide
 3. Finally, build IDE:
 ```bash
 jppm build-ide
+```
+or 
+```bash
+jppm build
 ```
 
 The build of IDE will be in the `ide/build` directory.

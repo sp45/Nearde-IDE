@@ -5,30 +5,25 @@ use Error;
 use php\gui\event\UXEvent;
 use php\gui\event\UXWindowEvent;
 use nd\modules\IDE;
+use php\gui\UXComboBox;
 use std, gui, framework, nd;
 
 
 class NeardeSettingsForm extends AbstarctIDEForm
 {
-    private $theme = [
-        'Светлая' => 'light',
-        'Тёмная' => 'dark',
-    ];
-    
     /**
      * @event button.action 
      */
     function doButtonAction(UXEvent $e = null)
-    {    
-        $config = IDE::get()->getConfig();
+    {
+        /** @var nd\ND $ide */
+        $ide = IDE::get();
+        $config = $ide->getConfig();
+
         $config['settings']['projectPath'] = $this->edit->text;
-        $t = $config['settings']['style'];
-        $config['settings']['style'] = $this->theme[$this->combobox->value];
-        IDE::get()->toConfig($config);
-        
-        if ($this->theme[$this->combobox->value] != $t)
-            if (IDE::confirmDialog("Тема изменена, перезапустить IDE ?"))
-                IDE::restart();
+        $config['settings']['style'] = $ide->getThemeManger()->getByName($this->combobox->value)->getID();
+
+        $ide->toConfig($config);
     }
 
     /**
@@ -36,12 +31,15 @@ class NeardeSettingsForm extends AbstarctIDEForm
      */
     function doShow(UXWindowEvent $e = null)
     {    
-        $config = IDE::get()->getConfig();
+        /** @var nd\ND $ide */
+        $ide = IDE::get();
+
+        $config = $ide->getConfig();
         $this->edit->text = $config['settings']['projectPath'];
-        if ($config['settings']['style'] == 'light')
-        {
-            $this->combobox->value = 'Светлая';
-        } else $this->combobox->value = 'Тёмная';
+        $this->combobox->value = $ide->getThemeManger()->get($config['settings']['style'])->getName();
+
+        foreach ($ide->getThemeManger()->getAll() as $theme)
+            $this->combobox->items->add($theme->getName());
     }
 
     /**

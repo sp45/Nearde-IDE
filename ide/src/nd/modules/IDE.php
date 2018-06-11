@@ -1,6 +1,8 @@
 <?php
 namespace nd\modules;
 
+use compress\ZipArchive;
+use compress\ZipArchiveEntry;
 use facade\Json;
 use php\framework\Logger;
 use php\gui\event\UXMouseEvent;
@@ -12,8 +14,12 @@ use php\gui\UXImageView;
 use php\gui\UXLabel;
 use php\gui\UXListCell;
 use php\gui\UXListView;
+use php\io\Stream;
 use script\storage\IniStorage;
 use nd\utils\NDProcess;
+use php\lib\str;
+use php\lang\System;
+use nd\utils\formManger;
 
 use std, gui, framework, nd;
 
@@ -48,15 +54,19 @@ class IDE extends AbstractModule
         
         return $image;
     }
-    
+
+
     /**
-     * @return ND
+     * @return nd\ND
      */
     public static function get()
     {
         return $GLOBALS['ND'];
     }
-    
+
+    /**
+     * @param UXListView $listView
+     */
     public static function upgradeListView(UXListView $listView)
     {
         $listView->setCellFactory(function(UXListCell $cell, $item) {
@@ -73,7 +83,7 @@ class IDE extends AbstractModule
                 $cell->observer("width")->addListener(function ($old, $new) use ($titleDescription, $item) {
                     if ($old == $new) return;
                     if ($item[1])
-                        $titleDescription->maxWidth = $new - 63;
+                        $titleDescription->maxWidth = $new - 70;
                 });
                 
                 if ($titleDescription)
@@ -104,7 +114,7 @@ class IDE extends AbstractModule
      */
     public static function getFormManger()
     {
-        return self::get()->getFormManger();
+        return IDE::get()->getFormManger();
     }
     
     /**
@@ -120,7 +130,6 @@ class IDE extends AbstractModule
      */
     public static function treeDialog(string $text, string $path)
     {
-        app()->hideSplash();
         return IDE::getFormManger()->getForm("TreeDialog")->open($text, $path);
     }
     
@@ -129,32 +138,61 @@ class IDE extends AbstractModule
      */
     public static function inputDialog(string $text)
     {
-        app()->hideSplash();
         return IDE::getFormManger()->getForm("InputDialog")->open($text);
     }
-    
+
+
     /**
-     * @return bool 
+     * @param string $text
+     * @return mixed
      */
     public static function confirmDialog(string $text)
     {
-        app()->hideSplash();
         return IDE::getFormManger()->getForm("ConfirmDialog")->open($text);
     }
     
     public static function dialog(string $text)
     {
-        app()->hideSplash();
         IDE::getFormManger()->getForm("Dialog")->open($text);
     }
-    
+
+
     /**
-     * @return bool 
+     * @param string $zip
+     * @param string $dir
+     * @return bool
      */
-    public static function unpackDialog(string $zip, string $dir)
+    public static function unpack(string $zip, string $dir)
     {
-        app()->hideSplash();
-        return IDE::getFormManger()->getForm("ProgressDialog")->unpack($zip, $dir, false);
+        try {
+            $zip = new ZipArchive($zip);
+            $zip->readAll(function (ZipArchiveEntry $entry, ?Stream $stream) use ($dir) {
+                $file = fs::abs($dir . '/' . $entry->name);
+                echo 'Unpack -> ' . $file . "\n";
+                if (!$entry->isDirectory())
+                {
+                    fs::makeDir(fs::parent($file));
+                    fs::copy($stream, $file);
+                }
+                else fs::makeDir($file);
+            });
+            $res = true;
+        } catch (\Error $exception)
+        {
+            $res = false;
+        }
+
+        return $res;
+    }
+
+    /**
+     * @param string $zip
+     * @param string $dir
+     * @return bool
+     */
+    public function unpackDialog(string $zip, string $dir)
+    {
+        return IDE::unpack($zip, $dir);
     }
     
     /**
@@ -162,7 +200,6 @@ class IDE extends AbstractModule
      */
     public static function downloadDialog(string $url, string $to)
     {
-        app()->hideSplash();
         return IDE::getFormManger()->getForm("ProgressDialog")->download($url, $to);
     }
     

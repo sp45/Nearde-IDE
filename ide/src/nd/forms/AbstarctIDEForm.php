@@ -4,6 +4,7 @@ namespace nd\forms;
 use framework;
 use nd;
 use php\gui\framework\AbstractForm;
+use nd\modules\IDE;
 
 abstract class AbstarctIDEForm extends AbstractForm
 {
@@ -22,7 +23,10 @@ abstract class AbstarctIDEForm extends AbstractForm
     private function addCustomStyle()
     {
         $this->clearStylesheets();
-        $this->addStylesheet(".theme/". \nd\modules\IDE::get()->getConfig()['settings']['style'] .".css");
+
+        $theme = IDE::get()->getThemeManger()->get(IDE::get()->getConfig()['settings']['style']);
+        echo 'Form manger add css -> ' . $theme->getCssFile() . "\n";
+        $this->addStylesheet($theme->getCssFile());
         $this->centerOnScreen();
     }
 }

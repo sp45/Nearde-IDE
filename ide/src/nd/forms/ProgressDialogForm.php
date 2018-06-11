@@ -17,29 +17,6 @@ use std, gui, framework, nd;
 class ProgressDialogForm extends AbstarctIDEForm
 {
     private $res = false;
-    
-    public function unpack(string $zip, string $dir)
-    {
-        try {
-            $zip = new ZipArchive($zip);
-            $zip->readAll(function (ZipArchiveEntry $entry, ?Stream $stream) use ($dir) {
-                $file = fs::abs($dir . '/' . $entry->name);
-                echo 'Unpack -> ' . $file . "\n";
-                if (!$entry->isDirectory())
-                {
-                    fs::makeDir(fs::parent($file));
-                    fs::copy($stream, $file);
-                }
-                else fs::makeDir($file);
-            });
-            $this->res = true;
-        } catch (\Error $exception)
-        {
-            $this->res = false;
-        }
-
-        return $this->res;
-    }
 
     public function download(string $url, string $to)
     {

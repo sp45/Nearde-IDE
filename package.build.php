@@ -47,3 +47,21 @@ function task_buildIde(Event $e)
 
     Console::log('--> done!');
 }
+
+/**
+ * @jppm-task start
+ */
+function task_run(Event $e)
+{
+    Console::log('Use start-ide task ...');
+    Tasks::runExternal('./', 'start-ide', $e->args(), ...$e->flags());
+}
+
+/**
+ * @jppm-task build
+ */
+function task_build(Event $e)
+{
+    Console::log('Use build-ide task ...');
+    Tasks::runExternal('./', 'build-ide', $e->args(), ...$e->flags());
+}

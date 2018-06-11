@@ -62,7 +62,7 @@ class NDConsole extends UXCodeAreaScrollPane
                 $this->restoreFromBuffer();
                 $this->commandsInt--;
 
-                if ($this->commandsInt <= -1)
+                if ($this->commandsInt <= 0)
                     $this->commandsInt = count($this->commandsArr);
 
                 $this->addConsole($this->commandsArr[$this->commandsInt], '#3259d1', false);

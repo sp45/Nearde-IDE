@@ -8,6 +8,7 @@ use php\gui\event\UXWindowEvent;
 use std, gui, framework, nd;
 use nd\modules\IDE;
 use nd\utils\FileUtils;
+use nd\Plugin;
 
 
 class PluginsForm extends AbstarctIDEForm
@@ -94,7 +95,7 @@ class PluginsForm extends AbstarctIDEForm
         $this->installPlugin($file);
     }
     
-    public function showPluginInfo(\nd\Plugin $plugin, string $name)
+    public function showPluginInfo(Plugin $plugin, string $name)
     {
         $this->selectedPlugin = $name;
         $this->panel->visible = true;
