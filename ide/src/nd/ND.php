@@ -3,6 +3,7 @@ namespace nd;
 
 use gui;
 use facade\Json;
+use nd\external\editors\MarkdownEditor;
 use nd\forms\CodeEditorSettingsForm;
 use nd\forms\ConfirmDialogForm;
 use nd\forms\DialogForm;
@@ -124,6 +125,9 @@ class ND
         }));
         
         $this->projectManger->registerTemplate("Empty", new EmptyProjectTemplate);
+        $this->fileFormat->registerEditor(new MarkdownEditor([]), [
+            'md', 'markdown'
+        ]);
         
         $plugins = Json::fromFile("./plugins/plugins.json");
         foreach ($plugins as $name => $data)

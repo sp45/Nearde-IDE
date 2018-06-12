@@ -6,6 +6,7 @@ use php\gui\designer\UXCodeAreaScrollPane;
 use php\gui\UXFlatButton;
 use php\gui\UXRichTextArea;
 use php\gui\UXDndTabPane;
+use nd\ui\NDTabPane;
 
 use php\gui\UXSplitPane;
 use php\gui\UXTab;
@@ -48,7 +49,7 @@ class ProjectForm extends AbstarctIDEForm
     private $mainSplit;
     
     /**
-     * @var UXDndTabPane
+     * @var nd\ui\NDTabPane
      */
     private $projectTabPane;
     
@@ -169,8 +170,8 @@ class ProjectForm extends AbstarctIDEForm
                 $tab->graphic  = IDE::get()->getFileFormat()->getIcon(fs::ext($path));
                 $tab->content  = IDE::get()->getFileFormat()->getEditor($path); // get code editor
                 $tab->userData = $path;
-                $this->projectTabPane->tabs->add($tab);
-                $this->projectTabPane->selectTab($tab);
+                $this->projectTabPane->getTabPane()->tabs->add($tab);
+                $this->projectTabPane->getTabPane()->selectTab($tab);
             } else 
             {
                 $this->projectTree->selectedItems[0]->expanded = !$this->projectTree->selectedItems[0]->expanded;
@@ -179,7 +180,7 @@ class ProjectForm extends AbstarctIDEForm
         $this->projectTree->refreshTree($this->project->getPath(), true);
         $this->projectSplit->items->add($this->projectTree);
         
-        $this->projectTabPane = new UXDndTabPane;
+        $this->projectTabPane = new NDTabPane();
         $this->projectSplit->items->add($this->projectTabPane);
         
         $this->consoleTabPane = new UXDndTabPane;

@@ -20,6 +20,6 @@ class EmptyProjectTemplate extends projectTemplate
     
     public function getDscription()
     {
-        return "Пустой проект в котором нет ничего по умолчанию.";
+        return "Пустой проект.";
     }
 }

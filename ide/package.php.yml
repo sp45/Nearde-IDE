@@ -1,5 +1,4 @@
-name: 'Nearde'
-
+name: Nearde
 deps:
   jphp-core: '*'
   jphp-zend-ext: '*'
@@ -10,22 +9,18 @@ deps:
   jphp-compress-ext: '*'
   designer: '*'
   gui-tabs-ext: '*'
-
+  jphp-markdown-ext: '*'
 plugins:
 - App
-
 app:
   bootstrap: index.php
   encoding: UTF-8
-  metrics: true
-  trace: false
-
+  metrics: '1'
+  trace: ''
 sources:
 - src
-
 includes:
 - index.php
-
 config:
   build-dir: ./build
   vendor-dir: ./vendor

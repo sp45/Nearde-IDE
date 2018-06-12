@@ -15,7 +15,7 @@ class fileFormat
 {
 
     private $formats;
-    private $templats;
+    private $templates;
     private $ext4lang;
     
     private $editors;
@@ -54,83 +54,122 @@ class fileFormat
             'html' => 'html',
             'css' => 'css',
             'js' => 'javascript',
-            // цэ пу пус и цэ
             'c' => 'c_cpp',
             'cc' => 'c_cpp',
             'cpp' => 'c_cpp',
             'h' => 'c_cpp',
             'hpp' => 'c_cpp',
-            // кэк :D
             'md' => 'markdown',
-            'makefile' => 'makefile',
             'py' => 'python',
         ];
     }
-    
+
+    /**
+     * @param string $ext
+     * @return \php\gui\UXImageView
+     */
     public function getIcon(string $ext)
     {
         if (!$this->formats[$ext]) return IDE::ico("file.png");
         return IDE::image($this->formats[$ext]);
     }
-    
+
+    /**
+     * @param string $ext
+     * @param string $ico
+     */
     public function registerIcon(string $ext, string $ico)
     {
-        if ($this->formats[$ext]) return;
-        
         $this->formats[$ext] = $ico;
     }
-    
+
+    /**
+     * @param UXMenuItem $item
+     */
     public function registerFileTemplate(UXMenuItem $item)
     {
-        $this->templats[] = $item;
+        $this->templates[] = $item;
     }
-    
+
+    /**
+     * @param $ext
+     * @param $lang
+     */
     public function registerLang4ext($ext, $lang)
     {
         $this->ext4lang[$ext] = $lang;  // fix bug
     }
-    
+
+    /**
+     * @param $path
+     * @return mixed
+     */
     public function getFileTemplats($path)
     {
-        $list = $this->templats;
+        $list = $this->templates;
         foreach ($list as $item)
             $item->userData = $path;
             
         return $list;
     }
-    
+
+    /**
+     * @param $path
+     * @return string
+     */
     public function getLang($path)
     {
         $path = strtolower($path);
         
         if ($this->ext4lang[fs::ext($path)])
-        {
             return $this->ext4lang[fs::ext($path)];
-        } else if ($this->ext4lang[fs::nameNoExt($path)])
-        {
+        else if ($this->ext4lang[fs::nameNoExt($path)])
             return $this->ext4lang[fs::nameNoExt($path)];
-        } 
-        
-        return 'text';
+        else return 'text';
     }
-    
-    public function registerEditor(UXNode $editor, string $ext)
+
+
+    /**
+     * @param UXNode $editor
+     * @param $ext
+     */
+    public function registerEditor(UXNode $editor, $ext)
     {
-        if ($this->editors[$ext]) return;
-        $this->editors[$ext] = $editor;
+        if (is_array($ext))
+        {
+            foreach ($ext as $extension)
+                $this->registerEditor($editor, $extension);
+
+            return;
+        }
+
+        if (is_string($ext))
+        {
+            if ($this->editors[$ext]) return;
+            $this->editors[$ext] = $editor;
+        }
     }
-    
-    public function getEditor(string $path) : UXNode
+
+    /**
+     * @param string $path
+     * @return UXNode
+     */
+    public function getEditor(string $path)
     {
         if ($this->editors[fs::ext($path)]) {
-            $editor = clone $this->editors[fs::ext($path)];
+            $obj = get_class($this->editors[fs::ext($path)]);
+            $editor = new $obj;
             $editor->open($path);
             return $editor;
         }
         
         return $this->getCodeEditor($path);
     }
-    
+
+    /**
+     * @param string $path
+     * @return NDCode
+     */
     public function getCodeEditor(string $path) : NDCode
     {
         return new NDCode($path, $this->getLang(fs::ext($path)));

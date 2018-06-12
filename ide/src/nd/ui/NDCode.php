@@ -1,6 +1,7 @@
 <?php
 namespace nd\ui;
 
+use php\io\IOException;
 use std;
 use nd;
 use gui;
@@ -11,7 +12,11 @@ use php\lib\fs;
 
 class NDCode extends UXCode
 {
-    
+    /**
+     * @var callable
+     */
+    public $onSave;
+
     public function __construct($file, $lang = "text", $readOnly = false)
     {
         parent::__construct(function () use ($file, $readOnly) {
@@ -19,17 +24,18 @@ class NDCode extends UXCode
             if (is_string($file))
                 $this->text = $file;
             if (fs::exists($file))
-            {
                 $this->text = Stream::getContents($file);   
-            }
+
             $this->setTheme(IDE::get()->getConfig()['settings']['editor']['style']);
             $this->setShowInvisibles(IDE::get()->getConfig()['settings']['editor']['invisible']);
             $this->setFontSize(IDE::get()->getConfig()['settings']['editor']['font_size']);
             $this->setReadOnly($readOnly);
         }, $lang);
         $this->userData = $this;
+
         $this->on('keyUp', function () use ($file) {
             $this->save($file);
+            call_user_func($this->onSave, $file);
         });
     }
     
@@ -55,10 +61,13 @@ class NDCode extends UXCode
     
     public function save($path)
     {
-        if (fs::exists($path))
-        {
+        if (!fs::exists($path)) return;
+
+        try {
             Stream::putContents($path, $this->text);
-        } 
+        } catch (IOException $e) {
+            ;
+        }
     }
     
 }

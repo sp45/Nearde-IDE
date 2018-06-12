@@ -3,6 +3,7 @@ namespace nd\ui;
 
 use framework;
 use nd;
+use php\io\IOException;
 use std;
 use gui;
 
@@ -36,7 +37,7 @@ class NDTree extends UXTreeView
     {
         $this->path = $path;
         $root = new UXTreeItem(new NDTreeValue(fs::name($this->path), fs::abs($this->path)));
-        $root->graphic = IDE::ico("nd16.png"); // critical bug !!!! был
+        $root->graphic = IDE::ico("nd16.png");
         $root->expanded = true;
         $this->root = $root;
         $this->rootVisible = $rootV;
@@ -77,8 +78,12 @@ class NDTree extends UXTreeView
     protected function refreshTreeItem($file, UXTreeItem $item) 
     {
         $item->children->clear();
-        $files = File::of($file)->findFiles();
-        
+        try {
+            $files = File::of($file)->findFiles();
+        } catch (IOException $e) {
+            return;
+        }
+
         foreach ($files as $file) {
             $subItem = new UXTreeItem(new NDTreeValue(fs::name($file), fs::abs($file)));
             if (fs::isDir($file)) {
