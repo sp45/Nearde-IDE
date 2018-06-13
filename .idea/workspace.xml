@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="769674d6-b529-4f21-b40a-92cc536b3351" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/ide/src/nd/external/editors/MarkdownEditor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ide/src/nd/external/editors/markdown.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ide/src/nd/ui/NDSvgImage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ide/src/nd/ui/NDTabPane.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ide/src/nd/ui/SplashScreen.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ide/package.php.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ide/package.php.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ide/src/.data/img/splash_unstabile.png" beforeDir="false" afterPath="$PROJECT_DIR$/ide/src/.data/img/splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ide/src/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/ide/src/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ide/src/nd/ND.php" beforeDir="false" afterPath="$PROJECT_DIR$/ide/src/nd/ND.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ide/src/nd/external/EmptyProjectTemplate.php" beforeDir="false" afterPath="$PROJECT_DIR$/ide/src/nd/external/EmptyProjectTemplate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ide/src/nd/formats/files/fileFormat.php" beforeDir="false" afterPath="$PROJECT_DIR$/ide/src/nd/formats/files/fileFormat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ide/src/nd/forms/NeardeSettingsForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/ide/src/nd/forms/NeardeSettingsForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ide/src/nd/forms/ProjectForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/ide/src/nd/forms/ProjectForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ide/src/nd/ui/NDCode.php" beforeDir="false" afterPath="$PROJECT_DIR$/ide/src/nd/ui/NDCode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ide/src/nd/ui/NDTree.php" beforeDir="false" afterPath="$PROJECT_DIR$/ide/src/nd/ui/NDTree.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ide/src/nd/modules/IDE.php" beforeDir="false" afterPath="$PROJECT_DIR$/ide/src/nd/modules/IDE.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nd-framework/src/php/gui/framework/AbstractForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/nd-framework/src/php/gui/framework/AbstractForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nd-framework/src/php/gui/framework/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/nd-framework/src/php/gui/framework/Application.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,17 +37,17 @@
       <file leaf-file-name="fileFormat.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ide/src/nd/formats/files/fileFormat.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="134" column="7" lean-forward="true" selection-start-line="134" selection-start-column="7" selection-end-line="134" selection-end-column="7" />
+            <state relative-caret-position="1890">
+              <caret line="134" column="7" selection-start-line="134" selection-start-column="7" selection-end-line="134" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ND.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ND.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ide/src/nd/ND.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="129" column="11" lean-forward="true" selection-start-line="129" selection-start-column="11" selection-end-line="129" selection-end-column="11" />
+            <state relative-caret-position="180">
+              <caret line="156" column="8" selection-start-line="156" selection-start-column="8" selection-end-line="156" selection-end-column="8" />
               <folding>
                 <element signature="e#21#29#0#PHP" expanded="true" />
               </folding>
@@ -60,26 +55,62 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EmptyProjectTemplate.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ide/src/nd/external/EmptyProjectTemplate.php">
+      <file leaf-file-name="application.conf" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ide/src/.system/application.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+            <state relative-caret-position="150">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Application.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nd-framework/src/php/gui/framework/Application.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1462">
+              <caret line="275" column="67" selection-start-line="275" selection-start-column="67" selection-end-line="275" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SplashScreen.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ide/src/nd/ui/SplashScreen.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
               <folding>
-                <element signature="e#30#37#0#PHP" expanded="true" />
+                <element signature="e#25#44#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NDTree.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ide/src/nd/ui/NDTree.php">
+      <file leaf-file-name="AbstractForm.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nd-framework/src/php/gui/framework/AbstractForm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            <state relative-caret-position="217">
+              <caret line="622" column="32" selection-start-line="622" selection-start-column="32" selection-end-line="622" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ide/src/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
               <folding>
-                <element signature="e#24#38#0#PHP" expanded="true" />
+                <element signature="e#7#22#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IDE.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ide/src/nd/modules/IDE.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -87,8 +118,8 @@
       <file leaf-file-name="NDTabPane.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ide/src/nd/ui/NDTabPane.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="63" column="30" lean-forward="true" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
+            <state relative-caret-position="-8">
+              <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
               <folding>
                 <element signature="e#26#52#0#PHP" expanded="true" />
               </folding>
@@ -99,58 +130,10 @@
       <file leaf-file-name="MarkdownEditor.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ide/src/nd/external/editors/MarkdownEditor.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="36" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+            <state relative-caret-position="270">
+              <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
               <folding>
                 <element signature="e#39#61#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="markdown.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ide/src/nd/external/editors/markdown.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-              <folding>
-                <element signature="e#54#2295#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NDCode.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ide/src/nd/ui/NDCode.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
-              <folding>
-                <element signature="e#24#47#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProjectForm.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ide/src/nd/forms/ProjectForm.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="176" column="48" selection-start-line="176" selection-start-column="48" selection-end-line="176" selection-end-column="48" />
-              <folding>
-                <element signature="e#27#43#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NDSvgImage.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ide/src/nd/ui/NDSvgImage.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
-              <folding>
-                <element signature="e#25#51#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -169,6 +152,8 @@
     <findStrings>
       <find>showAnd</find>
       <find>showAndWait</find>
+      <find>splashFormClass</find>
+      <find>getForm</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/designer/src-jvm/main/java/pro/nearde/jphp/gui/designer</dir>
@@ -180,8 +165,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/designer/src-jvm/main/java/pro/nearde/jphp/gui/designer/editor/syntax/hotkey/AbstractHotkey.java" />
-        <option value="$PROJECT_DIR$/designer/src-jvm/main/java/pro/nearde/jphp/gui/designer/editor/syntax/hotkey/AddTabsHotkey.java" />
         <option value="$PROJECT_DIR$/designer/src-jvm/main/java/pro/nearde/jphp/gui/designer/editor/syntax/hotkey/AutoBracketsHotkey.java" />
         <option value="$PROJECT_DIR$/designer/src-jvm/main/java/pro/nearde/jphp/gui/designer/editor/syntax/hotkey/AutoSpaceEnterHotkey.java" />
         <option value="$PROJECT_DIR$/designer/src-jvm/main/java/pro/nearde/jphp/gui/designer/editor/syntax/hotkey/BackspaceHotkey.java" />
@@ -192,17 +175,14 @@
         <option value="$PROJECT_DIR$/ide/src/nd/utils/updater.php" />
         <option value="$PROJECT_DIR$/ide/src/nd/ui/NDLog.php" />
         <option value="$PROJECT_DIR$/nd-framework/src/php/framework/Logger.php" />
-        <option value="$PROJECT_DIR$/nd-framework/src/php/gui/framework/AbstractForm.php" />
         <option value="$PROJECT_DIR$/nd-framework/src/php/gui/framework/DataUtils.php" />
         <option value="$PROJECT_DIR$/ide/package.php.yml" />
         <option value="$PROJECT_DIR$/ide/src/nd/utils/FileUtils.php" />
         <option value="$PROJECT_DIR$/ide/plugins/python/.ndp" />
         <option value="$PROJECT_DIR$/ide/plugins/python/classes/PYProjectTemplate.php" />
         <option value="$PROJECT_DIR$/ide/plugins/python/pyPlugin.php" />
-        <option value="$PROJECT_DIR$/ide/plugins/plugins.json" />
         <option value="$PROJECT_DIR$/ide/src/nd/utils/NDProcess.php" />
         <option value="$PROJECT_DIR$/ide/src/nd/ui/NDConsole.php" />
-        <option value="$PROJECT_DIR$/ide/src/index.php" />
         <option value="$PROJECT_DIR$/ide/src/nd/forms/GithubPluginParserForm.fxml" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/package.build.php" />
@@ -216,7 +196,6 @@
         <option value="$PROJECT_DIR$/ide/src/nd/theme/AbstractTheme.php" />
         <option value="$PROJECT_DIR$/ide/src/nd/utils/ThemeManger.php" />
         <option value="$PROJECT_DIR$/ide/src/nd/forms/NeardeSettingsForm.fxml" />
-        <option value="$PROJECT_DIR$/ide/src/nd/modules/IDE.php" />
         <option value="$PROJECT_DIR$/ide/src/nd/theme/DarkTheme.php" />
         <option value="$PROJECT_DIR$/ide/src/nd/forms/AbstarctIDEForm.php" />
         <option value="$PROJECT_DIR$/ide/src/nd/forms/NeardeSettingsForm.php" />
@@ -229,8 +208,14 @@
         <option value="$PROJECT_DIR$/ide/src/nd/external/editors/markdown.css" />
         <option value="$PROJECT_DIR$/ide/src/nd/external/editors/MarkdownEdirtor.php" />
         <option value="$PROJECT_DIR$/ide/src/nd/external/editors/MarkdownEditor.php" />
-        <option value="$PROJECT_DIR$/ide/src/nd/ND.php" />
         <option value="$PROJECT_DIR$/ide/src/nd/formats/files/fileFormat.php" />
+        <option value="$PROJECT_DIR$/ide/src/nd/modules/IDE.php" />
+        <option value="$PROJECT_DIR$/ide/plugins/plugins.json" />
+        <option value="$PROJECT_DIR$/nd-framework/src/php/gui/framework/Application.php" />
+        <option value="$PROJECT_DIR$/ide/src/nd/ND.php" />
+        <option value="$PROJECT_DIR$/ide/src/index.php" />
+        <option value="$PROJECT_DIR$/ide/src/nd/ui/SplashScreen.php" />
+        <option value="$PROJECT_DIR$/nd-framework/src/php/gui/framework/AbstractForm.php" />
       </list>
     </option>
   </component>
@@ -277,12 +262,6 @@
               <item name="Nearde-IDE" type="b2602c69:ProjectViewProjectNode" />
               <item name="Nearde-IDE" type="462c0819:PsiDirectoryNode" />
               <item name="ide" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Nearde-IDE" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Nearde-IDE" type="462c0819:PsiDirectoryNode" />
-              <item name="ide" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -290,24 +269,15 @@
               <item name="Nearde-IDE" type="462c0819:PsiDirectoryNode" />
               <item name="ide" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nd" type="462c0819:PsiDirectoryNode" />
+              <item name=".data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Nearde-IDE" type="b2602c69:ProjectViewProjectNode" />
               <item name="Nearde-IDE" type="462c0819:PsiDirectoryNode" />
               <item name="ide" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nd" type="462c0819:PsiDirectoryNode" />
-              <item name="external" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Nearde-IDE" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Nearde-IDE" type="462c0819:PsiDirectoryNode" />
-              <item name="ide" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nd" type="462c0819:PsiDirectoryNode" />
-              <item name="external" type="462c0819:PsiDirectoryNode" />
-              <item name="editors" type="462c0819:PsiDirectoryNode" />
+              <item name=".data" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Nearde-IDE" type="b2602c69:ProjectViewProjectNode" />
@@ -315,32 +285,6 @@
               <item name="ide" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="nd" type="462c0819:PsiDirectoryNode" />
-              <item name="formats" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Nearde-IDE" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Nearde-IDE" type="462c0819:PsiDirectoryNode" />
-              <item name="ide" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nd" type="462c0819:PsiDirectoryNode" />
-              <item name="formats" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Nearde-IDE" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Nearde-IDE" type="462c0819:PsiDirectoryNode" />
-              <item name="ide" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nd" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Nearde-IDE" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Nearde-IDE" type="462c0819:PsiDirectoryNode" />
-              <item name="ide" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nd" type="462c0819:PsiDirectoryNode" />
-              <item name="theme" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Nearde-IDE" type="b2602c69:ProjectViewProjectNode" />
@@ -349,6 +293,41 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="nd" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Nearde-IDE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Nearde-IDE" type="462c0819:PsiDirectoryNode" />
+              <item name="nd-framework" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Nearde-IDE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Nearde-IDE" type="462c0819:PsiDirectoryNode" />
+              <item name="nd-framework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Nearde-IDE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Nearde-IDE" type="462c0819:PsiDirectoryNode" />
+              <item name="nd-framework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="php" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Nearde-IDE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Nearde-IDE" type="462c0819:PsiDirectoryNode" />
+              <item name="nd-framework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="php" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Nearde-IDE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Nearde-IDE" type="462c0819:PsiDirectoryNode" />
+              <item name="nd-framework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="php" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="framework" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -458,17 +437,19 @@
       <workItem from="1528716442254" duration="2015000" />
       <workItem from="1528732436357" duration="2121000" />
       <workItem from="1528814559201" duration="103000" />
-      <workItem from="1528814778044" duration="9972000" />
+      <workItem from="1528814778044" duration="10180000" />
+      <workItem from="1528899990100" duration="2629000" />
+      <workItem from="1528907123577" duration="3820000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59721000" />
+    <option name="totallyTimeSpent" value="66378000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="742" extended-state="6" />
     <layout>
-      <window_info anchor="right" content_ui="combo" id="Project" order="8" visible="true" weight="0.31363636" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="8" visible="true" weight="0.3242424" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -496,10 +477,9 @@
       <window_info anchor="right" id="Maven Projects" order="6" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3284553" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28181818" />
@@ -507,9 +487,10 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3284553" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Database" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
@@ -536,39 +517,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/nd-framework/src/php/gui/framework/ScriptEvent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-444">
-          <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nd-framework/src/php/gui/framework/StandaloneFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nd-framework/src/php/gui/framework/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-495" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nd-framework/src/php/gui/framework/behaviour/PositionableBehaviour.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nd-framework/src/php/gui/framework/View.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-54">
-          <caret line="31" column="35" lean-forward="true" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nd-framework/src/php/gui/framework/Instances.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -604,13 +552,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nd-framework/src/php/gui/framework/AbstractForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="687" column="30" selection-start-line="687" selection-start-column="30" selection-end-line="687" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ide/vendor/jphp-gui-ext/sdk/php/gui/UXForm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5">
@@ -633,13 +574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ide/src/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>
@@ -685,13 +619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ide/plugins/plugins.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ide/src/nd/utils/FileUtils.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
@@ -706,9 +633,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
           <caret line="48" column="76" selection-start-line="48" selection-start-column="76" selection-end-line="48" selection-end-column="76" />
-          <folding>
-            <element signature="e#27#53#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -716,9 +640,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
-          <folding>
-            <element signature="e#27#58#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -743,23 +664,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ide/src/nd/modules/IDE.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
-          <folding>
-            <element signature="e#29#53#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ide/src/nd/forms/AbstarctIDEForm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
-          <folding>
-            <element signature="e#27#41#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -781,19 +689,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
           <caret line="57" selection-start-line="57" selection-end-line="57" />
-          <folding>
-            <element signature="e#27#37#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ide/src/nd/external/EmptyProjectTemplate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
+        <state relative-caret-position="315">
           <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding>
-            <element signature="e#30#37#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -806,7 +708,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ide/src/nd/ui/NDTree.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="225">
           <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
           <folding>
             <element signature="e#24#38#0#PHP" expanded="true" />
@@ -823,7 +725,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ide/src/nd/ui/NDSvgImage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="210">
           <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
           <folding>
             <element signature="e#25#51#0#PHP" expanded="true" />
@@ -840,7 +742,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ide/src/nd/ui/NDCode.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="450">
           <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
           <folding>
             <element signature="e#24#47#0#PHP" expanded="true" />
@@ -850,7 +752,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ide/src/nd/forms/ProjectForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="2325">
           <caret line="176" column="48" selection-start-line="176" selection-start-column="48" selection-end-line="176" selection-end-column="48" />
           <folding>
             <element signature="e#27#43#0#PHP" expanded="true" />
@@ -858,20 +760,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ide/src/nd/ui/NDTabPane.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="63" column="30" lean-forward="true" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
-          <folding>
-            <element signature="e#26#52#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ide/src/nd/external/editors/markdown.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="e#54#2295#1" expanded="true" />
           </folding>
@@ -880,8 +772,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ide/src/nd/external/editors/MarkdownEditor.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="36" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+        <state relative-caret-position="270">
+          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
           <folding>
             <element signature="e#39#61#0#PHP" expanded="true" />
           </folding>
@@ -890,18 +782,93 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ide/src/nd/formats/files/fileFormat.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="134" column="7" lean-forward="true" selection-start-line="134" selection-start-column="7" selection-end-line="134" selection-end-column="7" />
+        <state relative-caret-position="1890">
+          <caret line="134" column="7" selection-start-line="134" selection-start-column="7" selection-end-line="134" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ide/src/nd/modules/IDE.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ide/plugins/plugins.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ide/src/nd/ui/NDTabPane.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+          <folding>
+            <element signature="e#26#52#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ide/src/.system/application.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nd-framework/src/php/gui/framework/Application.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1462">
+          <caret line="275" column="67" selection-start-line="275" selection-start-column="67" selection-end-line="275" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ide/src/.data/img/splash.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ide/vendor/jphp-gui-ext/sdk/php/gui/UXWindow.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="105" column="20" selection-start-line="105" selection-start-column="20" selection-end-line="105" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ide/src/nd/ND.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="129" column="11" lean-forward="true" selection-start-line="129" selection-start-column="11" selection-end-line="129" selection-end-column="11" />
+        <state relative-caret-position="180">
+          <caret line="156" column="8" selection-start-line="156" selection-start-column="8" selection-end-line="156" selection-end-column="8" />
           <folding>
             <element signature="e#21#29#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ide/src/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+          <folding>
+            <element signature="e#7#22#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ide/src/nd/ui/SplashScreen.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+          <folding>
+            <element signature="e#25#44#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nd-framework/src/php/gui/framework/AbstractForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="622" column="32" selection-start-line="622" selection-start-column="32" selection-end-line="622" selection-end-column="32" />
         </state>
       </provider>
     </entry>

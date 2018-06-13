@@ -94,8 +94,6 @@ class Application
             $configPath = 'res://.system/application.conf';
         }
 
-        Logger::info("Application starting ...");
-
         $functions = "res://php/gui/framework/functions";
 
         if (Stream::exists($functions . ".phb")) {
@@ -595,10 +593,6 @@ class Application
         $splashFormClass = $this->splashFormClass;
         $showMainForm  = $this->config->getBoolean('app.showMainForm') && $mainFormClass;
 
-        /*if (!class_exists($mainFormClass)) {    TODO Remove it
-            throw new Exception("Unable to start the application without the main form class or the class '$mainFormClass' not found");
-        }*/
-
         $onStart = function () use ($mainFormClass, $splashFormClass, $showMainForm, $handler, $after) {
             static::$instance = $this;
 
@@ -624,11 +618,7 @@ class Application
                 }
 
                 if ($after) {
-                    $after();
-                }
-
-                if (Stream::exists('res://.debug/bootstrap.php')) {
-                    include 'res://.debug/bootstrap.php';
+                    call_user_func($after);
                 }
 
                 Logger::debug("Application start is done.");
@@ -641,14 +631,16 @@ class Application
             };
 
             if ($splashFormClass) {
-                $this->splash = $this->getForm($splashFormClass);
+
+                if ($this->getForm($splashFormClass))
+                    $this->splash = $this->getForm($splashFormClass);
+                else new $splashFormClass;
 
                 if ($this->splash) {
                     Logger::info("Show splash screen ($splashFormClass)");
 
                     /** @var AbstractForm $form */
                     $form = $this->splash;
-                    $form->alwaysOnTop = true;
 
                     $form->show();
                     $form->toFront();

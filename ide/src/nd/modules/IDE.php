@@ -271,7 +271,7 @@ class IDE extends AbstractModule
     {
         $tempDir = fs::abs("./plugins/temp/" . substr(md5(Time::now()), 5));
         fs::makeDir($tempDir);
-        if (!IDE::unpackDialog((string) $file, $tempDir)) return;
+        if (!IDE::unpack($file, $tempDir)) return;
         
         if (!fs::exists($tempDir . "/.ndp"))
         {
@@ -292,7 +292,16 @@ class IDE extends AbstractModule
             $oldVersion = $oldIni->toArray()['']['version'];
             if ($oldVersion != $pluginData['version'])
             {
-                
+                if ($pluginData['minIdeVersion'] && $pluginData['minIdeVersion'] > IDE::get()->getBuildVersion())
+                {
+                    if ($mode != "windows") exit(-3);
+
+                    IDE::dialog('Плагин не будет работать на этой версии среды.');
+                    FileUtils::delete($tempDir);
+                    return;
+                }
+
+
                 if ($mode != "windows") goto copyPlugin;
                 
                 if (IDE::confirmDialog("Заменить другой версиеяй (" . $oldVersion . " => ". $pluginData['version'] . ") ?"))

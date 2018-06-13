@@ -24,6 +24,7 @@ use nd\utils\ThemeManger;
 use nd\utils\updater;
 use php\desktop\Runtime;
 use php\framework\Logger;
+use php\gui\UXForm;
 use php\io\File;
 use php\io\IOException;
 use std;
@@ -45,8 +46,8 @@ use php\lang\System;
 
 class ND 
 {
-    private $version = "2.0 beta build 43";
-    private $buildVersion = "43";
+    private $version = "2.0 RC build 50";
+    private $buildVersion = "50";
     private $name = "Nearde IDE";
     private $configPath;
     
@@ -81,7 +82,7 @@ class ND
      * @param string $type
      * @throws \Exception
      */
-    public function init($type = "window")
+    public function init($type = "window", UXForm $splash = null)
     {
         $this->configPath = fs::abs($this->getUserHome("config") . "/config.json");
 
@@ -151,10 +152,9 @@ class ND
                 }
             }
         }
-
-        $this->formManger->getForm("Main")->show();
-
         (new updater($this->buildVersion))->checkUpdate();
+        $this->formManger->getForm("Main")->show();
+        if ($splash) $splash->hide();
     }
     
     public function consoleInit()
@@ -320,5 +320,13 @@ class ND
     public function getThemeManger(): ThemeManger
     {
         return $this->themeManger;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBuildVersion(): string
+    {
+        return $this->buildVersion;
     }
 }  

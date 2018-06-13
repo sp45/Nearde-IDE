@@ -23,7 +23,6 @@ try {
 
         $GLOBALS['ND'] = new ND();
         $GLOBALS['ND']->init($initType);
-
     });
 } catch (\php\lang\IllegalStateException $exception)
 {
