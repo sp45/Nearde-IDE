@@ -10,6 +10,7 @@ deps:
   designer: '*'
   gui-tabs-ext: '*'
   jphp-markdown-ext: '*'
+  jphp-process-ext: '*'
 plugins:
 - App
 app:
