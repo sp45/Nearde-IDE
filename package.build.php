@@ -7,7 +7,6 @@ function task_publish(Event $e)
 {
     Tasks::runExternal('./nd-framework', 'publish', [], ...$e->flags());
     Tasks::runExternal('./designer', 'publish', [], ...$e->flags());
-    Tasks::runExternal('./gui-tabs-ext', 'publish', [], ...$e->flags());
 }
 
 /**
@@ -53,7 +52,7 @@ function task_buildIde(Event $e)
  */
 function task_run(Event $e)
 {
-    Console::log('Use start-ide task ...');
+    Console::log('Using start-ide task ...');
     Tasks::runExternal('./', 'start-ide', $e->args(), ...$e->flags());
 }
 
@@ -62,6 +61,6 @@ function task_run(Event $e)
  */
 function task_build(Event $e)
 {
-    Console::log('Use build-ide task ...');
+    Console::log('Using build-ide task ...');
     Tasks::runExternal('./', 'build-ide', $e->args(), ...$e->flags());
 }

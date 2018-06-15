@@ -2,16 +2,16 @@
 
 namespace nd\ui;
 
-
 use php\gui\layout\UXVBox;
 use php\gui\layout\UXPane;
 use php\gui\UXDndTabPane;
 use php\gui\UXLabel;
+use php\gui\UXTabPane;
 
 class NDTabPane extends UXPane
 {
     /**
-     * @var UXDndTabPane
+     * @var UXTabPane
      */
     private $tabPane;
 
@@ -29,10 +29,7 @@ class NDTabPane extends UXPane
     {
         parent::__construct();
 
-        $this->tabPane = new UXDndTabPane;
-        $this->tabPane->anchors = [
-            'top' => true, 'bottom' => true, 'left' => true, 'right' => true
-        ];
+        $this->tabPane = new UXTabPane;
         $this->add($this->tabPane);
 
         $this->box = new UXVBox([
@@ -44,7 +41,10 @@ class NDTabPane extends UXPane
         ]);
 
         $size = function ($old, $new) {
-            if ($old != $new) $this->box->size = $this->size;
+            if ($old == $new) return;
+
+            $this->box->size     = $this->size;
+            $this->tabPane->size = $this->size;
         };
 
         $this->observer('width')->addListener($size);

@@ -33,6 +33,8 @@ class NDConsole extends UXCodeAreaScrollPane
 
     private $commandsArr;
     private $commandsInt;
+
+    public $onProcessExecute;
     
     /**
      * @var NDProcess
@@ -57,7 +59,7 @@ class NDConsole extends UXCodeAreaScrollPane
                 return;
             }
 
-            if ($e->codeName == 'Up')
+            if ($e->codeName == 'Down')
             {
                 $this->restoreFromBuffer();
                 $this->commandsInt--;
@@ -70,7 +72,7 @@ class NDConsole extends UXCodeAreaScrollPane
                 return;
             }
 
-            if ($e->codeName == 'Down')
+            if ($e->codeName == 'Up')
             {
                 $this->restoreFromBuffer();
                 $this->commandsInt++;
@@ -203,6 +205,8 @@ class NDConsole extends UXCodeAreaScrollPane
         }
         
         $this->processRuning = true;
+
+        call_user_func($this->onProcessExecute, $this->process);
         
         (new Thread(function() use ($onExit) {
             $this->process->getInput()->eachLine(function($line){
@@ -223,5 +227,13 @@ class NDConsole extends UXCodeAreaScrollPane
                 call_user_func($onExit, $exitValue);
             });
         }))->start();
-    }      
+    }
+
+    /**
+     * @return NDProcess
+     */
+    public function getProcess()
+    {
+        return $this->process;
+    }
 }

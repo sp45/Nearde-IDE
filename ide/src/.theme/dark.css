@@ -182,6 +182,11 @@
     -fx-font-family: "Source Sans Pro SemiBold";
 }
 
+.stop-btn {
+    -fx-background-color: transparent;
+    -fx-border-radius: 0;
+}
+
 .text-input {
     -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
     

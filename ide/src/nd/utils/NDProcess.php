@@ -4,6 +4,8 @@ namespace nd\utils;
 use nd;
 use nd\modules\IDE;
 use php\lang\Process;
+use process\ProcessHandle;
+use php\io\Stream;
 use std;
 
 class NDProcess
@@ -29,6 +31,11 @@ class NDProcess
     private $process;
 
     /**
+     * @var ProcessHandle
+     */
+    private $processHandle;
+
+    /**
      * NDProcess constructor.
      * @param string $exec
      * @param string $dir
@@ -49,12 +56,61 @@ class NDProcess
     public function start()
     {
         $this->process = $this->process->start();
-        $this->started = false;
+        $this->processHandle = new ProcessHandle($this->process);
+        $this->started = true;
         return $this;
     }
-    
+
     /**
-     * @return Stream
+     * @return array
+     * @throws \Exception
+     */
+    public function info()
+    {
+        return $this->processHandle->info();
+    }
+
+    /**
+     * @return int
+     * @throws \Exception
+     */
+    public function pid()
+    {
+        return $this->processHandle->pid();
+    }
+
+    /**
+     * @param bool $force
+     * @return bool
+     * @throws \Exception
+     */
+    public function destroy(bool $force = false)
+    {
+        if ($force)
+            return $this->processHandle->destroy();
+        return $this->processHandle->destroyForcibly();
+    }
+
+    /**
+     * @return array|ProcessHandle[]
+     * @throws \Exception
+     */
+    public function children()
+    {
+        return $this->processHandle->children();
+    }
+
+    /**
+     * @return array|ProcessHandle[]
+     * @throws \Exception
+     */
+    public function descendants()
+    {
+        return $this->processHandle->descendants();
+    }
+
+    /**
+     * @return \php\io\Stream
      */
     public function getError()
     {
@@ -107,5 +163,13 @@ class NDProcess
     public function getCommand() : string
     {
         return $this->exec;
+    }
+
+    /**
+     * @return ProcessHandle
+     */
+    public function getProcessHandle(): ProcessHandle
+    {
+        return $this->processHandle;
     }
 }

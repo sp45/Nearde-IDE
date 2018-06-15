@@ -1,6 +1,7 @@
 <?php
 namespace nd\ui;
 
+use php\gui\event\UXKeyEvent;
 use php\io\IOException;
 use std;
 use nd;
@@ -33,7 +34,11 @@ class NDCode extends UXCode
         }, $lang);
         $this->userData = $this;
 
-        $this->on('keyUp', function () use ($file) {
+        $this->on('keyUp', function (UXKeyEvent $event) use ($file) {
+            if ($event->codeName == 'Enter')
+                $this->engine->executeScript('editor.insert(\'\n\')'); // Костыль от java 10 -_-
+            // Не ну это полная жопа. Разрабы java Что вы курили а?
+
             $this->save($file);
             call_user_func($this->onSave, $file);
         });

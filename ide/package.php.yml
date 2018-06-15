@@ -8,7 +8,6 @@ deps:
   jphp-httpclient-ext: '*'
   jphp-compress-ext: '*'
   designer: '*'
-  gui-tabs-ext: '*'
   jphp-markdown-ext: '*'
   jphp-process-ext: '*'
 plugins:

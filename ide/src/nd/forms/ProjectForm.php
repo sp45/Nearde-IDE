@@ -16,9 +16,11 @@ use php\gui\UXMenuBar;
 use php\gui\UXMenuItem;
 use php\gui\UXMenu;
 use nd\modules\IDE;
+use php\gui\UXTabPane;
 use php\lib\fs;
 use php\gui\UXLabel;
 use nd\utils\project;
+use nd\ui\NDConsolePanel;
 
 use nd\utils\NDProcess;
 
@@ -34,7 +36,7 @@ class ProjectForm extends AbstarctIDEForm
     private $project;
     
     /**
-     * @var NDTree
+     * @var nd\ui\NDTree
      */
     private $projectTree;
     
@@ -49,17 +51,17 @@ class ProjectForm extends AbstarctIDEForm
     private $mainSplit;
     
     /**
-     * @var nd\ui\NDTabPane
+     * @var NDTabPane
      */
     private $projectTabPane;
     
     /**
-     * @var UXDndTabPane
+     * @var NDTabPane
      */
     private $consoleTabPane;
     
     /**
-     * @var ProjectTemplate
+     * @var nd\projectTemplate
      */
     private $template;
     
@@ -114,8 +116,7 @@ class ProjectForm extends AbstarctIDEForm
         $runMenu = new UXMenu("Запуск");
         
         $runMenu->items->add(NDTreeContextMenu::createItem("Терминал", IDE::ico("terminal16.png"), function () {
-                $log = $this->showConsole("Терминал", IDE::ico("terminal16.png"));
-                $log->printUserAndDir();
+            $this->showConsole("Терминал", IDE::ico("terminal16.png"));
         }));
         
         if ($this->template->getCommand("run"))
@@ -180,10 +181,10 @@ class ProjectForm extends AbstarctIDEForm
         $this->projectTree->refreshTree($this->project->getPath(), true);
         $this->projectSplit->items->add($this->projectTree);
         
-        $this->projectTabPane = new NDTabPane();
+        $this->projectTabPane = new NDTabPane;
         $this->projectSplit->items->add($this->projectTabPane);
         
-        $this->consoleTabPane = new UXDndTabPane;
+        $this->consoleTabPane = new NDTabPane('Не открыт не один терминал');
         
         
         $this->mainSplit->items->add($this->projectSplit);
@@ -220,28 +221,27 @@ class ProjectForm extends AbstarctIDEForm
         
         if (!$process) return;
         
-        $log = $this->showConsole($tabTitle, $tabGraphic);
-        $log->addConsole(" -> Execute command : " . $process->getCommand() . "\n", '#6680e6');
-        $log->runProcess($process, function () use ($log) {
-            $log->printUserAndDir();
-        });
+        $console = $this->showConsole($tabTitle, $tabGraphic);
+        $console->print($process->getCommand() . "\n", '#6680e6');
+        $console->runProcess($process);
     }
     
     /**
-     * @return NDLog
+     * @return nd\ui\NDConsolePanel
      */
-    public function showConsole($text, $graphic = null) : \nd\ui\NDConsole
+    public function showConsole($text, $graphic = null) : NDConsolePanel
     {
         $this->mainSplit->dividerPositions = [
             .7, .3
         ];
-        $log = new \nd\ui\NDConsole($this->project->getPath());
+        $console = new NDConsolePanel($this->project->getPath());
         $tab = new UXTab($text);
-        $tab->content = $log;
+        $tab->content = $console;
         $tab->graphic = $graphic;
-        $this->consoleTabPane->tabs->add($tab);
-        $this->consoleTabPane->selectTab($tab);
-        return $log;
+        $this->consoleTabPane->getTabPane()->tabs->add($tab);
+        $this->consoleTabPane->getTabPane()->selectTab($tab);
+
+        return $console;
     }
     
     private function makeGunter(array $data)
