@@ -15,6 +15,7 @@ use nd\forms\NewProjectForm;
 use nd\forms\PluginsForm;
 use nd\forms\ProgressDialogForm;
 use nd\forms\ProjectForm;
+use nd\forms\SandBoxForm;
 use nd\forms\SettingsForm;
 use nd\forms\TreeDialogForm;
 use nd\forms\UpdateForm;

@@ -1,0 +1,12 @@
+name: sandbox
+version: 1.0.0
+deps:
+  jphp-core: '*'
+  jphp-zend-ext: '*'
+  nd-framework: '*'
+plugins:
+- App
+sources:
+- src
+includes:
+- index.php

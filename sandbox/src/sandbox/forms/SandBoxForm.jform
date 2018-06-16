@@ -1,0 +1,17 @@
+{
+  "title": "Песочнича",
+  "size": [
+    500, 600
+  ],
+  "use": {
+    "button": "php\\gui\\UXButton"
+  },
+  "layout": {
+    "mySuperButton": {
+      "class": "button",
+      "text": "PHP + JSON!",
+      "x": 100,
+      "y": 150
+    }
+  }
+}

@@ -30,6 +30,15 @@ function task_startIde(Event $e)
 }
 
 /**
+ * @jppm-task start-sandbox
+ * @jppm-description Start SandBox
+ */
+function task_startSandBox(Event $e)
+{
+    Tasks::runExternal('./sandbox', 'start', $e->args(), ...$e->flags());
+}
+
+/**
  * @jppm-task build-ide
  * @jppm-description Build Nearde IDE
  */

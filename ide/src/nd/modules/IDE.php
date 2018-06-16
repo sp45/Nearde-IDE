@@ -67,9 +67,9 @@ class IDE extends AbstractModule
     /**
      * @param UXListView $listView
      */
-    public static function upgradeListView(UXListView $listView)
+    public static function upgradeListView(UXListView $listView, int $clickCount = 2)
     {
-        $listView->setCellFactory(function(UXListCell $cell, $item) {
+        $listView->setCellFactory(function(UXListCell $cell, $item) use ($clickCount) {
             if ($item) {              
                 $titleName = new UXLabel($item[0]);
                 $titleName->style = '-fx-font-weight: bold;';
@@ -80,7 +80,7 @@ class IDE extends AbstractModule
                     $titleDescription->opacity = 0.7;
                 }
                 
-                $cell->observer("width")->addListener(function ($old, $new) use ($titleDescription, $item) {
+                $cell->observer("width")->addListener(function ($old, $new) use ($titleDescription, $item, $clickCount) {
                     if ($old == $new) return;
                     if ($item[1])
                         $titleDescription->maxWidth = $new - 70;
@@ -97,11 +97,9 @@ class IDE extends AbstractModule
                 else $line = new UXHBox([$item[2], $titleName]);
                 $line->spacing = 7;
                 $line->padding = 5;
-                $line->on('click', function (UXMouseEvent $e) use ($item) {
-                    if ($e->clickCount < 2) return;
-                    $callback = $item[3];
-                    if (!is_callable($callback)) return;
-                    $callback();
+                $line->on('click', function (UXMouseEvent $e) use ($item, $clickCount) {
+                    if ($e->clickCount >= $clickCount);
+                        call_user_func($item[3]);
                 });
                 $cell->text = null;
                 $cell->graphic = $line;

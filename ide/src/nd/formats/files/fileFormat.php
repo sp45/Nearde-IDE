@@ -41,6 +41,7 @@ class fileFormat
         $this->ext4lang = [
             'php'  => 'php',
             'json' => 'json',
+            'jform' => 'json',
             'ndproject' => 'json',
             'yml'  => 'yaml',
             'java' => 'java',

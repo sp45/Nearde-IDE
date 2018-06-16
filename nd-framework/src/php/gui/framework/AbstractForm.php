@@ -3,6 +3,8 @@ namespace php\gui\framework;
 
 use action\Animation;
 use Exception;
+use facade\Json;
+use php\framework\ArrayToLayout;
 use php\framework\Logger;
 use php\gui\event\UXWindowEvent;
 use php\gui\framework\behaviour\custom\BehaviourLoader;
@@ -28,6 +30,7 @@ use php\io\IOException;
 use php\io\Stream;
 use php\lang\IllegalArgumentException;
 use php\lang\IllegalStateException;
+use php\lib\fs;
 use php\lib\Items;
 use php\lib\reflect;
 use php\lib\Str;
@@ -604,7 +607,6 @@ abstract class AbstractForm extends UXForm
     protected function loadDesign()
     {
         $loader = new UXLoader();
-
         $path = $this->getResourcePath() . '.fxml';
 
         try {
@@ -618,6 +620,7 @@ abstract class AbstractForm extends UXForm
         } catch (IOException $e)
         {
             Logger::error($path . ' - Not fount');
+            $this->parseJson($path = $this->getResourcePath() . '.jform');
 
             if (method_exists($this, 'drawUI'))
                 $this->drawUI();
@@ -662,6 +665,24 @@ abstract class AbstractForm extends UXForm
 
             foreach ($datas as $data) $data->free();
         }
+    }
+
+    private function parseJson(string $file)
+    {
+        $data = Json::fromFile($file);
+        if (!$data) return;
+
+        if ($data['title'])
+            $this->title = $data['title'];
+
+        if (isset($data['fullScreen']))
+            $this->fullScreen = (bool) $data['fullScreen'];
+
+        if (is_array($data['size']))
+            $this->size = $data['size'];
+
+        if ($data['layout'])
+            $this->layout = (new ArrayToLayout($data['layout']))->exportClasses($data['use'])->parse()->get($this->size);
     }
 
     /**

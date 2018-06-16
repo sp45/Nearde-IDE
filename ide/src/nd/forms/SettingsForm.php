@@ -16,7 +16,7 @@ class SettingsForm extends AbstarctIDEForm
      */
     function doShow(UXWindowEvent $e = null)
     {    
-        IDE::upgradeListView($this->listView);
+        IDE::upgradeListView($this->listView, 1);
         foreach (IDE::getFormManger()->getAllSettingsForm() as $name => $formClass)
         {
             /** @var UXForm $form */
@@ -27,9 +27,12 @@ class SettingsForm extends AbstarctIDEForm
                 IDE::image($form->icons->toArray()[0]),
                 function () use ($formClass) {
                     $this->showForm($formClass);
-                }
+                },
+                $formClass
             ]);
         }
+
+        $this->showForm($this->listView->items->toArray()[0][4]);
     }
     
     private function showForm($formClass)
