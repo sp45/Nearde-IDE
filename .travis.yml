@@ -10,6 +10,7 @@ install:
 os: linux
 
 jdk: 
+ - oraclejdk10
  - openjdk10
  
 script:
