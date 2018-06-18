@@ -3,9 +3,9 @@ language: java
 sudo: true
 
 before_install:
- - add-apt-repository ppa:linuxuprising/java
- - apt update
- - apt install oracle-java10-installer
+ - sudo add-apt-repository ppa:linuxuprising/java
+ - sudo apt update
+ - sudo apt install oracle-java10-installer
  - wget -O - https://github.com/jphp-compiler/jphp/releases/download/jppm-0.3.8/jppm-setup-0.3.8.sh | bash
 os: linux
  
