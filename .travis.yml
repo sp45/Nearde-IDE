@@ -7,8 +7,12 @@ before_install:
 os: linux
 
 jdk: 
- - openjdk9
  - openjdk10
+ 
+addons:
+  apt:
+    packages:
+      - oracle-java10-installer
  
 script:
  - jppm version
