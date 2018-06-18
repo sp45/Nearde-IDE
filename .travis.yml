@@ -3,11 +3,12 @@ language: java
 sudo: true
 
 before_install:
- - sudo apt install openjfx
  - wget -O - https://github.com/jphp-compiler/jphp/releases/download/jppm-0.3.8/jppm-setup-0.3.8.sh | bash
 os: linux
 
-jdk: openjdk10
+jdk: 
+ - openjdk9
+ - openjdk10
  
 script:
  - jppm version
