@@ -1,4 +1,4 @@
-# Nearde IDE
+# Nearde IDE ![build status](https://travis-ci.org/MWStudio/Nearde-IDE.svg?branch=master)
 [![GitHub license](https://img.shields.io/github/license/MWStudio/Nearde-IDE.svg)](https://github.com/MWStudio/Nearde-IDE/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/MWStudio/Nearde-IDE.svg)](https://github.com/MWStudio/Nearde-IDE/issues)
 [![GitHub stars](https://img.shields.io/github/stars/MWStudio/Nearde-IDE.svg)](https://github.com/MWStudio/Nearde-IDE/stargazers)
