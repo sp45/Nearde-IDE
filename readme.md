@@ -1,4 +1,4 @@
-# Nearde IDE ![build status](https://travis-ci.org/MWStudio/Nearde-IDE.svg?branch=master)
+# Nearde-IDE [![Build Status](https://travis-ci.org/MWStudio/Nearde-IDE.svg?branch=master)](https://travis-ci.org/MWStudio/Nearde-IDE)
 [![GitHub license](https://img.shields.io/github/license/MWStudio/Nearde-IDE.svg)](https://github.com/MWStudio/Nearde-IDE/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/MWStudio/Nearde-IDE.svg)](https://github.com/MWStudio/Nearde-IDE/issues)
 [![GitHub stars](https://img.shields.io/github/stars/MWStudio/Nearde-IDE.svg)](https://github.com/MWStudio/Nearde-IDE/stargazers)
@@ -17,10 +17,6 @@ jppm prepare-ide
 ```bash
 jppm start-ide
 ```
-or 
-```bash
-jppm start
-```
 
 ## How to build?
 1. Install **Java Development Kit 10** and the last version of JPPM.
@@ -31,10 +27,6 @@ jppm prepare-ide
 3. Finally, build IDE:
 ```bash
 jppm build-ide
-```
-or 
-```bash
-jppm build
 ```
 
 The build of IDE will be in the `ide/build` directory.
