@@ -6,7 +6,6 @@ install:
  - wget -O - https://github.com/jphp-compiler/jphp/releases/download/jppm-0.3.8/jppm-setup-0.3.8.sh | bash
 os: 
  - linux
- - win
 
 jdk: 
  - oraclejdk10
