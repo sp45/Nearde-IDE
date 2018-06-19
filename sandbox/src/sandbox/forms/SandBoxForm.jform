@@ -1,7 +1,7 @@
 {
   "title": "Песочнича",
   "size": [
-    500, 600
+    600, 400
   ],
   "use": {
     "button": "php\\gui\\UXButton"

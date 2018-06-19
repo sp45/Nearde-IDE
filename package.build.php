@@ -18,6 +18,7 @@ function task_prepareIde(Event $e)
 {
     Tasks::run('publish', [], 'yes');
     Tasks::runExternal("./ide", "update");
+    Tasks::runExternal("./sandbox", "update");
 }
 
 /**

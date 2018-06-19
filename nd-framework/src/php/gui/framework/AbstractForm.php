@@ -675,11 +675,18 @@ abstract class AbstractForm extends UXForm
         if ($data['title'])
             $this->title = $data['title'];
 
+        if ($data['style'])
+            $this->title = $data['style'];
+
+        if ($data['icon'])
+            $this->icons->add(new UXImage($data['icon']));
+
         if (isset($data['fullScreen']))
             $this->fullScreen = (bool) $data['fullScreen'];
 
         if (is_array($data['size']))
             $this->size = $data['size'];
+
 
         if ($data['layout'])
             $this->layout = (new ArrayToLayout($data['layout']))->exportClasses($data['use'])->parse()->get($this->size);

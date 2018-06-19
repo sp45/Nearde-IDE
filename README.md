@@ -6,27 +6,29 @@
 
 Nearde IDE is an open source IDE written in the specific language of jphp. For Nearde it is very easy to write additional
 
-## How to run?
 
-1. Install **Java Development Kit 10** and the last version of JPPM.
+1. Install **Java Development Kit 9 or later** and the last version of [JPPM](https://github.com/jphp-group/jphp/releases).
 2. Prepare IDE dependencies:
 ```bash
 jppm prepare-ide
 ```
-3. Finally, start IDE:
+
+### Running IDE
+
 ```bash
 jppm start-ide
 ```
 
-## How to build?
-1. Install **Java Development Kit 10** and the last version of JPPM.
-2. Prepare IDE dependencies:
-```bash
-jppm prepare-ide
-```
-3. Finally, build IDE:
+### Building IDE
+
 ```bash
 jppm build-ide
 ```
 
 The build of IDE will be in the `ide/build` directory.
+
+### IDE Sandbox ?
+
+```bash
+jppm start-sandbox
+``` 

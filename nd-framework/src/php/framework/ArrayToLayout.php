@@ -74,7 +74,8 @@ class ArrayToLayout
      */
     public function get(array $size)
     {
-        $this->pane->size = $size;
+        if ($this->pane)
+            $this->pane->size = $size;
         return $this->pane;
     }
 }
