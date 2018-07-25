@@ -1,4 +1,4 @@
-name: Nearde
+name: Walltalk
 deps:
   jphp-core: '*'
   jphp-zend-ext: '*'
