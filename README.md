@@ -1,10 +1,7 @@
-# Nearde-IDE [![Build Status](https://travis-ci.org/MWStudio/Nearde-IDE.svg?branch=master)](https://travis-ci.org/MWStudio/Nearde-IDE)
-[![GitHub license](https://img.shields.io/github/license/MWStudio/Nearde-IDE.svg)](https://github.com/MWStudio/Nearde-IDE/blob/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/MWStudio/Nearde-IDE.svg)](https://github.com/MWStudio/Nearde-IDE/issues)
-[![GitHub stars](https://img.shields.io/github/stars/MWStudio/Nearde-IDE.svg)](https://github.com/MWStudio/Nearde-IDE/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/MWStudio/Nearde-IDE.svg)](https://github.com/MWStudio/Nearde-IDE/network)
+# Walltalk-IDE
+![GitHub license](https://img.shields.io/github/license/sp45/Walltalk-IDE.svg)  
 
-Nearde IDE is an open source IDE written in the specific language of jphp. For Nearde it is very easy to write additional
+The Walltalk IDE is an open source IDE written in the specific language of jphp. It is very easy to write additions.
 
 
 1. Install **Java Development Kit 9 or later** and the last version of [JPPM](https://github.com/jphp-group/jphp/releases).
