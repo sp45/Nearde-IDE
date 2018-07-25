@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,300&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,700,300&subset=cyrillic');
 
 .root, .FormEditor {
 
@@ -55,7 +55,7 @@
             derive(-fx-color,-2%));
     
 
-    -fx-font-family: "Source Sans Pro Regular";
+    -fx-font-family: "Rubik Regular";
     -fx-font-size: 1em;
     
     -fx-focus-color: transparent;
@@ -75,13 +75,13 @@
 }
 
 .font-light {
-    -fx-font-family: "Source Sans Pro Light";
+    -fx-font-family: "Rubik Light";
 }
 .font-regular {
-    -fx-font-family: "Source Sans Pro Regular";
+    -fx-font-family: "Rubik Regular";
 }
 .font-bold {
-    -fx-font-family: "Source Sans Pro SemiBold";
+    -fx-font-family: "Rubik Medium";
 }
 
 .font-accent {
@@ -99,7 +99,7 @@
 
 .font-h3 {
     -fx-font-size: 1.5em;
-    -fx-font-family: "Source Sans Pro Light";
+    -fx-font-family: "Rubik Light";
 }
 
 .bars {
@@ -137,7 +137,7 @@
 .tree-table-view > .column-header-background > .show-hide-columns-button,
 .table-view:constrained-resize .filler,
 .tree-table-view:constrained-resize .filler {
-    -fx-font-family: "Source Sans Pro SemiBold";
+    -fx-font-family: "Rubik Medium";
 }
 
 
@@ -162,24 +162,24 @@
 
 
 .button {
-    -fx-font-family: "Source Sans Pro Regular";
+    -fx-font-family: "Rubik Regular";
     -fx-background-color: #333;
     -fx-text-fill: #fff;
 }
 .accent-btn {
     -fx-background-color: #088acc;
     -fx-text-fill: #fff;
-    -fx-font-family: "Source Sans Pro SemiBold";
+    -fx-font-family: "Rubik Medium";
 }
 .warning-btn {
     -fx-background-color: #d6312b;
     -fx-text-fill: #fff;
-    -fx-font-family: "Source Sans Pro SemiBold";
+    -fx-font-family: "Rubik Medium";
 }
 .green-btn {
     -fx-background-color: #55bd63;
     -fx-text-fill: #fff;
-    -fx-font-family: "Source Sans Pro SemiBold";
+    -fx-font-family: "Rubik Medium";
 }
 
 .stop-btn {
