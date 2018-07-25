@@ -47,9 +47,9 @@ use php\lang\System;
 
 class ND 
 {
-    private $version = "2.0 RC build 50";
-    private $buildVersion = "50";
-    private $name = "Nearde IDE";
+    private $version = "Alpha";
+    private $buildVersion = "1";
+    private $name = "Walltalk";
     private $configPath;
     
     /**
@@ -122,8 +122,8 @@ class ND
             return;
         }
         
-        $this->fileFormat->registerFileTemplate(NDTreeContextMenu::createItem("Пустой файл.", IDE::ico("file.png"), function ($item) {
-            FileUtils::createFile($item->userData, IDE::inputDialog("Ввидите название нового файла."));
+        $this->fileFormat->registerFileTemplate(NDTreeContextMenu::createItem("Empty", IDE::ico("file.png"), function ($item) {
+            FileUtils::createFile($item->userData, IDE::inputDialog("Directory Name:"));
         }));
         
         $this->projectManger->registerTemplate("Empty", new EmptyProjectTemplate);
@@ -231,7 +231,7 @@ class ND
         $this->config = [
             "settings" => [
                 "projectPath" => fs::abs("./projects/"),
-                "style" => "light",
+                "style" => "dark",
                 "editor" => [
                     "style" => "chrome",
                     "invisible"  => false,
@@ -253,7 +253,7 @@ class ND
     
     public function toConfig($newConfig)
     {
-        if (IDE::confirmDialog("Сохранить настройки ?"))
+        if (IDE::confirmDialog("Save settings?"))
         {
             $this->config = $newConfig;
             $this->saveConfig();
@@ -292,7 +292,7 @@ class ND
                 try {
                     include (string) $file;
                 } catch (Error $exception) {
-                    Logger::error('Error include file ' . $file->getAbsolutePath());
+                    Logger::error('Error including file ' . $file->getAbsolutePath());
                     Logger::error('Trace : ' . $exception->getTraceAsString());
                     Logger::error('Message : ' . $exception->getMessage());
                 }
@@ -305,7 +305,7 @@ class ND
                 try {
                     Runtime::addJar($file);
                 } catch (IOException $exception) {
-                    Logger::error('Error include jar ' . $file->getAbsolutePath());
+                    Logger::error('Error including jar ' . $file->getAbsolutePath());
                     Logger::error('Trace : ' . $exception->getTraceAsString());
                     Logger::error('Message : ' . $exception->getMessage());
                 }
